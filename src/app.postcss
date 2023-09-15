@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'PatrickHand';
+	src: url('/fonts/PatrickHand-Regular.ttf');
+}
+:root {
+	--theme-font-family-base: 'PatrickHand', sans-serif;
+	--theme-font-family-heading: 'PatrickHand', sans-serif;
+}
+
+html,
+body {
+	@apply h-full overflow-hidden;
+}
+
+.very-big-font {
+	font-size: 10cqw;
+}
