@@ -3,7 +3,16 @@
 
 	// Skeleton
 	import File from '$lib/components/icons/File.svelte';
-	import { FileDropzone, InputChip, SlideToggle } from '@skeletonlabs/skeleton';
+	import {
+		FileDropzone,
+		InputChip,
+		SlideToggle,
+		getToastStore,
+		type ToastSettings
+	} from '@skeletonlabs/skeleton';
+	import { shortcut } from '$lib/components/keyBindings/shortcut';
+
+	import type { JSONContent } from '@tiptap/core';
 
 	//Skeleton
 	let files: FileList;
@@ -20,7 +29,19 @@
 		'asdfasdf',
 		'asfdsafa'
 	];
-	function doSomething() {}
+	const toastStore = getToastStore();
+	const t: ToastSettings = {
+		message: 'Save sucsess ✅',
+		background: 'variant-filled-success'
+	};
+
+	let setContent: JSONContent;
+
+	function doSomething() {
+		toastStore.trigger(t);
+		console.log(title, author, list, files, setContent);
+	}
+
 	let publicVisablity: boolean = false;
 </script>
 
@@ -29,7 +50,7 @@
 		<h1>Post details:</h1>
 		<div class="input-group input-group-divider grid-cols-[auto_1fr_auto] border-2">
 			<div class="input-group-shim">Title</div>
-			<input type="search" name="demo" bind:value={title} placeholder="Search..." />
+			<input type="search" name="demo" bind:value={title} placeholder="My best text." />
 		</div>
 
 		<div class="input-group input-group-divider grid-cols-[auto_1fr_auto] border-2">
@@ -49,7 +70,11 @@
 			<svelte:fragment slot="meta">less than 5 mb</svelte:fragment>
 		</FileDropzone>
 
-		<span class="chip variant-soft hover:variant-filled" on:click={doSomething}>
+		<span
+			class="chip variant-soft hover:variant-filled"
+			use:shortcut={{ control: true, code: 'KeyS' }}
+			on:click={doSomething}
+		>
 			<span>☑️</span>
 			<span>Save</span>
 			<span class="kbd">Ctrl</span>
@@ -60,5 +85,5 @@
 		<SlideToggle name="slide" bind:checked={publicVisablity}>Public visability</SlideToggle>
 	</div>
 
-	<TiptapEditor />
+	<TiptapEditor bind:contentJson={setContent} />
 </div>

@@ -5,28 +5,64 @@
 	import { createEditor, Editor, EditorContent } from 'svelte-tiptap';
 	import StarterKit from '@tiptap/starter-kit';
 
-	// import { SvelteCounterExtension, SvelteEditableExtension } from './SvelteExtension';
+	import {
+		// SvelteCounterExtension,
+		DraggableItem
+	} from './SvelteExtension';
+	import type { JSONContent } from '@tiptap/core';
+
+	let text = {
+		type: 'doc',
+		content: [
+			{
+				type: 'paragraph',
+				content: [
+					{
+						type: 'text',
+						text: 'It’s 19871. You can’t turn on a radio, or go to a mall without hearing Olivia Newton-John’s hit song, Physical.'
+					}
+				]
+			}
+		]
+	};
+
+	let contentHtml = `
+        <p>This is a boring paragraph.</p>
+        <div data-type="draggable-item">
+          <p>Followed by a fancy draggable item.</p>
+        </div>
+        <div data-type="draggable-item">
+          <p>And another draggable item.</p>
+          <div data-type="draggable-item">
+            <p>And a nested one.</p>
+            <div data-type="draggable-item">
+              <p>But can we go deeper?</p>
+            </div>
+          </div>
+        </div>
+        <p>Let’s finish with a boring paragraph.</p>
+      `;
+
+	export let contentJson: JSONContent = text;
 
 	let editor: Readable<Editor>;
 	onMount(() => {
 		editor = createEditor({
 			extensions: [
-				StarterKit
+				StarterKit,
+				DraggableItem
 				// SvelteCounterExtension,
-				// SvelteEditableExtension
 			],
-			content: `
-        <p>This is still the text editor you're used to, but enriched with node views.</p>
-        <svelte-counter-component count="0"></svelte-counter-component>
-        <p>This is an editable component</p>
-        <svelte-editable-component>This is editable</svelte-editable-component>
-        <p>Did you see that? That's a Svelte component. We are really living in the future.</p>
-      `,
+			content: contentHtml,
 			editorProps: {
 				attributes: {
 					class:
 						'dark:prose-invert border-2 border-black border-t-0 rounded-b-md p-3 outline-none prose prose-2xl mx-auto focus:outline-none'
 				}
+			},
+
+			onUpdate: ({ editor }) => {
+				contentJson = editor.getJSON();
 			}
 		});
 	});

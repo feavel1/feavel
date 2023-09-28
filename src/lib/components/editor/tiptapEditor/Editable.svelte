@@ -3,26 +3,23 @@
 	import cx from 'clsx';
 	import type { NodeViewProps } from '@tiptap/core';
 
-	export let selected: NodeViewProps['selected'] = false;
+	export let selected: NodeViewProps['selected'] = true;
 </script>
 
 <NodeViewWrapper
 	id="svelte-component"
-	class={cx('bg-yellow-200/90 border-black border-2 px-4 pb-4 rounded-md flex flex-col my-4', {
-		'border-green-500': selected,
+	class={cx('rounded-md my-1 flex flex-row p-2 hover:bg-surface-400/50 transition-all group', {
+		'cursor-grabbing': selected,
 		selected
 	})}
 	data-drag-handle=""
 >
-	<span
-		class="bg-black py-1 px-3 text-white rounded-b-md uppercase text-[0.6rem] font-bold w-max cursor-default"
+	<div
+		class="cursor-grab pr-1 border-r text-surface-400/50 group-hover:text-surface-50 mr-1 border-surface-50/0 group-hover:border-surface-900"
 		contenteditable="false"
 	>
-		Svelte Editable Component
-	</span>
+		⠿
+	</div>
 
-	<NodeViewContent
-		class="mt-4 border-dashed border-gray-900/20 border-2 p-2 rounded-md"
-		id="editable-component"
-	/>
+	<NodeViewContent class="pl-1" />
 </NodeViewWrapper>

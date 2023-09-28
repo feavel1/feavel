@@ -3,7 +3,7 @@
 
 	import '../app.postcss';
 	// import hljs from 'highlight.js';
-	// import 'highlight.js/styles/github-dark.css';
+	import 'highlight.js/styles/github-dark.css';
 	import {
 		AppShell,
 		AppBar,
@@ -12,7 +12,8 @@
 		getDrawerStore,
 		LightSwitch,
 		autoModeWatcher,
-		initializeStores
+		initializeStores,
+		Toast
 	} from '@skeletonlabs/skeleton';
 	// storeHighlightJs.set(hljs);
 
@@ -72,6 +73,7 @@
 </Drawer>
 
 <Noise />
+<Toast />
 <AppShell slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64" {classesSidebar}>
 	<svelte:fragment slot="pageHeader">
 		<AppBar>

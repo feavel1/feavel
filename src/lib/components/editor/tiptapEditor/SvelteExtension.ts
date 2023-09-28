@@ -1,52 +1,30 @@
 import { Node, mergeAttributes } from '@tiptap/core';
 import { SvelteNodeViewRenderer } from 'svelte-tiptap';
 
-import CounterComponent from './Counter.svelte';
-import EditableComponent from './Editable.svelte';
+import Editable from './Editable.svelte';
 
-export const SvelteCounterExtension = Node.create({
-	name: 'SvelteCounterComponent',
+export const DraggableItem = Node.create({
+	name: 'draggableItem',
+
 	group: 'block',
-	atom: true,
-	draggable: true,
-	inline: false,
 
-	addAttributes() {
-		return {
-			count: {
-				default: 0
+	content: 'block+',
+
+	draggable: true,
+
+	parseHTML() {
+		return [
+			{
+				tag: 'div[data-type="draggable-item"]'
 			}
-		};
-	},
-
-	parseHTML() {
-		return [{ tag: 'svelte-counter-component' }];
+		];
 	},
 
 	renderHTML({ HTMLAttributes }) {
-		return ['svelte-counter-component', mergeAttributes(HTMLAttributes)];
+		return ['div', mergeAttributes(HTMLAttributes, { 'data-type': 'draggable-item' }), 0];
 	},
 
 	addNodeView() {
-		return SvelteNodeViewRenderer(CounterComponent);
-	}
-});
-
-export const SvelteEditableExtension = Node.create({
-	name: 'SvelteEditableComponent',
-	group: 'block',
-	content: 'inline*',
-	draggable: true,
-
-	parseHTML() {
-		return [{ tag: 'svelte-editable-component' }];
-	},
-
-	renderHTML({ HTMLAttributes }) {
-		return ['svelte-editable-component', mergeAttributes(HTMLAttributes), 0];
-	},
-
-	addNodeView() {
-		return SvelteNodeViewRenderer(EditableComponent);
+		return SvelteNodeViewRenderer(Editable);
 	}
 });
