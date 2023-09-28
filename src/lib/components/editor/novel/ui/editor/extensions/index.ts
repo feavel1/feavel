@@ -10,7 +10,6 @@ import TaskItem from '@tiptap/extension-task-item';
 import TaskList from '@tiptap/extension-task-list';
 import { Markdown } from 'tiptap-markdown';
 import Highlight from '@tiptap/extension-highlight';
-// import SlashCommand from "./slash-command";
 import { InputRule } from '@tiptap/core';
 import SlashCommand from './slash-command.js';
 import UpdatedImage from './updated-image.js';
@@ -44,17 +43,19 @@ export const defaultExtensions = [
 		},
 		blockquote: {
 			HTMLAttributes: {
-				class: 'border-l-4 border-stone-700'
+				class: 'blockquote'
 			}
 		},
 		codeBlock: {
 			HTMLAttributes: {
-				class: 'rounded-sm bg-stone-100 p-5 font-mono font-medium text-stone-800'
+				class:
+					'rounded-sm dark:bg-stone-900 dark:text-stone-100 bg-stone-100 p-5 font-mono font-medium text-stone-800',
+				spellcheck: 'false'
 			}
 		},
 		code: {
 			HTMLAttributes: {
-				class: 'rounded-md bg-stone-200 px-1.5 py-1 font-mono font-medium text-stone-900',
+				class: 'code',
 				spellcheck: 'false'
 			}
 		},
@@ -93,8 +94,7 @@ export const defaultExtensions = [
 	}),
 	TiptapLink.configure({
 		HTMLAttributes: {
-			class:
-				'text-stone-400 underline underline-offset-[3px] hover:text-stone-600 transition-colors cursor-pointer'
+			class: 'anchor'
 		}
 	}),
 	TiptapImage.extend({

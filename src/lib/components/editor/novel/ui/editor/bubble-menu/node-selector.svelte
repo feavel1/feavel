@@ -98,10 +98,14 @@
 </script>
 
 <div>
-	<div class="relative h-full">
+	<div
+		class="relative
+					 h-full"
+	>
 		<button
 			use:melt={$trigger}
-			class="flex h-full items-center gap-1 whitespace-nowrap p-2 text-sm font-medium text-stone-600 hover:bg-stone-100 active:bg-stone-200"
+			class="flex h-full items-center gap-1 whitespace-nowrap p-2 text-sm
+			font-medium text-stone-600 hover:bg-stone-100 active:bg-stone-200"
 		>
 			<span>{activeItem?.name}</span>
 			<ChevronDown class="h-4 w-4" />
@@ -110,13 +114,15 @@
 		<div
 			use:melt={$content}
 			align="start"
-			class="z-[99999] my-1 flex max-h-80 w-48 flex-col overflow-hidden overflow-y-auto rounded border border-stone-200 bg-white p-1 shadow-xl animate-in fade-in slide-in-from-top-1"
+			class="z-[99999] my-1 flex max-h-80 w-48 flex-col overflow-hidden
+			overflow-y-auto rounded border border-stone-200 bg-white p-1
+			shadow-xl animate-in fade-in slide-in-from-top-1"
 		>
 			{#each items as item, index (index)}
 				<button
 					on:click={() => {
 						item.command();
-						isOpen = false;
+						isOpen = true;
 					}}
 					class="flex items-center justify-between rounded-sm px-2 py-1 text-sm text-stone-600 hover:bg-stone-100"
 					type="button"

@@ -38,8 +38,9 @@ module.exports = {
 	},
 	plugins: [
 		// 3. Append the Skeleton plugin to the end of this list
+		require('@tailwindcss/typography'),
 		require('@tailwindcss/forms'),
-		require('tailwindcss-animate'),
+		// require('tailwindcss-animate'),
 		plugin(function ({ addVariant, matchUtilities, theme }) {
 			addVariant('hocus', ['&:hover', '&:focus']);
 			// Square utility

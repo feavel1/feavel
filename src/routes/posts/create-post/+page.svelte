@@ -8,14 +8,9 @@
 		getToastStore,
 		type ToastSettings
 	} from '@skeletonlabs/skeleton';
-
 	import { shortcut } from '$lib/components/keyBindings/shortcut';
-	// import TiptapEditor from '$lib/components/editor/tiptapEditor/TiptapEditor.svelte';
-
-	import type { JSONContent } from '@tiptap/core';
 	import { Editor } from '$lib/components/editor/novel/index.js';
-
-	// import { Editor } from 'novel-svelte';
+	import type { JSONContent } from '@tiptap/core';
 
 	//Skeleton
 	let files: FileList;
@@ -69,8 +64,10 @@
 		</div>
 	</Editor>
 
-	<!-- <div class="flex flex-col mx-auto max-h-min gap-4 max-w-2xl xl:max-w-xs xl:sticky top-2 z-10">
-		<h1>Post details:</h1>
+	<div
+		class="flex flex-col mx-auto max-h-min gap-4 max-w-2xl xl:max-w-xs xl:sticky top-2 z-10 w-full"
+	>
+		<h1 class="h1">Post details:</h1>
 		<div class="input-group input-group-divider grid-cols-[auto_1fr_auto] border-2">
 			<div class="input-group-shim">Title</div>
 			<input type="search" name="demo" bind:value={title} placeholder="My best text." />
@@ -106,7 +103,5 @@
 		</span>
 
 		<SlideToggle name="slide" bind:checked={publicVisablity}>Public visability</SlideToggle>
-	</div> -->
-
-	<!-- <TiptapEditor bind:contentJson={setContent} /> -->
+	</div>
 </div>
