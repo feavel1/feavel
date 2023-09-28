@@ -40,7 +40,7 @@
             </div>
           </div>
         </div>
-        <p>Let’s finish with a boring paragraph.</p>
+        <p>Lets finish with a boring paragraph.</p>
       `;
 
 	export let contentJson: JSONContent = text;
@@ -139,6 +139,5 @@
 			{/each}
 		</div>
 	{/if}
-
 	<EditorContent editor={$editor} />
 </div>

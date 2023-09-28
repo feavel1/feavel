@@ -1,6 +1,4 @@
 <script lang="ts">
-	import TiptapEditor from '$lib/components/editor/tiptapEditor/TiptapEditor.svelte';
-
 	// Skeleton
 	import File from '$lib/components/icons/File.svelte';
 	import {
@@ -10,7 +8,9 @@
 		getToastStore,
 		type ToastSettings
 	} from '@skeletonlabs/skeleton';
+
 	import { shortcut } from '$lib/components/keyBindings/shortcut';
+	// import TiptapEditor from '$lib/components/editor/tiptapEditor/TiptapEditor.svelte';
 
 	import type { JSONContent } from '@tiptap/core';
 
@@ -85,5 +85,5 @@
 		<SlideToggle name="slide" bind:checked={publicVisablity}>Public visability</SlideToggle>
 	</div>
 
-	<TiptapEditor bind:contentJson={setContent} />
+	<!-- <TiptapEditor bind:contentJson={setContent} /> -->
 </div>
