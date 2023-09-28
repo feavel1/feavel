@@ -13,6 +13,9 @@
 	// import TiptapEditor from '$lib/components/editor/tiptapEditor/TiptapEditor.svelte';
 
 	import type { JSONContent } from '@tiptap/core';
+	import { Editor } from '$lib/components/editor/novel/index.js';
+
+	// import { Editor } from 'novel-svelte';
 
 	//Skeleton
 	let files: FileList;
@@ -43,10 +46,30 @@
 	}
 
 	let publicVisablity: boolean = false;
+	let saveStatus = 'Saved';
 </script>
 
 <div class="flex flex-col xl:flex-row gap-2">
-	<div class="flex flex-col mx-auto max-h-min gap-4 max-w-2xl xl:max-w-xs xl:sticky top-2 z-10">
+	<Editor
+		onUpdate={() => {
+			saveStatus = 'Unsaved';
+		}}
+		onDebouncedUpdate={() => {
+			saveStatus = 'Saving...';
+			// Simulate a delay in saving.
+			setTimeout(() => {
+				saveStatus = 'Saved';
+			}, 500);
+		}}
+	>
+		<div
+			class="absolute right-5 top-5 z-10 mb-5 rounded-lg bg-stone-100 px-2 py-1 text-sm text-stone-400"
+		>
+			{saveStatus}
+		</div>
+	</Editor>
+
+	<!-- <div class="flex flex-col mx-auto max-h-min gap-4 max-w-2xl xl:max-w-xs xl:sticky top-2 z-10">
 		<h1>Post details:</h1>
 		<div class="input-group input-group-divider grid-cols-[auto_1fr_auto] border-2">
 			<div class="input-group-shim">Title</div>
@@ -83,7 +106,7 @@
 		</span>
 
 		<SlideToggle name="slide" bind:checked={publicVisablity}>Public visability</SlideToggle>
-	</div>
+	</div> -->
 
 	<!-- <TiptapEditor bind:contentJson={setContent} /> -->
 </div>
