@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<!-- <script lang="ts" context="module">
 	import { createToaster, melt } from '@melt-ui/svelte';
 
 	type ToastData = {
@@ -52,4 +52,4 @@
 			</p>
 		</div>
 	{/each}
-</div>
+</div> -->

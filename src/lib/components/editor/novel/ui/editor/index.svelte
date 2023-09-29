@@ -14,7 +14,6 @@
 	import { defaultEditorContent } from './default-content.js';
 	import { defaultExtensions } from './extensions/index.js';
 	import { defaultEditorProps } from './props.js';
-	import Toasts, { addToast } from '../toasts.svelte';
 
 	import EditorBubbleMenu from './bubble-menu/index.svelte';
 
@@ -79,12 +78,13 @@
 			});
 		},
 		onError: (err) => {
-			addToast({
-				data: {
-					text: err.message,
-					type: 'error'
-				}
-			});
+			// addToast({
+			// 	data: {
+			// 		text: err.message,
+			// 		type: 'error'
+			// 	}
+			// });
+			alert('Error:' + err.message);
 			// if (err.message === 'You have reached your request limit for the day.') {
 			// 	va.track('Rate Limit Reached');
 			// }
@@ -170,4 +170,4 @@
 	{/if}
 </div>
 
-<Toasts />
+<!-- <Toasts /> -->

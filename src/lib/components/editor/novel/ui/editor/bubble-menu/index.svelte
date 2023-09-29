@@ -29,8 +29,8 @@
 		moveTransition: 'transform 0.15s ease-out',
 		onHidden: () => {
 			isNodeSelectorOpen.set(false);
-			isColorSelectorOpen.set(false);
 			isLinkSelectorOpen.set(false);
+			isColorSelectorOpen.set(false);
 		}
 	};
 	export let pluginKey: BubbleMenuPluginProps['pluginKey'] = 'SvelteTiptapBubbleMenu';
@@ -76,22 +76,20 @@
 		}
 	];
 
-	const reset = () => {
+	$: if ($isNodeSelectorOpen == true) {
+		isNodeSelectorOpen.set(true);
+		isLinkSelectorOpen.set(false);
+		isColorSelectorOpen.set(false);
+	}
+	$: if ($isLinkSelectorOpen == true) {
+		isLinkSelectorOpen.set(true);
 		isNodeSelectorOpen.set(false);
 		isColorSelectorOpen.set(false);
+	}
+	$: if ($isColorSelectorOpen == true) {
+		isColorSelectorOpen.set(true);
+		isNodeSelectorOpen.set(false);
 		isLinkSelectorOpen.set(false);
-	};
-
-	$: if (!$isNodeSelectorOpen) {
-		reset();
-	}
-
-	$: if (!$isColorSelectorOpen) {
-		reset();
-	}
-
-	$: if (!$isLinkSelectorOpen) {
-		reset();
 	}
 
 	if (!editor) {
@@ -118,12 +116,12 @@
 
 <div
 	bind:this={element}
-	class="flex h-10 w-fit divide-x divide-stone-200 rounded border border-stone-200 bg-white shadow-xl"
+	class="flex h-10 w-fit divide-x divide-stone-200 rounded border border-stone-200 bg-white shadow-xl font-sans"
 >
 	<NodeSelector {editor} bind:isOpen={$isNodeSelectorOpen} />
 	<LinkSelector {editor} bind:isOpen={$isLinkSelectorOpen} />
 	<div class="flex">
-		{#each items as item, index (index)}
+		{#each items as item}
 			<button
 				on:click={item.command}
 				class="p-2 text-stone-600 hover:bg-stone-100 active:bg-stone-200"

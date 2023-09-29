@@ -58,7 +58,8 @@
 		}}
 	>
 		<div
-			class="absolute right-5 top-5 z-10 mb-5 rounded-lg bg-stone-100 px-2 py-1 text-sm text-stone-400"
+			class="absolute right-5 top-5 z-10 mb-5 rounded-lg
+						 bg-stone-100 px-2 py-1 text-sm text-stone-400"
 		>
 			{saveStatus}
 		</div>
@@ -81,6 +82,7 @@
 		<InputChip bind:value={list} class="border-2" name="chips" placeholder="Post tags..." />
 
 		<FileDropzone name="files" bind:files>
+			<!-- svelte-ignore all -->
 			<svelte:fragment slot="lead">
 				<span class="badge variant-filled">
 					<File />
@@ -99,7 +101,7 @@
 			<span>Save</span>
 			<span class="kbd">Ctrl</span>
 			<span class=""> + </span>
-			<span class="kbd">S</span>
+			<span class="kbd">S </span>
 		</span>
 
 		<SlideToggle name="slide" bind:checked={publicVisablity}>Public visability</SlideToggle>

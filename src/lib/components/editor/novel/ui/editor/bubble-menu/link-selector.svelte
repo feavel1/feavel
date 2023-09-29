@@ -2,6 +2,7 @@
 	import { anyify, cn, getUrlFromString } from '../../../utils.js';
 	import type { Editor } from '@tiptap/core';
 	import { Check, Trash } from 'lucide-svelte';
+	import { fly } from 'svelte/transition';
 
 	export let editor: Editor;
 	export let isOpen: boolean;
@@ -28,6 +29,8 @@
 	</button>
 	{#if isOpen}
 		<form
+			in:fly={{ y: -30, duration: 350 }}
+			out:fly={{ y: -30, duration: 350 }}
 			on:submit={(e) => {
 				e.preventDefault();
 				const input = anyify(e.target)[0];
@@ -35,7 +38,7 @@
 				url && editor.chain().focus().setLink({ href: url }).run();
 				isOpen = false;
 			}}
-			class="fixed top-full z-[99999] mt-1 flex w-60 overflow-hidden rounded border border-stone-200 bg-white p-1 shadow-xl animate-in fade-in slide-in-from-top-1"
+			class="fixed top-full z-[99999] mt-1 flex w-60 overflow-hidden rounded border border-stone-200 bg-white p-1 shadow-xl"
 		>
 			<!-- svelte-ignore a11y-autofocus -->
 			<input
@@ -43,7 +46,7 @@
 				bind:this={inputRef}
 				type="text"
 				placeholder="Paste a link"
-				class="flex-1 bg-white p-1 text-sm outline-none"
+				class="flex-1 bg-white p-1 text-sm outline-none text-black"
 				value={editor.getAttributes('link').href || ''}
 			/>
 			{#if editor.getAttributes('link').href}

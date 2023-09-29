@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { createPopover, melt } from '@melt-ui/svelte';
 	import type { Editor } from '@tiptap/core';
 	import {
 		Check,
@@ -13,6 +12,7 @@
 		Code,
 		CheckSquare
 	} from 'lucide-svelte';
+	import { fly } from 'svelte/transition';
 
 	export let editor: Editor;
 	export let isOpen: boolean;
@@ -82,62 +82,46 @@
 	$: activeItem = items.filter((item) => item.isActive).pop() ?? {
 		name: 'Multiple'
 	};
-
-	const {
-		elements: { trigger, content },
-		states: { open: localOpen }
-	} = createPopover({
-		defaultOpen: isOpen,
-		onOpenChange({ next }) {
-			isOpen = next;
-			return next;
-		}
-	});
-
-	$: localOpen.set(isOpen);
 </script>
 
 <div>
-	<div
-		class="relative
-					 h-full"
-	>
+	<div class="relative h-full">
 		<button
-			use:melt={$trigger}
-			class="flex h-full items-center gap-1 whitespace-nowrap p-2 text-sm
-			font-medium text-stone-600 hover:bg-stone-100 active:bg-stone-200"
+			on:click={() => {
+				isOpen = !isOpen;
+			}}
+			class="flex h-full items-center gap-1 whitespace-nowrap p-2 text-sm font-medium text-stone-600 hover:bg-stone-100 active:bg-stone-200"
 		>
 			<span>{activeItem?.name}</span>
 			<ChevronDown class="h-4 w-4" />
 		</button>
-
-		<div
-			use:melt={$content}
-			align="start"
-			class="z-[99999] my-1 flex max-h-80 w-48 flex-col overflow-hidden
-			overflow-y-auto rounded border border-stone-200 bg-white p-1
-			shadow-xl animate-in fade-in slide-in-from-top-1"
-		>
-			{#each items as item, index (index)}
-				<button
-					on:click={() => {
-						item.command();
-						isOpen = true;
-					}}
-					class="flex items-center justify-between rounded-sm px-2 py-1 text-sm text-stone-600 hover:bg-stone-100"
-					type="button"
-				>
-					<div class="flex items-center space-x-2">
-						<div class="rounded-sm border border-stone-200 p-1">
-							<svelte:component this={item.icon} class="h-3 w-3" />
+		{#if isOpen}
+			<div
+				in:fly={{ y: -30, duration: 350 }}
+				out:fly={{ y: -30, duration: 350 }}
+				class="fixed flex-col top-full z-[99999] mt-1 flex w-60 overflow-hidden rounded border border-stone-200 bg-white p-1 shadow-xl"
+			>
+				{#each items as item}
+					<button
+						on:click={() => {
+							item.command();
+							isOpen = !isOpen;
+						}}
+						class="flex items-center justify-between rounded-sm px-2 py-1 text-sm text-stone-600 hover:bg-stone-100"
+						type="button"
+					>
+						<div class="flex items-center space-x-2">
+							<div class="rounded-sm border border-stone-200 p-1">
+								<svelte:component this={item.icon} class="h-3 w-3" />
+							</div>
+							<span>{item.name}</span>
 						</div>
-						<span>{item.name}</span>
-					</div>
-					{#if activeItem.name === item.name}
-						<Check class="h-4 w-4" />
-					{/if}
-				</button>
-			{/each}
-		</div>
+						{#if activeItem.name === item.name}
+							<Check class="h-4 w-4" />
+						{/if}
+					</button>
+				{/each}
+			</div>
+		{/if}
 	</div>
 </div>

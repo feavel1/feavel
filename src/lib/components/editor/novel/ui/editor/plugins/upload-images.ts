@@ -1,6 +1,6 @@
 // import { BlobResult } from "@vercel/blob";
 // import { toast } from "sonner";
-import { addToast } from '../../toasts.svelte';
+// import { addToast } from '../../toasts.svelte';
 import { EditorState, Plugin, PluginKey } from '@tiptap/pm/state';
 import { Decoration, DecorationSet, EditorView } from '@tiptap/pm/view';
 
@@ -56,22 +56,22 @@ function findPlaceholder(state: EditorState, id: any) {
 export function startImageUpload(file: File, view: EditorView, pos: number) {
 	// check if the file is an image
 	if (!file.type.includes('image/')) {
-		addToast({
-			data: {
-				text: 'File type not supported.',
-				type: 'error'
-			}
-		});
+		// addToast({
+		// 	data: {
+		// 		text: 'File type not supported.',
+		// 		type: 'error'
+		// 	}
+		// });
 		return;
 
 		// check if the file size is less than 20MB
 	} else if (file.size / 1024 / 1024 > 20) {
-		addToast({
-			data: {
-				text: 'File size too big (max 20MB).',
-				type: 'error'
-			}
-		});
+		// addToast({
+		// 	data: {
+		// 		text: 'File size too big (max 20MB).',
+		// 		type: 'error'
+		// 	}
+		// });
 
 		return;
 	}
