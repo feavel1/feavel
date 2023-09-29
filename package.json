@@ -43,7 +43,6 @@
 		"stripe": "^13.7.0",
 		"svelte-moveable": "^0.43.4",
 		"svelte-sequential-preprocessor": "^2.0.1",
-		"svelte-tiptap": "^1.1.2",
 		"tailwind-merge": "^1.14.0",
 		"tippy.js": "^6.3.7",
 		"tiptap-markdown": "^0.8.2"

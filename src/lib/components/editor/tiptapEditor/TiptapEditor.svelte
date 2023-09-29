@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { onMount } from 'svelte';
 	import cx from 'clsx';
 	import type { Readable } from 'svelte/store';
@@ -140,4 +140,4 @@
 		</div>
 	{/if}
 	<EditorContent editor={$editor} />
-</div>
+</div> -->

@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { NodeViewWrapper, NodeViewContent } from 'svelte-tiptap';
 	import cx from 'clsx';
 	import type { NodeViewProps } from '@tiptap/core';
@@ -22,4 +22,4 @@
 	</div>
 
 	<NodeViewContent class="pl-1" />
-</NodeViewWrapper>
+</NodeViewWrapper> -->

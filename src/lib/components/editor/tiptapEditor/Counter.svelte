@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import type { NodeViewProps } from '@tiptap/core';
 	import cx from 'clsx';
 	import { NodeViewWrapper } from 'svelte-tiptap';
@@ -34,4 +34,4 @@
 			This button has been clicked {node.attrs.count} times.
 		</button>
 	</div>
-</NodeViewWrapper>
+</NodeViewWrapper> -->
