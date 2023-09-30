@@ -18,12 +18,7 @@
 		api: '/api/generate',
 		onResponse: (response) => {
 			if (response.status === 429) {
-				// addToast({
-				// 	data: {
-				// 		text: 'You have reached your request limit for the day.',
-				// 		type: 'error'
-				// 	}
-				// });
+				alert('Rate limit reached');
 				// va.track('Rate Limit Reached');
 				return;
 			}
@@ -37,12 +32,7 @@
 			});
 		},
 		onError: (e) => {
-			// addToast({
-			// 	data: {
-			// 		text: e.message,
-			// 		type: 'error'
-			// 	}
-			// });
+			alert(e.message + e.name + 'Error');
 		}
 	});
 

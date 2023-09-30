@@ -1,8 +1,6 @@
 <script lang="ts">
-	// import 'cal-sans';
 	import '../../styles/index.css';
 	import '../../styles/prosemirror.css';
-	// import '../../styles/tailwind.css';
 	import { getPrevText } from '../../editor.js';
 	import { createLocalStorageStore } from '../../stores/localStorage.js';
 	import { createDebouncedCallback, noop } from '../../utils.js';
@@ -27,7 +25,7 @@
 	 * Defaults to "relative min-h-[500px] w-full max-w-screen-lg border-stone-200 bg-white p-12 px-8 sm:mb-[calc(20vh)] sm:rounded-lg sm:border sm:px-12 sm:shadow-lg".
 	 */
 	let className =
-		'relative gap-3 w-full max-w-screen-lg border-stone-200 p-12 pb-24 sm:pb-12 px-8 sm:mb-[calc(10vh)] sm:rounded-lg sm:border sm:px-12 sm:shadow-lg';
+		'relative gap-3 w-full max-w-screen-lg border-stone-200 sm:mb-[calc(10vh)] sm:rounded-lg sm:border sm:px-12 sm:shadow-lg';
 	export { className as class };
 	/**
 	 * The default value to use for the editor.
@@ -159,15 +157,14 @@
 	});
 </script>
 
-{#if editor}
-	<EditorBubbleMenu {editor} />
-{/if}
-
 <div id="editor" class={className} bind:this={element}>
-	<slot />
+	{#if editor}
+		<EditorBubbleMenu {editor} />
+	{/if}
 	{#if editor?.isActive('image')}
 		<ImageResizer {editor} />
 	{/if}
+	<slot />
 </div>
 
 <!-- <Toasts /> -->
