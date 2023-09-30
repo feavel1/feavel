@@ -16,7 +16,7 @@
 		"@skeletonlabs/skeleton": "^2.2.0",
 		"@stripe/stripe-js": "^2.1.6",
 		"@supabase/auth-helpers-sveltekit": "^0.10.3",
-		"@supabase/supabase-js": "^2.36.0",
+		"@supabase/supabase-js": "^2.37.0",
 		"@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
 		"@tiptap/core": "^2.1.11",
 		"@tiptap/extension-bubble-menu": "^2.1.11",
