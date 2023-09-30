@@ -15,7 +15,7 @@ import SlashCommand from './slash-command.js';
 import UpdatedImage from './updated-image.js';
 import DragAndDrop from './drag-and-drop';
 import UploadImagesPlugin from '../plugins/upload-images.js';
-import BubbleMenu from '@tiptap/extension-bubble-menu';
+// import BubbleMenu from '@tiptap/extension-bubble-menu';
 
 // import {
 // 	isColorSelectorOpen,
