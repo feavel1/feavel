@@ -81,7 +81,7 @@
 
 		<InputChip bind:value={list} class="border-2" name="chips" placeholder="Post tags..." />
 
-		<!-- <FileDropzone name="files" bind:files>
+		<FileDropzone name="files" bind:files>
 			<svelte:fragment slot="lead">
 				<span class="badge variant-filled">
 					<File />
@@ -89,9 +89,9 @@
 			</svelte:fragment>
 			<svelte:fragment slot="message">Upload post cover image</svelte:fragment>
 			<svelte:fragment slot="meta">less than 5 mb</svelte:fragment>
-		</FileDropzone> -->
+		</FileDropzone>
 
-		<!-- <span
+		<span
 			class="chip variant-soft hover:variant-filled"
 			use:shortcut={{ control: true, code: 'KeyS' }}
 			on:click={doSomething}
@@ -101,7 +101,7 @@
 			<span class="kbd">Ctrl</span>
 			<span class=""> + </span>
 			<span class="kbd">S </span>
-		</span> -->
+		</span>
 
 		<SlideToggle name="slide" bind:checked={publicVisablity}>Public visability</SlideToggle>
 	</div>
