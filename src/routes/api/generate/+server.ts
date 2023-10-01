@@ -80,7 +80,7 @@ export const POST: RequestHandler = async ({ request: req }) => {
 		// Respond with the stream
 		return new StreamingTextResponse(stream);
 	} catch (err) {
-		alert('There was an error with you api key, check your openAI account');
+		throw err;
 		return json({ error: 'There was an error processing your request' }, { status: 500 });
 	}
 };
