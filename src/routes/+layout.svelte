@@ -1,9 +1,7 @@
 <script lang="ts">
-	// Styles and CSS
-
 	import '../app.postcss';
-	// import hljs from 'highlight.js';
 	import 'highlight.js/styles/github-dark.css';
+	// import hljs from 'highlight.js';
 	import {
 		AppShell,
 		AppBar,
@@ -16,6 +14,8 @@
 		Toast
 	} from '@skeletonlabs/skeleton';
 	// storeHighlightJs.set(hljs);
+	initializeStores();
+	const drawerStore = getDrawerStore();
 
 	//Breadcrumbs
 	import { page } from '$app/stores';
@@ -44,10 +44,7 @@
 		return () => subscription.unsubscribe();
 	});
 
-	initializeStores();
-
-	const drawerStore = getDrawerStore();
-
+	// Drawer script
 	function drawerOpen(): void {
 		drawerStore.open({});
 	}
@@ -62,6 +59,7 @@
 	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
 </svelte:head>
 
+<Toast />
 <Drawer>
 	<h2 class="p-4">
 		<button class="lg:hidden btn btn-sm mr-4 variant-filled-secondary" on:click={drawerClose}>
@@ -73,7 +71,7 @@
 </Drawer>
 
 <Noise />
-<Toast />
+
 <AppShell slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64" {classesSidebar}>
 	<svelte:fragment slot="pageHeader">
 		<AppBar>

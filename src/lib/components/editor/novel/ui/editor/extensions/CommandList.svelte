@@ -4,7 +4,6 @@
 	import { useCompletion } from 'ai/svelte';
 	import type { CommandItemProps } from './slash-command.js';
 	import { anyify } from '../../../utils.js';
-	// import { addToast } from '../../toasts.svelte';
 
 	export let items: CommandItemProps[] = [];
 	export let command: any;
@@ -22,6 +21,10 @@
 				// va.track('Rate Limit Reached');
 				return;
 			}
+			if (response.status === 500) {
+				alert('Your ChatGPT key is not working as it should, check your api key.');
+				return;
+			}
 			editor.chain().focus().deleteRange(range).run();
 		},
 		onFinish: (_prompt, completion) => {
@@ -32,7 +35,7 @@
 			});
 		},
 		onError: (e) => {
-			alert(e.message + e.name + 'Error');
+			alert('Error' + e.message);
 		}
 	});
 

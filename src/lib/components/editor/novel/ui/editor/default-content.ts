@@ -15,7 +15,7 @@ export const defaultEditorContent = {
 						{
 							type: 'link',
 							attrs: {
-								href: 'https://github.com/tglide/novel-svelte',
+								href: 'https://github.com/feavel1',
 								target: '_blank',
 								class:
 									'text-stone-400 underline underline-offset-[3px] hover:text-stone-600 transition-colors cursor-pointer'
@@ -66,7 +66,7 @@ export const defaultEditorContent = {
 						{
 							type: 'link',
 							attrs: {
-								href: 'https://github.com/steven-tey/novel',
+								href: 'https://github.com/feavel1',
 								target: '_blank',
 								class:
 									'text-stone-400 underline underline-offset-[3px] hover:text-stone-600 transition-colors cursor-pointer'

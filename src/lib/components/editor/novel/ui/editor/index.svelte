@@ -15,6 +15,9 @@
 
 	import EditorBubbleMenu from './bubble-menu/index.svelte';
 
+	import { getToastStore } from '@skeletonlabs/skeleton';
+	const toastStore = getToastStore();
+
 	/**
 	 * The API route to use for the OpenAI completion API.
 	 * Defaults to "/api/generate".
@@ -76,16 +79,10 @@
 			});
 		},
 		onError: (err) => {
-			// addToast({
-			// 	data: {
-			// 		text: err.message,
-			// 		type: 'error'
-			// 	}
-			// });
-			alert('Error:' + err.message);
-			// if (err.message === 'You have reached your request limit for the day.') {
-			// 	va.track('Rate Limit Reached');
-			// }
+			toastStore.trigger({
+				message: 'Error: ' + err.message,
+				background: 'variant-filled-warning'
+			});
 		}
 	});
 
