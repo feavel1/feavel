@@ -4,10 +4,10 @@ import { STRIPE_SECRET } from '$env/static/private';
 import initStripe from 'stripe';
 
 const stripe = new initStripe(STRIPE_SECRET as string, {
-	apiVersion: '2022-11-15'
+	apiVersion: '2023-08-16'
 });
 
-export const GET = async ({ locals: { supabase, getSession } }) => {
+export const GET = async ({ locals: { supabase, getSession } }: any) => {
 	const session = await getSession();
 
 	if (!session) {
