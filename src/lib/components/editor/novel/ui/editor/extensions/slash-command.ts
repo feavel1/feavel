@@ -16,9 +16,8 @@ import {
 	TextQuote
 } from 'lucide-svelte';
 import CommandList from './CommandList.svelte';
-// import { toast } from 'sonner';
 // import va from '@vercel/analytics';
-// import { startImageUpload } from '@/ui/editor/plugins/upload-images';
+import { startImageUpload } from '../../editor/plugins/upload-images';
 import { Magic } from '../../../ui/icons/index.js';
 import type { SvelteComponent } from 'svelte';
 
@@ -172,7 +171,7 @@ const getSuggestionItems = ({ query }: { query: string }) => {
 					if (input.files?.length) {
 						const file = input.files[0];
 						const pos = editor.view.state.selection.from;
-						// startImageUpload(file, editor.view, pos);
+						startImageUpload(file, editor.view, pos);
 					}
 				};
 				input.click();

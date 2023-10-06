@@ -57,7 +57,7 @@
 	export let onDebouncedUpdate: (editor?: Editor) => void | Promise<void> = noop;
 	/**
 	 * The duration (in milliseconds) to debounce the onDebouncedUpdate callback.
-	 * Defaults to 750.
+	 * Defaults to 1000.
 	 */
 	export let debounceDuration = 1000;
 	/**

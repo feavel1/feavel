@@ -33,10 +33,10 @@ export async function POST({ request, locals: { getSession } }: any) {
 					],
 					mode: 'subscription',
 					allow_promotion_codes: true,
-					subscription_data: {
-						trial_from_plan: true,
-						metadata
-					},
+					// subscription_data: {
+					// 	trial_from_plan: true,
+					// 	metadata
+					// },
 					success_url: `${getURL()}/profile`,
 					cancel_url: `${getURL()}/`
 				});

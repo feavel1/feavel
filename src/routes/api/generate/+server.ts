@@ -80,7 +80,6 @@ export const POST: RequestHandler = async ({ request: req }) => {
 		// Respond with the stream
 		return new StreamingTextResponse(stream);
 	} catch (err) {
-		throw err;
-		return json({ error: 'There was an error processing your request' }, { status: 500 });
+		return json({ error: 'There is an error with your api key' }, { status: 500 });
 	}
 };

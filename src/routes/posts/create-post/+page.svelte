@@ -1,5 +1,4 @@
 <script lang="ts">
-	// Skeleton
 	import File from '$lib/components/icons/File.svelte';
 	import {
 		FileDropzone,
@@ -10,50 +9,42 @@
 	} from '@skeletonlabs/skeleton';
 	import { shortcut } from '$lib/components/keyBindings/shortcut';
 	import { Editor } from '$lib/components/editor/novel/index.js';
+
 	import type { JSONContent } from '@tiptap/core';
 
-	//Skeleton
+	let title = 'First post';
+	let author = 'Feavel';
+	let list: string[] = ['svlete', 'supabase', 'blog', 'music'];
 	let files: FileList;
-	let title = ' ';
-	let author = ' ';
-	let list: string[] = [
-		'svlete',
-		'music',
-		'blog',
-		'love',
-		'asda',
-		'asdfasdf',
-		'asdfasdf',
-		'asdfasdf',
-		'asfdsafa'
-	];
+	let setContent: JSONContent | undefined;
+	let publicVisablity: boolean = false;
+
+	let saveStatus = 'Saved on local device';
+
+	//Skeleton
 	const toastStore = getToastStore();
 	const t: ToastSettings = {
-		message: 'Save sucsess ✅',
+		message: '✅ Successfully Published 🌐 ',
 		background: 'variant-filled-success'
 	};
 
-	let setContent: JSONContent;
-
-	function doSomething() {
+	function publishPost() {
 		toastStore.trigger(t);
 		console.log(title, author, list, files, setContent);
 	}
-
-	let publicVisablity: boolean = false;
-	let saveStatus = 'Saved';
 </script>
 
 <div class="flex flex-col xl:flex-row gap-2">
 	<Editor
-		onUpdate={() => {
+		onUpdate={(editor) => {
+			setContent = editor?.getJSON();
+			console.log(setContent);
 			saveStatus = 'Unsaved';
 		}}
 		onDebouncedUpdate={() => {
-			saveStatus = 'Saving...';
-			// Simulate a delay in saving.
+			saveStatus = 'Saving in local storage...';
 			setTimeout(() => {
-				saveStatus = 'Saved';
+				saveStatus = 'Saved on local device';
 			}, 500);
 		}}
 	>
@@ -71,12 +62,12 @@
 		<h1 class="h1">Post details:</h1>
 		<div class="input-group input-group-divider grid-cols-[auto_1fr_auto] border-2">
 			<div class="input-group-shim">Title</div>
-			<input type="search" name="demo" bind:value={title} placeholder="My best text." />
+			<input type="text" name="demo" bind:value={title} placeholder="My best text." />
 		</div>
 
 		<div class="input-group input-group-divider grid-cols-[auto_1fr_auto] border-2">
 			<div class="input-group-shim">Author</div>
-			<input type="search" name="demo" bind:value={author} placeholder="Search..." />
+			<input type="text" name="demo" bind:value={author} placeholder="Author..." />
 		</div>
 
 		<InputChip bind:value={list} class="border-2" name="chips" placeholder="Post tags..." />
@@ -94,10 +85,10 @@
 		<span
 			class="chip variant-soft hover:variant-filled"
 			use:shortcut={{ control: true, code: 'KeyS' }}
-			on:click={doSomething}
+			on:click={publishPost}
 		>
 			<span>☑️</span>
-			<span>Save</span>
+			<span>Publish</span>
 			<span class="kbd">Ctrl</span>
 			<span class=""> + </span>
 			<span class="kbd">S </span>
