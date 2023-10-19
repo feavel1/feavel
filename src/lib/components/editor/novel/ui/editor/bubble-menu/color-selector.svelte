@@ -120,7 +120,7 @@
 			<div
 				in:fly={{ y: -30, duration: 350 }}
 				out:fly={{ y: -30, duration: 350 }}
-				class="fixed flex-col top-full z-[99999] mt-1 flex w-60 overflow-hidden rounded border border-stone-200 bg-white p-1 shadow-xl"
+				class="fixed right-0 overflow-y-auto h-40 flex-col top-full z-[99999] mt-1 flex w-60 overflow-hidden rounded border border-stone-200 bg-white p-1 shadow-xl"
 			>
 				<div class="my-1 px-2 text-sm text-stone-500">Color</div>
 				{#each TEXT_COLORS as { name, color }, index (index)}

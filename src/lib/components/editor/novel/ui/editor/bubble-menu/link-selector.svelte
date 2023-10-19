@@ -20,7 +20,7 @@
 	>
 		<p class="text-base">↗</p>
 		<p
-			class={cn('underline decoration-stone-400 underline-offset-4', {
+			class={cn('underline decoration-stone-400 underline-offset-4 md:block hidden', {
 				'text-blue-500': editor.isActive('link')
 			})}
 		>

@@ -1,5 +1,11 @@
 export const load = async ({ parent }: any) => {
-	const { supabase } = await parent();
+	const { supabase, session } = await parent();
+
+	const { data: userdata } = await supabase
+		.from('users')
+		.select(`avatar_url`)
+		.eq('id', session.user.id)
+		.single();
 
 	const { data: subscription } = await supabase
 		.from('subscriptions')
@@ -9,6 +15,7 @@ export const load = async ({ parent }: any) => {
 		.throwOnError();
 
 	return {
-		subscription
+		subscription,
+		userdata
 	};
 };

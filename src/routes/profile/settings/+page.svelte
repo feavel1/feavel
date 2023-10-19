@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Avatar from '$lib/components/ui/User/Avatar.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -10,11 +11,21 @@
 	const handleSignOut = async () => {
 		await supabase.auth.signOut();
 	};
+	let profileForm: HTMLFormElement;
 </script>
 
 {#if user != null}
 	<div class="card max-w-3xl mx-auto p-3">
-		<form method="POST" class="flex flex-col gap-2" action="?/updateUser">
+		<form method="POST" class="flex flex-col gap-2" action="?/updateUser" bind:this={profileForm}>
+			<Avatar
+				{supabase}
+				uploadable={true}
+				bind:url={user.avatar_url}
+				size={20}
+				on:upload={() => {
+					profileForm.requestSubmit();
+				}}
+			/>
 			<div class="field">
 				<label for="full_name" class="label">Full Name</label>
 				<p class="control">

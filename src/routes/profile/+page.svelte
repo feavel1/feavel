@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import Avatar from '$lib/components/ui/User/Avatar.svelte';
 	import { postData } from '$lib/utils/helpers';
 
 	export let data;
+	let user = data.userdata;
+
 	let { supabase, session, subscription } = data;
 	$: ({ session, supabase } = data);
 
@@ -74,9 +77,12 @@
 
 		<div class="card mb-4">
 			<h1 class="card-header h3">Logged in as:</h1>
-			<p class="card-footer">
-				{session.user.email}
-			</p>
+			<div class="w-full grid grid-cols-[auto_1fr_auto] gap-1 ml-4 pt-4">
+				<Avatar {supabase} uploadable={false} bind:url={user.avatar_url} size={10} />
+				<p class="card-footer">
+					{session.user.email}
+				</p>
+			</div>
 		</div>
 
 		<div class="card mb-4">

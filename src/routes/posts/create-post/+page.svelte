@@ -38,7 +38,6 @@
 	<Editor
 		onUpdate={(editor) => {
 			setContent = editor?.getJSON();
-			console.log(setContent);
 			saveStatus = 'Unsaved';
 		}}
 		onDebouncedUpdate={() => {

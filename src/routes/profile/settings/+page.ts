@@ -8,7 +8,7 @@ export const load = async ({ parent }: any) => {
 	}
 	const { data: userdata } = await supabase
 		.from('users')
-		.select(`id, username, full_name, billing_address`)
+		.select(`id, username, full_name, avatar_url, billing_address`)
 		.eq('id', session.user.id)
 		.single();
 

@@ -99,7 +99,7 @@
 			<div
 				in:fly={{ y: -30, duration: 350 }}
 				out:fly={{ y: -30, duration: 350 }}
-				class="fixed flex-col top-full z-[99999] mt-1 flex w-60 overflow-hidden rounded border border-stone-200 bg-white p-1 shadow-xl"
+				class="fixed overflow-y-auto h-48 flex-col top-full z-[99999] mt-1 flex w-60 overflow-hidden rounded border border-stone-200 bg-white p-1 shadow-xl"
 			>
 				{#each items as item}
 					<button
