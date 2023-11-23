@@ -10,13 +10,13 @@
 	import { shortcut } from '$lib/components/keyBindings/shortcut';
 	import { Editor } from '$lib/components/editor/novel/index.js';
 	import type { JSONContent } from '@tiptap/core';
+	import { goto } from '$app/navigation';
 
 	export let data;
 	let { supabase, session } = data;
 	$: ({ session, supabase } = data);
 
 	let title = 'First post';
-	let author = 'Feavel';
 	let list: string[] = ['svlete', 'supabase', 'blog', 'music'];
 	let files: FileList;
 	let setContent: JSONContent | undefined;
@@ -27,31 +27,36 @@
 	//Skeleton
 	const toastStore = getToastStore();
 	const t: ToastSettings = {
-		message: '✅ Successfully Published 🌐 ',
+		message: '✅ Successfully Published 🌐',
 		background: 'variant-filled-success'
 	};
 	const f: ToastSettings = {
-		message: '✖️ You must be logged in 🌐 ',
+		message: '✖️ You must be logged in 🌐',
 		background: 'variant-filled-error'
 	};
 
-	function publishPost() {
-		toastStore.trigger(f);
-		console.log(title, author, list, files, setContent, session);
-	}
-
-	async function handleCreatePost() {
-		const { data, error } = await supabase
-			.from('posts')
-			.insert([
-				{ user_id: session?.user.id, title: title, content: setContent, post_cover: files }
-			]);
+	async function handleSavePost() {
+		const { error } = await supabase.from('posts').insert([
+			{
+				user_id: session?.user.id,
+				title: title,
+				content: setContent,
+				post_cover: files,
+				publicVisablity: publicVisablity
+			}
+		]);
 		if (error) {
-			toastStore.trigger(f);
+			toastStore.trigger({
+				message: '✖️ You must be logged in 🌐',
+				background: 'variant-filled-error'
+			});
 			throw new Error(error.message);
+		} else {
+			toastStore.trigger(t);
+			setTimeout(() => {
+				publicVisablity === true ? goto('/posts') : goto('/profile');
+			}, 1000);
 		}
-		toastStore.trigger(t);
-		return data;
 	}
 </script>
 
@@ -85,11 +90,6 @@
 			<input type="text" name="demo" bind:value={title} placeholder="My best text." />
 		</div>
 
-		<!-- <div class="input-group input-group-divider grid-cols-[auto_1fr_auto] border-2">
-			<div class="input-group-shim">Author</div>
-			<input type="text" name="demo" bind:value={author} placeholder="Author..." />
-		</div> -->
-
 		<InputChip bind:value={list} class="border-2" name="chips" placeholder="Post tags..." />
 
 		<FileDropzone name="files" bind:files>
@@ -105,10 +105,10 @@
 		<span
 			class="chip variant-soft hover:variant-filled"
 			use:shortcut={{ control: true, code: 'KeyS' }}
-			on:click={handleCreatePost}
+			on:click={handleSavePost}
 		>
 			<span>☑️</span>
-			<span>Publish</span>
+			<span>Save</span>
 			<span class="kbd">Ctrl</span>
 			<span class=""> + </span>
 			<span class="kbd">S </span>
