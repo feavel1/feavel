@@ -4,7 +4,7 @@ import { STRIPE_SECRET } from '$env/static/private';
 import initStripe from 'stripe';
 
 const stripe = new initStripe(STRIPE_SECRET as string, {
-	apiVersion: '2023-08-16'
+	apiVersion: '2023-10-16'
 });
 
 export const GET = async ({ locals: { supabase, getSession } }: any) => {
