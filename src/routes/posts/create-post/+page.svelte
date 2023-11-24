@@ -17,7 +17,7 @@
 	$: ({ session, supabase } = data);
 
 	let title = 'First post';
-	let list: string[] = ['svlete', 'supabase', 'blog', 'music'];
+	let tagList: string[] = ['svlete', 'supabase', 'blog', 'music'];
 	let files: FileList;
 	let setContent: JSONContent | undefined;
 	let publicVisablity: boolean = false;
@@ -36,27 +36,67 @@
 	};
 
 	async function handleSavePost() {
-		const { error } = await supabase.from('posts').insert([
-			{
-				user_id: session?.user.id,
-				title: title,
-				content: setContent,
-				post_cover: files,
-				publicVisablity: publicVisablity
-			}
-		]);
-		if (error) {
+		const { data: tag_data_id, error: tag_err } = await supabase
+			.from('post_tags')
+			.insert(
+				tagList.map((t) => {
+					return {
+						tag_name: t
+					};
+				})
+			)
+			.select('id');
+
+		if (tag_err) {
 			toastStore.trigger({
-				message: '✖️ You must be logged in 🌐',
+				message: '✖️ Tag error: 🌐' + tag_err.message,
 				background: 'variant-filled-error'
 			});
-			throw new Error(error.message);
-		} else {
-			toastStore.trigger(t);
-			setTimeout(() => {
-				publicVisablity === true ? goto('/posts') : goto('/profile');
-			}, 1000);
+			throw new Error(tag_err.message);
 		}
+
+		const { data: post_data_id, error: create_post_err } = await supabase
+			.from('posts')
+			.insert([
+				{
+					user_id: session?.user.id,
+					title: title,
+					content: setContent,
+					post_cover: files,
+					publicVisablity: publicVisablity
+				}
+			])
+			.select('id');
+
+		if (create_post_err) {
+			toastStore.trigger({
+				message: '✖️ Post error: 🌐' + create_post_err.message,
+				background: 'variant-filled-error'
+			});
+			throw new Error(create_post_err.message);
+		}
+
+		const { data: posts_tags_rel, error: post_tag_err } = await supabase
+			.from('posts_tags_rel')
+			.insert(
+				tag_data_id.map((t) => {
+					return { post_id: post_data_id[0].id, tag_id: t.id };
+				})
+			)
+			.select('id');
+
+		if (post_tag_err) {
+			toastStore.trigger({
+				message: '✖️ Tag Post relation error: 🌐' + post_tag_err.details,
+				background: 'variant-filled-error'
+			});
+			throw new Error(post_tag_err.details);
+		}
+
+		toastStore.trigger(t);
+		setTimeout(() => {
+			publicVisablity === true ? goto('/posts') : goto('/profile');
+		}, 1000);
 	}
 </script>
 
@@ -90,7 +130,7 @@
 			<input type="text" name="demo" bind:value={title} placeholder="My best text." />
 		</div>
 
-		<InputChip bind:value={list} class="border-2" name="chips" placeholder="Post tags..." />
+		<InputChip bind:value={tagList} class="border-2" name="chips" placeholder="Post tags..." />
 
 		<FileDropzone name="files" bind:files>
 			<svelte:fragment slot="lead">
