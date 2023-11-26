@@ -141,7 +141,8 @@ export const defaultExtensions = [
 	}),
 	Markdown.configure({
 		html: false,
-		transformCopiedText: true
+		transformCopiedText: true,
+		transformPastedText: true
 	}),
 	DragAndDrop
 ];

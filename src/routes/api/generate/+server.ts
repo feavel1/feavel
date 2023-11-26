@@ -81,6 +81,5 @@ export const POST: RequestHandler = async ({ request: req }) => {
 		return new StreamingTextResponse(stream);
 	} catch (err) {
 		return err;
-		// json({ error: 'There is an error with your api key' }, { status: 500 });
 	}
 };
