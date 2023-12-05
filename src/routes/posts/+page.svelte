@@ -1,5 +1,43 @@
 <script lang="ts">
+	import PostPlaceHolder from '$lib/components/ui/PostPlaceHolder.svelte';
+	import PostCard from '$lib/components/ui/Posts/PostCard.svelte';
+	import { Paginator, type PaginationSettings } from '@skeletonlabs/skeleton';
+
+	export let data;
+	let { supabase } = data;
+	$: ({ supabase } = data);
+
+	let source: any[] = [];
+
+	async function getPosts() {
+		const { data: post_data, error: post_data_err } = await supabase
+			.from('posts')
+			.select('id, created_at, user_id, title')
+			.eq('publicVisibility', 'true');
+
+		if (post_data) {
+			source = [...post_data];
+			return source;
+		} else {
+			return post_data_err;
+		}
+	}
+
 	let inputDemo = ' ';
+
+	let paginationSettings = {
+		page: 0,
+		limit: 5,
+		size: source.length,
+		amounts: []
+	} satisfies PaginationSettings;
+
+	$: paginationSettings.size = source.length;
+
+	$: paginatedSource = source.slice(
+		paginationSettings.page * paginationSettings.limit,
+		paginationSettings.page * paginationSettings.limit + paginationSettings.limit
+	);
 </script>
 
 <div class="flex justify-between flex-col-reverse md:flex-row">
@@ -20,179 +58,19 @@
 	</div>
 </div>
 
-<p>A Svelte, Supabase, Stripe, SkeletonUI, Markdown blog.</p>
-
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-	<section class="card w-full animate-pulse">
-		<div class="p-4 space-y-4">
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-		</div>
-	</section>
-
-	<div class="grid gap-4">
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-	</div>
+<div class="grid grid-cols-1 grid-rows-3 lg:grid-cols-2 gap-4 first:row-span-1">
+	{#await getPosts()}
+		<PostPlaceHolder />
+	{:then source}
+		{#each paginatedSource as post}
+			<PostCard {post} />
+		{/each}
+	{/await}
 </div>
 
-<p>Register, login, create and post!</p>
-
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-	<div class="grid gap-4">
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-	</div>
-	<section class="card w-full animate-pulse">
-		<div class="p-4 space-y-4">
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-		</div>
-	</section>
-</div>
+<Paginator
+	class="mx-auto w-min"
+	bind:settings={paginationSettings}
+	showFirstLastButtons={true}
+	showPreviousNextButtons={true}
+/>

@@ -5,7 +5,9 @@
 		InputChip,
 		SlideToggle,
 		getToastStore,
-		type ToastSettings
+		type ToastSettings,
+		Autocomplete,
+		type AutocompleteOption
 	} from '@skeletonlabs/skeleton';
 	import { shortcut } from '$lib/components/keyBindings/shortcut';
 	import { Editor } from '$lib/components/editor/novel/index.js';
@@ -16,34 +18,60 @@
 	let { supabase, session } = data;
 	$: ({ session, supabase } = data);
 
+	//Skeleton
 	let title = 'First post';
-	let tagList: string[] = ['svlete', 'supabase', 'blog', 'music'];
+	let inputChip = '';
+	const flavorOptions: AutocompleteOption<string>[] = [
+		{
+			label: 'Programing',
+			value: 'programing',
+			keywords: 'c++, svelte, vscode, html',
+			meta: { healthy: false }
+		},
+		{
+			label: 'Music',
+			value: 'music',
+			keywords: 'art, pop, mixing, mastering',
+			meta: { healthy: false }
+		},
+		{
+			label: 'Philosophy',
+			value: 'philosophy',
+			keywords: 'lacan, art, kant',
+			meta: { healthy: true }
+		},
+		{
+			label: 'History',
+			value: 'history',
+			keywords: 'russia, china, usa',
+			meta: { healthy: false }
+		},
+		{ label: 'Art', value: 'art', keywords: 'art', meta: { healthy: true } },
+		{ label: 'News', value: 'news', keywords: 'new, trend, magic', meta: { healthy: true } }
+	];
+
+	let inputChipList: string[] = ['svlete', 'supabase'];
+	function onFlavorSelection(event: CustomEvent<AutocompleteOption<string>>): void {
+		inputChip = event.detail.label;
+	}
 	let files: FileList;
 	let setContent: JSONContent | undefined;
-	let publicVisablity: boolean = false;
+	let public_Visiblity: boolean = true;
 
 	let saveStatus = 'Saved on local device';
 
-	//Skeleton
 	const toastStore = getToastStore();
-	const t: ToastSettings = {
-		message: '✅ Successfully Published 🌐',
-		background: 'variant-filled-success'
-	};
-	const f: ToastSettings = {
-		message: '✖️ You must be logged in 🌐',
-		background: 'variant-filled-error'
-	};
 
 	async function handleSavePost() {
 		const { data: tag_data_id, error: tag_err } = await supabase
 			.from('post_tags')
-			.insert(
-				tagList.map((t) => {
+			.upsert(
+				inputChipList.map((t) => {
 					return {
 						tag_name: t
 					};
-				})
+				}),
+				{ onConflict: 'tag_name' }
 			)
 			.select('id');
 
@@ -63,7 +91,7 @@
 					title: title,
 					content: setContent,
 					post_cover: files,
-					publicVisablity: publicVisablity
+					publicVisibility: public_Visiblity
 				}
 			])
 			.select('id');
@@ -79,7 +107,7 @@
 		const { data: posts_tags_rel, error: post_tag_err } = await supabase
 			.from('posts_tags_rel')
 			.insert(
-				tag_data_id.map((t) => {
+				tag_data_id.map((t: { id: any }) => {
 					return { post_id: post_data_id[0].id, tag_id: t.id };
 				})
 			)
@@ -93,12 +121,19 @@
 			throw new Error(post_tag_err.details);
 		}
 
-		toastStore.trigger(t);
+		toastStore.trigger({
+			message: '✅ Successfully Published 🌐',
+			background: 'variant-filled-success'
+		});
 		setTimeout(() => {
-			publicVisablity === true ? goto('/posts') : goto('/profile');
+			public_Visiblity === true ? goto('/posts') : goto('/profile');
 		}, 1000);
 	}
 </script>
+
+<svelte:head>
+	<title>Create Post - Blog</title>
+</svelte:head>
 
 <div class="flex flex-col xl:flex-row gap-2">
 	<Editor
@@ -130,7 +165,22 @@
 			<input type="text" name="demo" bind:value={title} placeholder="My best text." />
 		</div>
 
-		<InputChip bind:value={tagList} class="border-2" name="chips" placeholder="Post tags..." />
+		<InputChip
+			bind:input={inputChip}
+			bind:value={inputChipList}
+			class="border-2"
+			name="chips"
+			placeholder="🔍 Add Post tags..."
+		/>
+
+		<div class="card w-full max-w-sm max-h-48 p-4 overflow-y-auto" tabindex="-1">
+			<Autocomplete
+				bind:input={inputChip}
+				options={flavorOptions}
+				denylist={inputChipList}
+				on:selection={onFlavorSelection}
+			/>
+		</div>
 
 		<FileDropzone name="files" bind:files>
 			<svelte:fragment slot="lead">
@@ -154,6 +204,6 @@
 			<span class="kbd">S </span>
 		</span>
 
-		<SlideToggle name="slide" bind:checked={publicVisablity}>Public visability</SlideToggle>
+		<SlideToggle name="slide" bind:checked={public_Visiblity}>Public visability</SlideToggle>
 	</div>
 </div>
