@@ -1,33 +1,31 @@
 <script lang="ts">
 	import Time from 'svelte-time';
-	export let post;
+	export let post: {
+		id: any;
+		created_at: any;
+		user_id: any;
+		users: {
+			id: any;
+			full_name: any;
+		}[];
+		title: any;
+		posts_tags_rel: {
+			tag_id: any;
+			post_tags: {
+				tag_name: any;
+			};
+		}[];
+	};
+
+	$: tags = post.posts_tags_rel;
 </script>
 
-<!-- <div class="card w-full animate-pulse first:row-span-2">
-	<div class="p-4 space-y-4">
-		<div class="">{post.title}</div>
-		<div class="placeholder" />
-		<div class="grid grid-cols-3 gap-8">
-			<div class="placeholder" />
-			<div class="placeholder" />
-			<div class="placeholder" />
-		</div>
-		<div class="grid grid-cols-4 gap-4">
-			<div class="placeholder" />
-			<div class="placeholder" />
-			<div class="placeholder" />
-			<div>2023-12-02</div>
-		</div>
-	</div>
-</div> -->
-
-<div style="card">
+<div style="card w-full animate-pulse">
 	<div
 		class="space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0"
 		style="cursor: auto;"
 	>
-		<a href="/posts" class="group">
-			<!-- svelte-ignore a11y-img-redundant-alt -->
+		<!-- <a href="/posts" class="group">
 			<div class="">
 				<img
 					class="object-cover shadow-lg rounded-lg group-hover:opacity-75"
@@ -36,40 +34,22 @@
 					style="cursor: auto;"
 				/>
 			</div>
-		</a>
+		</a> -->
 
 		<div class="sm:col-span-2" style="cursor: auto;">
 			<div class="flex items-center space-x-3" style="cursor: auto;">
 				<div class="flex items-center space-x-2" style="cursor: auto;">
-					<span
-						class="inline-flex items-center leading-none px-2.5 py-1.5 text-sm font-medium text-skin-inverted rounded-full border border-skin-input"
-						style="cursor: auto;"
-					>
-						<svg class="mr-1.5 h-2 w-2 brand-react" fill="currentColor" viewBox="0 0 8 8">
-							<circle cx="4" cy="4" r="3"></circle>
-						</svg>
-						Tag #1
-					</span>
-
-					<span
-						class="inline-flex items-center leading-none px-2.5 py-1.5 text-sm font-medium text-skin-inverted rounded-full border border-skin-input"
-						style="cursor: auto;"
-					>
-						<svg class="mr-1.5 h-2 w-2 brand-packages" fill="currentColor" viewBox="0 0 8 8">
-							<circle cx="4" cy="4" r="3"></circle>
-						</svg>
-						Tag #2
-					</span>
-
-					<span
-						class="inline-flex items-center leading-none px-2.5 py-1.5 text-sm font-medium text-skin-inverted rounded-full border border-skin-input"
-						style="cursor: auto;"
-					>
-						<svg class="mr-1.5 h-2 w-2 brand-tutoriel" fill="currentColor" viewBox="0 0 8 8">
-							<circle cx="4" cy="4" r="3"></circle>
-						</svg>
-						Tag #3
-					</span>
+					{#each tags as tag}
+						<span
+							class="inline-flex items-center leading-none px-2.5 py-1.5 text-sm font-medium text-skin-inverted rounded-full border border-skin-input"
+							style="cursor: auto;"
+						>
+							<svg class="mr-1.5 h-2 w-2 brand-react" fill="currentColor" viewBox="0 0 8 8">
+								<circle cx="4" cy="4" r="3"></circle>
+							</svg>
+							{tag.post_tags.tag_name}
+						</span>
+					{/each}
 				</div>
 			</div>
 
@@ -102,10 +82,6 @@
 					</div>
 
 					<div class="ml-3">
-						<p class="text-sm font-medium text-skin-inverted">
-							<a href="/profile" class="hover:underline" style="cursor: auto;"> John Doe </a>
-						</p>
-
 						<div class="flex space-x-1 text-sm text-skin-muted" style="cursor: auto;">
 							<Time relative timestamp={post.created_at} />
 

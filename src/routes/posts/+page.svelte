@@ -7,15 +7,32 @@
 	let { supabase } = data;
 	$: ({ supabase } = data);
 
-	let source: any[] = [];
+	let source = [];
+
+	let paginationSettings = {
+		amounts: [],
+		limit: 5,
+		page: 0,
+		size: source.length
+	} satisfies PaginationSettings;
 
 	async function getPosts() {
-		const { data: post_data, error: post_data_err } = await supabase
+		const { data: totalCountData, error: totalCountErr } = await supabase
 			.from('posts')
-			.select('id, created_at, user_id, title')
+			.select('count', { count: 'exact' })
 			.eq('publicVisibility', 'true');
 
+		const { data: post_data, error: post_data_err } = await supabase
+			.from('posts')
+			.select(`id, created_at, user_id, title, posts_tags_rel(post_tags(tag_name))`)
+			.eq('publicVisibility', 'true')
+			.range(
+				paginationSettings.page * paginationSettings.limit,
+				paginationSettings.page * paginationSettings.limit + paginationSettings.limit
+			);
+
 		if (post_data) {
+			paginationSettings.size = totalCountData ? totalCountData[0].count : 0;
 			source = [...post_data];
 			return source;
 		} else {
@@ -23,21 +40,8 @@
 		}
 	}
 
+	// Search 🔍
 	let inputDemo = ' ';
-
-	let paginationSettings = {
-		page: 0,
-		limit: 5,
-		size: source.length,
-		amounts: []
-	} satisfies PaginationSettings;
-
-	$: paginationSettings.size = source.length;
-
-	$: paginatedSource = source.slice(
-		paginationSettings.page * paginationSettings.limit,
-		paginationSettings.page * paginationSettings.limit + paginationSettings.limit
-	);
 </script>
 
 <div class="flex justify-between flex-col-reverse md:flex-row">
@@ -61,8 +65,8 @@
 <div class="grid grid-cols-1 grid-rows-3 lg:grid-cols-2 gap-4 first:row-span-1">
 	{#await getPosts()}
 		<PostPlaceHolder />
-	{:then source}
-		{#each paginatedSource as post}
+	{:then post_data}
+		{#each source as post}
 			<PostCard {post} />
 		{/each}
 	{/await}
@@ -73,4 +77,5 @@
 	bind:settings={paginationSettings}
 	showFirstLastButtons={true}
 	showPreviousNextButtons={true}
+	on:page={getPosts}
 />
