@@ -2,41 +2,66 @@
 	import PostPlaceHolder from '$lib/components/ui/PostPlaceHolder.svelte';
 	import PostCard from '$lib/components/ui/Posts/PostCard.svelte';
 	import { Paginator, type PaginationSettings } from '@skeletonlabs/skeleton';
+	import { onMount } from 'svelte';
 
 	export let data;
 	let { supabase } = data;
 	$: ({ supabase } = data);
 
-	let source = [];
+	let isLoading = false;
+	let source: string | any[] = [];
 
 	let paginationSettings = {
 		amounts: [],
-		limit: 5,
+		limit: 6,
 		page: 0,
 		size: source.length
 	} satisfies PaginationSettings;
 
+	onMount(() => {
+		getTotal();
+		getPosts();
+	});
+
+	async function getTotal() {
+		try {
+			isLoading = true;
+			const { data: totalCountData, error: totalCountErr } = await supabase
+				.from('posts')
+				.select('count', { count: 'exact' })
+				.eq('publicVisibility', 'true');
+
+			if (totalCountData) {
+				paginationSettings.size = totalCountData[0].count;
+			}
+		} catch (error) {
+			console.error('Error fetching total count:', error);
+		} finally {
+			isLoading = false;
+		}
+	}
+
 	async function getPosts() {
-		const { data: totalCountData, error: totalCountErr } = await supabase
-			.from('posts')
-			.select('count', { count: 'exact' })
-			.eq('publicVisibility', 'true');
+		try {
+			isLoading = true;
+			const startRange = paginationSettings.page * paginationSettings.limit;
+			const endRange = startRange + paginationSettings.limit - 1;
 
-		const { data: post_data, error: post_data_err } = await supabase
-			.from('posts')
-			.select(`id, created_at, user_id, title, posts_tags_rel(post_tags(tag_name))`)
-			.eq('publicVisibility', 'true')
-			.range(
-				paginationSettings.page * paginationSettings.limit,
-				paginationSettings.page * paginationSettings.limit + paginationSettings.limit
-			);
+			const { data: post_data, error: post_data_err } = await supabase
+				.from('posts')
+				.select(`id, created_at, user_id, title, posts_tags_rel(post_tags(tag_name))`)
+				.eq('publicVisibility', 'true')
+				.range(startRange, endRange);
 
-		if (post_data) {
-			paginationSettings.size = totalCountData ? totalCountData[0].count : 0;
-			source = [...post_data];
-			return source;
-		} else {
-			return post_data_err;
+			if (post_data) {
+				source = [...post_data];
+			} else {
+				console.error('Error fetching posts:', post_data_err);
+			}
+		} catch (error) {
+			console.error('Error fetching posts:', error);
+		} finally {
+			isLoading = false;
 		}
 	}
 
@@ -63,19 +88,19 @@
 </div>
 
 <div class="grid grid-cols-1 grid-rows-3 lg:grid-cols-2 gap-4 first:row-span-1">
-	{#await getPosts()}
+	{#if isLoading}
 		<PostPlaceHolder />
-	{:then post_data}
+	{:else}
 		{#each source as post}
 			<PostCard {post} />
 		{/each}
-	{/await}
+	{/if}
 </div>
 
 <Paginator
 	class="mx-auto w-min"
-	bind:settings={paginationSettings}
 	showFirstLastButtons={true}
 	showPreviousNextButtons={true}
+	bind:settings={paginationSettings}
 	on:page={getPosts}
 />
