@@ -10,16 +10,17 @@
 
 	let isLoading = false;
 	let source: string | any[] = [];
+	let cachedPosts: any[] = [];
 
-	let paginationSettings = {
+	let paginationSettings: PaginationSettings = {
 		amounts: [],
 		limit: 6,
 		page: 0,
 		size: source.length
-	} satisfies PaginationSettings;
+	};
 
-	onMount(() => {
-		getTotal();
+	onMount(async () => {
+		await getTotal();
 		getPosts();
 	});
 
@@ -45,18 +46,34 @@
 		try {
 			isLoading = true;
 			const startRange = paginationSettings.page * paginationSettings.limit;
-			const endRange = startRange + paginationSettings.limit - 1;
 
-			const { data: post_data, error: post_data_err } = await supabase
-				.from('posts')
-				.select(`id, created_at, user_id, title, posts_tags_rel(post_tags(tag_name))`)
-				.eq('publicVisibility', 'true')
-				.range(startRange, endRange);
+			// Adjust endRange to avoid exceeding the total count
+			let endRange = startRange + paginationSettings.limit - 1;
+			if (startRange >= paginationSettings.size) {
+				// If startRange is beyond the total count, set endRange to startRange
+				endRange = startRange;
+			} else if (endRange >= paginationSettings.size) {
+				// If endRange exceeds the total count, adjust it to the last index
+				endRange = paginationSettings.size - 1;
+			}
 
-			if (post_data) {
-				source = [...post_data];
+			// Check if the posts for the current page are already cached
+			if (cachedPosts[startRange] !== undefined && cachedPosts[endRange] !== undefined) {
+				source = cachedPosts.slice(startRange, endRange + 1);
 			} else {
-				console.error('Error fetching posts:', post_data_err);
+				const { data: post_data, error: post_data_err } = await supabase
+					.from('posts')
+					.select(`id, created_at, user_id, title, posts_tags_rel(post_tags(tag_name))`)
+					.eq('publicVisibility', 'true')
+					.range(startRange, endRange);
+
+				if (post_data) {
+					source = [...post_data];
+					// Update the cached posts array with the new data
+					cachedPosts.splice(startRange, paginationSettings.limit, ...post_data);
+				} else {
+					console.error('Error fetching posts:', post_data_err);
+				}
 			}
 		} catch (error) {
 			console.error('Error fetching posts:', error);
