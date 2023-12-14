@@ -86,6 +86,10 @@
 	let inputDemo = ' ';
 </script>
 
+<svelte:head>
+	<title>Posts - Blog</title>
+</svelte:head>
+
 <div class="flex justify-between flex-col-reverse md:flex-row">
 	<div class="flex flex-col gap-4 h-1/2">
 		<a href="/posts/create-post" class="btn variant-filled">I also want to write ✍️!</a>

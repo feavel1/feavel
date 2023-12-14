@@ -56,6 +56,7 @@
 </script>
 
 <svelte:head>
+	<title>Feavel's Blog</title>
 	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
 </svelte:head>
 
