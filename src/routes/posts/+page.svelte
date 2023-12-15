@@ -1,7 +1,6 @@
 <script lang="ts">
 	import PostsBlock from '$lib/components/ui/Posts/PostsBlock.svelte';
 	import {
-		type PaginationSettings,
 		type PopupSettings,
 		Autocomplete,
 		type AutocompleteOption,
@@ -13,16 +12,7 @@
 	let { supabase } = data;
 	$: ({ supabase } = data);
 
-	let source: string | any[] = [];
 	let isLoading = false;
-	let cachedPosts: any[] = [];
-
-	let paginationSettings: PaginationSettings = {
-		amounts: [],
-		limit: 6,
-		page: 0,
-		size: source.length
-	};
 
 	onMount(async () => {
 		getTags();
