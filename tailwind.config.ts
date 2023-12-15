@@ -60,6 +60,10 @@ module.exports = {
 				preset: ['skeleton', 'modern', 'crimson'],
 				custom: [myCustomTheme]
 			}
-		})
+		}),
+		function ({ addVariant }) {
+			addVariant('child', '& > *');
+			addVariant('child-hover', '& > *:hover');
+		}
 	]
 } satisfies Config;

@@ -177,7 +177,7 @@
 			placeholder="🔍 Add Post tags..."
 		/>
 
-		<div class="card w-full max-w-sm max-h-48 p-4 overflow-y-auto" tabindex="-1">
+		<div class="card w-full max-h-48 p-4 overflow-y-auto" tabindex="-1">
 			<Autocomplete
 				bind:input={inputChip}
 				options={flavorOptions}

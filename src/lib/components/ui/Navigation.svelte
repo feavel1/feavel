@@ -1,35 +1,15 @@
 <script lang="ts">
-	export let session: any;
-	import { getDrawerStore } from '@skeletonlabs/skeleton';
-
-	const drawerStore = getDrawerStore();
-
-	function drawerClose(): void {
-		drawerStore.close();
-	}
+	import A from './modal/A.svelte';
 </script>
 
-<nav class="list-nav p-4 mt-2">
-	<ul>
-		<li><a on:click={drawerClose} href="/">Home</a></li>
+<nav class="">
+	<ul class="flex flex-col lg:flex-row gap-3">
+		<A href="/posts">Posts <span class="badge variant-filled ml-2">New!</span></A>
 
-		<li>
-			<a on:click={drawerClose} href="/posts"
-				>All posts <span class="badge variant-filled ml-2">New!</span></a
-			>
-		</li>
+		<A href="/profile">My Profile</A>
 
-		<li>
-			<a on:click={drawerClose} href={session ? '/profile' : '/auth'}
-				>{session ? 'My Profile' : 'Log-in / Register'}</a
-			>
-		</li>
-		<li><a on:click={drawerClose} href="/subscription">Subscription</a></li>
+		<A href="/subscription">Subscription</A>
 
-		<!-- <li>
-			<a on:click={drawerClose} href="/products" class="font-thin">Products (work in progress)</a>
-		</li> -->
-
-		<li><a on:click={drawerClose} href="/about">About</a></li>
+		<A href="/about">About</A>
 	</ul>
 </nav>
