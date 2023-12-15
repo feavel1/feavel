@@ -5,7 +5,6 @@
 		InputChip,
 		SlideToggle,
 		getToastStore,
-		type ToastSettings,
 		Autocomplete,
 		type AutocompleteOption
 	} from '@skeletonlabs/skeleton';
@@ -13,47 +12,52 @@
 	import { Editor } from '$lib/components/editor/novel/index.js';
 	import type { JSONContent } from '@tiptap/core';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	export let data;
 	let { supabase, session } = data;
 	$: ({ session, supabase } = data);
 
+	let isLoading = false;
+
 	//Skeleton
 	let title = 'First post';
 	let inputChip = '';
-	const flavorOptions: AutocompleteOption<string>[] = [
-		{
-			label: 'Programing',
-			value: 'programing',
-			keywords: 'c++, svelte, vscode, html',
-			meta: { healthy: false }
-		},
-		{
-			label: 'Music',
-			value: 'music',
-			keywords: 'art, pop, mixing, mastering',
-			meta: { healthy: false }
-		},
-		{
-			label: 'Philosophy',
-			value: 'philosophy',
-			keywords: 'lacan, art, kant',
-			meta: { healthy: true }
-		},
-		{
-			label: 'History',
-			value: 'history',
-			keywords: 'russia, china, usa',
-			meta: { healthy: false }
-		},
-		{ label: 'Art', value: 'art', keywords: 'art', meta: { healthy: true } },
-		{ label: 'News', value: 'news', keywords: 'new, trend, magic', meta: { healthy: true } }
-	];
-
-	let inputChipList: string[] = ['svlete', 'supabase'];
+	let inputChipList: string[] = [];
+	let flavorOptions: AutocompleteOption<string>[] = [];
 	function onFlavorSelection(event: CustomEvent<AutocompleteOption<string>>): void {
-		inputChip = event.detail.label;
+		inputChip = event.detail.value;
 	}
+
+	onMount(() => {
+		getTags();
+	});
+
+	function capitalizeFirstLetter(str: string): string {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
+
+	async function getTags() {
+		try {
+			isLoading = true;
+
+			const { data: tagAutoComplete, error: tagSugestionsError } = await supabase
+				.from('post_tags')
+				.select('tag_name');
+
+			if (tagAutoComplete) {
+				flavorOptions = tagAutoComplete.map((t) => ({
+					label: capitalizeFirstLetter(t.tag_name),
+					value: t.tag_name
+				}));
+			}
+		} catch (error) {
+			console.error('Error fetching total count:', error);
+		} finally {
+			isLoading = false;
+		}
+	}
+
 	let files: FileList;
 	let setContent: JSONContent | undefined;
 	let public_Visiblity: boolean = true;

@@ -27,6 +27,9 @@
 	import Navigation from '$lib/components/ui/Navigation.svelte';
 	import Noise from '$lib/components/ui/Noise.svelte';
 
+	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
+	import { storePopup } from '@skeletonlabs/skeleton';
+
 	export let data;
 
 	let { supabase, session } = data;
@@ -51,6 +54,8 @@
 	function drawerClose(): void {
 		drawerStore.close();
 	}
+
+	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
 	$: classesSidebar = $page.url.pathname === '/' ? 'w-0' : 'w-0 lg:w-64';
 </script>
