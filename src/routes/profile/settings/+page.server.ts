@@ -5,7 +5,7 @@ export const actions: Actions = {
 	updateUser: async ({ request, locals: { supabase, getSession } }) => {
 		const session = await getSession();
 		if (!session) {
-			error(401, { message: 'Unauthorized' });
+			error(401, { message: 'Unauthorized 1' });
 		}
 
 		const formData = await request.formData();

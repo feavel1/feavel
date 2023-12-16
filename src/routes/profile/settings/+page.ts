@@ -1,10 +1,10 @@
-import { fail } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ parent }: any) => {
 	const { supabase, session } = await parent();
 	if (!session) {
 		// the user is not signed in
-		throw fail(401, { message: 'Unauthorized' });
+		throw redirect(302, '/auth');
 	}
 	const { data: userdata } = await supabase
 		.from('users')

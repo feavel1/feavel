@@ -28,7 +28,7 @@
 	 * Defaults to "relative min-h-[500px] w-full max-w-screen-lg border-stone-200 bg-white p-12 px-8 sm:mb-[calc(20vh)] sm:rounded-lg sm:border sm:px-12 sm:shadow-lg".
 	 */
 	let className =
-		'relative gap-3 w-full max-w-screen-lg border-stone-200 sm:mb-[calc(10vh)] sm:rounded-lg sm:border sm:px-12 sm:shadow-lg';
+		'relative gap-3 w-full font-sans max-w-screen-lg border-stone-200 sm:mb-[calc(10vh)] sm:rounded-lg sm:border variant-ringed-tertiary sm:shadow-lg';
 	export { className as class };
 	/**
 	 * The default value to use for the editor.

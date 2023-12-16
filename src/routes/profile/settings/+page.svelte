@@ -79,5 +79,5 @@
 		<pre class="pre">{JSON.stringify(session?.user, null, 2)}</pre>
 	</details>
 {:else}
-	<div>Return</div>
+	<a href="/">Return</a>
 {/if}
