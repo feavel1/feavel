@@ -1,9 +1,7 @@
 import { redirect } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
-export const load: PageLoad = async ({ params, parent }) => {
-	const { supabase } = await parent();
-
+export const load: PageServerLoad = async ({ params, locals: { supabase } }) => {
 	const { data: post, error: postError } = await supabase
 		.from('posts')
 		.select('id, created_at')
