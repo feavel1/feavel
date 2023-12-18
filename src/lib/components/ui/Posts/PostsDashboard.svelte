@@ -3,7 +3,7 @@
 	import PostPlaceHolder from '../PostPlaceHolder.svelte';
 	import PostDashboardCard from './PostDashboardCard.svelte';
 
-	export let supabase: any;
+	export let supabase: any, session: any;
 
 	let source: string | any[] = [];
 	let isLoading = false;
@@ -20,7 +20,7 @@
 			const { data: post_data, error: post_data_err } = await supabase
 				.from('posts')
 				.select(`id, created_at, user_id, title, posts_tags_rel(post_tags(tag_name))`)
-				.eq('publicVisibility', 'true');
+				.eq('user_id', session.user.id);
 
 			if (post_data) {
 				source = [...post_data];
@@ -39,9 +39,11 @@
 <ul class="list space-y-4">
 	{#if isLoading}
 		<PostPlaceHolder />
-	{:else}
+	{:else if source.length != 0}
 		{#each source as post}
 			<PostDashboardCard {post} />
 		{/each}
+	{:else}
+		<div>Create a post and see it here!</div>
 	{/if}
 </ul>

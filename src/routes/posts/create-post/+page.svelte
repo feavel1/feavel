@@ -22,7 +22,7 @@
 	let isLoading = false;
 
 	//Skeleton
-	let title = 'First post';
+	let title = '';
 	let inputChip = '';
 	let inputChipList: string[] = [];
 	let flavorOptions: AutocompleteOption<string>[] = [];
@@ -147,7 +147,7 @@
 		<h1 class="h1">Dashboard</h1>
 
 		{#if session}
-			<PostsDashboard {supabase} />
+			<PostsDashboard {session} {supabase} />
 		{:else}
 			<span><a class="underline" href="/auth">Login</a> to see your posts</span>
 			<div>You can play around, things would still be saved on your local device.</div>

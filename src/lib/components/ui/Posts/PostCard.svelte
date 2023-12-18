@@ -20,8 +20,10 @@
 	$: tags = post.posts_tags_rel;
 </script>
 
-<div class="card w-full transition-opacity hover:opacity-50 p-3">
-	<a href="/posts">
+<div
+	class="card bg-gradient-to-br variant-gradient-primary-secondary w-full transition-opacity hover:opacity-50 p-3"
+>
+	<a href="/posts/{post.id}">
 		<!-- <a href="/posts" class="group">
 			<div class="">
 				<img
