@@ -12,12 +12,16 @@
 	import { defaultEditorContent } from './default-content.js';
 	import { defaultExtensions } from './extensions/index.js';
 	import { defaultEditorProps } from './props.js';
-
 	import EditorBubbleMenu from './bubble-menu/index.svelte';
-
 	import { getToastStore } from '@skeletonlabs/skeleton';
+
 	const toastStore = getToastStore();
 
+	/**
+	 * Disable local storage read/save.
+	 * @default false
+	 */
+	export let disableLocalStorage = false;
 	/**
 	 * The API route to use for the OpenAI completion API.
 	 * Defaults to "/api/generate".
@@ -88,8 +92,12 @@
 
 	const content = createLocalStorageStore(storageKey, defaultValue);
 	let hydrated = false;
-	$: if (editor && $content && !hydrated) {
-		editor.commands.setContent($content);
+
+	$: if (editor && !hydrated) {
+		const value = disableLocalStorage ? defaultValue : $content;
+		if (value) {
+			editor.commands.setContent(value);
+		}
 		hydrated = true;
 	}
 
@@ -109,7 +117,11 @@
 
 	const debouncedUpdates = createDebouncedCallback(async ({ editor }) => {
 		const json = editor.getJSON();
-		content.set(json);
+
+		if (!disableLocalStorage) {
+			content.set(json);
+		}
+
 		onDebouncedUpdate(editor);
 	}, debounceDuration);
 
@@ -155,7 +167,7 @@
 </script>
 
 <div id="editor" class={className} bind:this={element}>
-	{#if editor}
+	{#if editor && editor.isEditable}
 		<EditorBubbleMenu {editor} />
 	{/if}
 	{#if editor?.isActive('image')}
