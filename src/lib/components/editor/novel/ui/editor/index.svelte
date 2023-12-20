@@ -167,7 +167,7 @@
 </script>
 
 <div id="editor" class={className} bind:this={element}>
-	{#if editor && editor.isEditable}
+	{#if editor}
 		<EditorBubbleMenu {editor} />
 	{/if}
 	{#if editor?.isActive('image')}

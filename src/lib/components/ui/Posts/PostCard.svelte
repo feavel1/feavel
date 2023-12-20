@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Time from 'svelte-time';
+	import Tags from './Tags.svelte';
 	export let post: {
 		id: any;
 		created_at: any;
@@ -10,10 +11,9 @@
 		}[];
 		title: any;
 		posts_tags_rel: {
-			tag_id: any;
 			post_tags: {
 				tag_name: any;
-			};
+			}[];
 		}[];
 	};
 
@@ -65,16 +65,7 @@
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<div class="flex items-center space-x-2">
-					{#each tags as tag}
-						<span class="badge variant-filled">
-							<svg class="mr-1.5 h-2 w-2 brand-react" fill="currentColor" viewBox="0 0 8 8">
-								<circle cx="4" cy="4" r="3"></circle>
-							</svg>
-							{tag.post_tags.tag_name}
-						</span>
-					{/each}
-				</div>
+				<Tags {tags} />
 			</div>
 		</div>
 	</a>
