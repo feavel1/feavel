@@ -5,15 +5,15 @@
 	import { createLocalStorageStore } from '../../stores/localStorage.js';
 	import { createDebouncedCallback, noop } from '../../utils.js';
 	import { Editor, Extension, type JSONContent } from '@tiptap/core';
-	import type { EditorProps } from '@tiptap/pm/view';
 	import { useCompletion } from 'ai/svelte';
-	import ImageResizer from './extensions/ImageResizer.svelte';
 	import { onMount } from 'svelte';
 	import { defaultEditorContent } from './default-content.js';
 	import { defaultExtensions } from './extensions/index.js';
 	import { defaultEditorProps } from './props.js';
-	import EditorBubbleMenu from './bubble-menu/index.svelte';
+	import ImageResizer from './extensions/ImageResizer.svelte';
 	import { getToastStore } from '@skeletonlabs/skeleton';
+	import EditorBubbleMenu from './bubble-menu/index.svelte';
+	import type { EditorProps } from '@tiptap/pm/view';
 
 	const toastStore = getToastStore();
 

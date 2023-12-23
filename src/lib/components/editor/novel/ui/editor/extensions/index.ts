@@ -138,3 +138,101 @@ export const defaultExtensions = [
 	}),
 	DragAndDrop
 ];
+
+export const readExtentions = [
+	StarterKit.configure({
+		bulletList: {
+			HTMLAttributes: {
+				class: 'list-disc list-outside leading-3 -mt-2'
+			}
+		},
+		orderedList: {
+			HTMLAttributes: {
+				class: 'list-decimal list-outside leading-3 -mt-2'
+			}
+		},
+		listItem: {
+			HTMLAttributes: {
+				class: 'leading-normal -mb-2'
+			}
+		},
+		blockquote: {
+			HTMLAttributes: {
+				class: 'blockquote'
+			}
+		},
+		codeBlock: {
+			HTMLAttributes: {
+				class:
+					'rounded-sm dark:bg-stone-900 dark:text-stone-100 bg-stone-100 p-5 font-mono font-medium text-stone-800',
+				spellcheck: 'false'
+			}
+		},
+		code: {
+			HTMLAttributes: {
+				class: 'code',
+				spellcheck: 'false'
+			}
+		},
+		dropcursor: {
+			color: '#DBEAFE',
+			width: 4
+		},
+		gapcursor: false
+	}),
+	HorizontalRule.extend({
+		addInputRules() {
+			return [
+				new InputRule({
+					find: /^(?:---|—-|___\s|\*\*\*\s)$/,
+					handler: ({ state, range }) => {
+						const attributes = {};
+
+						const { tr } = state;
+						const start = range.from;
+						const end = range.to;
+
+						tr.insert(start - 1, this.type.create(attributes)).delete(
+							tr.mapping.map(start),
+							tr.mapping.map(end)
+						);
+					}
+				})
+			];
+		}
+	}).configure({
+		HTMLAttributes: {
+			class: 'mt-4 mb-6 border-t border-stone-300'
+		}
+	}),
+	TiptapLink.configure({
+		HTMLAttributes: {
+			class: 'anchor'
+		}
+	}),
+	TaskItem.configure({
+		HTMLAttributes: {
+			class: 'flex items-start my-4'
+		},
+		nested: true
+	}),
+	TaskList.configure({
+		HTMLAttributes: {
+			class: 'not-prose pl-2'
+		}
+	}),
+	TiptapImage.extend({
+		addProseMirrorPlugins() {
+			return [UploadImagesPlugin()];
+		}
+	}).configure({
+		allowBase64: true,
+		HTMLAttributes: {
+			class: 'rounded-lg border border-stone-200'
+		}
+	}),
+	Highlight.configure({
+		multicolor: true
+	}),
+	TextStyle
+];
