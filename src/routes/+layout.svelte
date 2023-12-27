@@ -33,6 +33,7 @@
 
 	import { getModalStore } from '@skeletonlabs/skeleton';
 	import NavModal from '$lib/components/ui/modal/NavModal.svelte';
+	import SearchModal from '$lib/components/ui/modal/SearchModal.svelte';
 	import HamburgerIcon from '$lib/components/ui/modal/HamburgerIcon.svelte';
 
 	const modalStore = getModalStore();
@@ -57,7 +58,8 @@
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
 	const modalRegistry: Record<string, ModalComponent> = {
-		modalComponentOne: { ref: NavModal }
+		modalComponentOne: { ref: NavModal },
+		searchModal: { ref: SearchModal, props: { supabase: supabase } }
 	};
 </script>
 

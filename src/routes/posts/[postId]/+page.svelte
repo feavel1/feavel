@@ -17,13 +17,14 @@
 	const output = generateHTML(json, readExtentions);
 </script>
 
-<div>
+<div class="max-w-6xl mx-auto">
 	<div class="p-3 mb-3">
 		<Time relative timestamp={post.created_at} />
 
-		<h1 class="h1 font-bold">{post.title}</h1>
+		<h1 class="h1 font-bold mb-2">{post.title}</h1>
 		<Tags {tags} />
 	</div>
+	<hr />
 	<div
 		class="prose dark:prose-invert relative p-3 gap-3 w-full font-sans max-w-screen-2xl border-stone-200"
 	>
