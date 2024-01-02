@@ -35,6 +35,7 @@
 	import NavModal from '$lib/components/ui/modal/NavModal.svelte';
 	import SearchModal from '$lib/components/ui/modal/SearchModal.svelte';
 	import HamburgerIcon from '$lib/components/ui/modal/HamburgerIcon.svelte';
+	import SearchButton from '$lib/components/ui/modal/SearchButton.svelte';
 
 	const modalStore = getModalStore();
 
@@ -90,7 +91,10 @@
 			<Navigation />
 		</div>
 	</svelte:fragment>
-	<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
+	<svelte:fragment slot="trail">
+		<SearchButton />
+		<LightSwitch /></svelte:fragment
+	>
 </AppBar>
 <hr />
 

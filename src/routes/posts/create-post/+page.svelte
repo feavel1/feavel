@@ -22,10 +22,10 @@
 	let isLoading = false;
 
 	//Skeleton
-	let title = '';
-	let inputChip = '';
-	let inputChipList: string[] = [];
-	let flavorOptions: AutocompleteOption<string>[] = [];
+	let title: string;
+	let inputChip: string;
+	let inputChipList: string[];
+	let flavorOptions: AutocompleteOption<string>[];
 	function onFlavorSelection(event: CustomEvent<AutocompleteOption<string>>): void {
 		inputChip = event.detail.value;
 	}
@@ -41,7 +41,6 @@
 	async function getTags() {
 		try {
 			isLoading = true;
-
 			const { data: tagAutoComplete, error: tagSugestionsError } = await supabase
 				.from('post_tags')
 				.select('tag_name');
@@ -52,8 +51,8 @@
 					value: t.tag_name
 				}));
 			}
-		} catch (error) {
-			console.error('Error fetching total count:', error);
+		} catch (tagSugestionsError) {
+			console.error('Error fetching total count:', tagSugestionsError);
 		} finally {
 			isLoading = false;
 		}
@@ -68,71 +67,89 @@
 	const toastStore = getToastStore();
 
 	async function handleSavePost() {
-		const { data: tag_data_id, error: tag_err } = await supabase
-			.from('post_tags')
-			.upsert(
-				inputChipList.map((t) => {
-					return {
-						tag_name: t
-					};
-				}),
-				{ onConflict: 'tag_name' }
-			)
-			.select('id');
-
-		if (tag_err) {
+		if (title == null) {
 			toastStore.trigger({
-				message: '✖️ Tag error: 🌐' + tag_err.message,
+				message: '✖️ You must have a post title 🌐',
 				background: 'variant-filled-error'
 			});
-			throw new Error(tag_err.message);
-		}
-
-		const { data: post_data_id, error: create_post_err } = await supabase
-			.from('posts')
-			.insert([
-				{
-					user_id: session?.user.id,
-					title: title,
-					content: setContent,
-					post_cover: files,
-					publicVisibility: public_Visiblity
-				}
-			])
-			.select('id');
-
-		if (create_post_err) {
+		} else if (inputChipList.length == 0) {
+			console.log(inputChipList);
 			toastStore.trigger({
-				message: '✖️ Post error: 🌐' + create_post_err.message,
+				message: '✖️ You must have at least one TAG 🌐',
 				background: 'variant-filled-error'
 			});
-			throw new Error(create_post_err.message);
-		}
-
-		const { data: posts_tags_rel, error: post_tag_err } = await supabase
-			.from('posts_tags_rel')
-			.insert(
-				tag_data_id.map((t: { id: any }) => {
-					return { post_id: post_data_id[0].id, tag_id: t.id };
-				})
-			)
-			.select('id');
-
-		if (post_tag_err) {
+		} else if (setContent == null) {
 			toastStore.trigger({
-				message: '✖️ Tag Post relation error: 🌐' + post_tag_err.details,
+				message: '✖️ You must edit the text at least once!!! 🌐',
 				background: 'variant-filled-error'
 			});
-			throw new Error(post_tag_err.details);
-		}
+		} else {
+			const { data: tag_data_id, error: tag_err } = await supabase
+				.from('post_tags')
+				.upsert(
+					inputChipList.map((t) => {
+						return {
+							tag_name: t
+						};
+					}),
+					{ onConflict: 'tag_name' }
+				)
+				.select('id');
 
-		toastStore.trigger({
-			message: '✅ Successfully Published 🌐',
-			background: 'variant-filled-success'
-		});
-		setTimeout(() => {
-			public_Visiblity === true ? goto('/posts') : goto('/profile');
-		}, 1000);
+			if (tag_err) {
+				toastStore.trigger({
+					message: '✖️ Tag error: 🌐' + tag_err.message,
+					background: 'variant-filled-error'
+				});
+				throw new Error(tag_err.message);
+			}
+
+			const { data: post_data_id, error: create_post_err } = await supabase
+				.from('posts')
+				.insert([
+					{
+						user_id: session?.user.id,
+						title: title,
+						content: setContent,
+						post_cover: files,
+						public_visibility: public_Visiblity
+					}
+				])
+				.select('id');
+
+			if (create_post_err) {
+				toastStore.trigger({
+					message: '✖️ Post error: 🌐' + create_post_err.message,
+					background: 'variant-filled-error'
+				});
+				throw new Error(create_post_err.message);
+			}
+
+			const { error: post_tag_err } = await supabase
+				.from('posts_tags_rel')
+				.insert(
+					tag_data_id.map((t: { id: any }) => {
+						return { post_id: post_data_id[0].id, tag_id: t.id };
+					})
+				)
+				.select('id');
+
+			if (post_tag_err) {
+				toastStore.trigger({
+					message: '✖️ Tag Post relation error: 🌐' + post_tag_err.details,
+					background: 'variant-filled-error'
+				});
+				throw new Error(post_tag_err.details);
+			}
+
+			toastStore.trigger({
+				message: '✅ Successfully Published 🌐',
+				background: 'variant-filled-success'
+			});
+			setTimeout(() => {
+				public_Visiblity === true ? goto('/posts') : goto('/profile');
+			}, 1000);
+		}
 	}
 </script>
 

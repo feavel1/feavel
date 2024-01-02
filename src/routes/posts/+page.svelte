@@ -14,7 +14,9 @@
 <div class="flex justify-between flex-col-reverse md:flex-row">
 	<div class="flex flex-col gap-4 h-1/2">
 		<a href="/posts/create-post" class="btn variant-filled">I also want to write ✍️!</a>
-		<SearchButton />
+		<a href="/posts/guide" class="btn variant-filled">Read community guide 📚!</a>
+
+		<!-- <SearchButton /> -->
 	</div>
 	<div class="text-right">
 		<p class="text-xs italic text-gray-500 py-2">

@@ -28,12 +28,10 @@
 		try {
 			isLoading = true;
 
-			const { data: filteredPosts, error: tagSugestionsError } = await supabase
-				.from('posts')
-				.select('id, title, created_at, content')
-				.like('content_string', 'svelte%');
-
-			// .contains('content', JSON.stringify([{ text: inputDemo }]));
+			const { data: filteredPosts, error: tagSugestionsError } = await supabase.rpc(
+				'content_string',
+				{ searchparams: inputDemo }
+			);
 
 			if (filteredPosts) {
 				source = filteredPosts;
@@ -84,7 +82,8 @@
 <div class="max-w-3xl w-full">
 	<div class="input-group input-group-divider grid-cols-[auto_1fr_auto] border-0">
 		<div class="input-group-shim">
-			<SearchIcon />
+			<!-- <SearchIcon /> -->
+			🔍
 		</div>
 		<input
 			type="search"
@@ -98,7 +97,7 @@
 		</button>
 	</div>
 	<div
-		class="card w-full max-w-2xl max-h-48 p-4 overflow-y-auto z-50"
+		class="card w-full max-w-2xl max-h-48 p-4 overflow-y-auto z-50 bg-surface-200"
 		data-popup="popupAutocomplete"
 	>
 		<div class="text-lg ml-4">Filter by tag:</div>
