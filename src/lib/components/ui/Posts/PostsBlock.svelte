@@ -5,7 +5,6 @@
 	import { onMount } from 'svelte';
 
 	export let supabase: any;
-	// export let filterTag: string = 'none';
 
 	let isLoading = false;
 	let source: string | any[] = [];

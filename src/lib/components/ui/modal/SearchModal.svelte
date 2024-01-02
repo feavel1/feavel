@@ -6,7 +6,11 @@
 		type PopupSettings
 	} from '@skeletonlabs/skeleton';
 	import type { SupabaseClient } from '@supabase/supabase-js';
+	import { SearchIcon } from 'lucide-svelte';
 	import { onMount } from 'svelte';
+	import PostListCard from './PostListCard.svelte';
+	import PostPlaceHolder from '../PostPlaceHolder.svelte';
+	import { postData } from '$lib/utils/helpers';
 
 	let isLoading = false;
 
@@ -18,9 +22,28 @@
 
 	// Search 🔍
 	let inputDemo = '';
-	let searchDemo: string = 'none';
-	const onSearch = (v: string) => (searchDemo = v);
+	let source: string | any[] = [];
 
+	async function onSearch() {
+		try {
+			isLoading = true;
+
+			const { data: filteredPosts, error: tagSugestionsError } = await supabase
+				.from('posts')
+				.select('id, title, created_at, content')
+				.like('content_string', 'svelte%');
+
+			// .contains('content', JSON.stringify([{ text: inputDemo }]));
+
+			if (filteredPosts) {
+				source = filteredPosts;
+			}
+		} catch (error) {
+			alert('Error fetching total count:' + error);
+		} finally {
+			isLoading = false;
+		}
+	}
 	let flavorOptions: AutocompleteOption<string>[] = [];
 
 	let popupSettings: PopupSettings = {
@@ -58,25 +81,53 @@
 	}
 </script>
 
-<div class="max-w-6xl w-full">
+<div class="max-w-3xl w-full">
 	<div class="input-group input-group-divider grid-cols-[auto_1fr_auto] border-0">
-		<div class="input-group-shim">(icon)</div>
+		<div class="input-group-shim">
+			<SearchIcon />
+		</div>
 		<input
 			type="search"
 			name="demo"
 			bind:value={inputDemo}
 			use:popup={popupSettings}
-			placeholder="Search"
-			class=""
+			placeholder="Search on web..."
 		/>
-		<button class="variant-filled-tertiary w-fit" on:click={() => onSearch(inputDemo)}>
+		<button class="variant-filled-tertiary w-fit" on:click={() => onSearch()}>
 			Search posts
 		</button>
 	</div>
 	<div
-		class="card w-full max-w-sm max-h-48 p-4 overflow-y-auto z-50"
+		class="card w-full max-w-2xl max-h-48 p-4 overflow-y-auto z-50"
 		data-popup="popupAutocomplete"
 	>
+		<div class="text-lg ml-4">Filter by tag:</div>
+		<hr class="my-2" />
 		<Autocomplete bind:input={inputDemo} options={flavorOptions} on:selection={onFlavorSelection} />
 	</div>
+
+	<ol class="list card m-2 p-4">
+		{#if isLoading || source.length == 0}
+			<section class="card w-full animate-pulse p-2">
+				<div class="p-4 space-y-4">
+					<div class="placeholder" />
+					<div class="grid grid-cols-3 gap-8">
+						<div class="placeholder" />
+						<div class="placeholder" />
+						<div class="placeholder" />
+					</div>
+					<div class="grid grid-cols-4 gap-4">
+						<div class="placeholder" />
+						<div class="placeholder" />
+						<div class="placeholder" />
+						<div class="placeholder" />
+					</div>
+				</div>
+			</section>
+		{:else}
+			{#each source as post}
+				<PostListCard {post} />
+			{/each}
+		{/if}
+	</ol>
 </div>

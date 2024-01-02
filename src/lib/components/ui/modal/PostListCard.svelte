@@ -1,23 +1,8 @@
 <script lang="ts">
 	import Time from 'svelte-time';
-	import Tags from './Tags.svelte';
-	export let post: {
-		id: any;
-		created_at: any;
-		user_id: any;
-		users: {
-			id: any;
-			full_name: any;
-		}[];
-		title: any;
-		posts_tags_rel: {
-			post_tags: {
-				tag_name: any;
-			}[];
-		}[];
-	};
+	import Tags from '../Posts/Tags.svelte';
 
-	let tags = post.posts_tags_rel;
+	export let post: any;
 </script>
 
 <div
@@ -63,9 +48,8 @@
 					<span> · 3 min read time</span>
 				</div>
 			</div>
-
 			<div class="flex items-center space-x-3">
-				<Tags {tags} />
+				<!-- <Tags {post.posts_tags_rel} /> -->
 			</div>
 		</div>
 	</a>
