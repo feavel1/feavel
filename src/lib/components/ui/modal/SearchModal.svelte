@@ -6,11 +6,9 @@
 		type PopupSettings
 	} from '@skeletonlabs/skeleton';
 	import type { SupabaseClient } from '@supabase/supabase-js';
-	import { SearchIcon } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import PostListCard from './PostListCard.svelte';
 	import PostPlaceHolder from '../PostPlaceHolder.svelte';
-	import { postData } from '$lib/utils/helpers';
 
 	let isLoading = false;
 
@@ -107,22 +105,7 @@
 
 	<ol class="list card m-2 p-4">
 		{#if isLoading || source.length == 0}
-			<section class="card w-full animate-pulse p-2">
-				<div class="p-4 space-y-4">
-					<div class="placeholder" />
-					<div class="grid grid-cols-3 gap-8">
-						<div class="placeholder" />
-						<div class="placeholder" />
-						<div class="placeholder" />
-					</div>
-					<div class="grid grid-cols-4 gap-4">
-						<div class="placeholder" />
-						<div class="placeholder" />
-						<div class="placeholder" />
-						<div class="placeholder" />
-					</div>
-				</div>
-			</section>
+			<PostPlaceHolder />
 		{:else}
 			{#each source as post}
 				<PostListCard {post} />

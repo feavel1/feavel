@@ -1,6 +1,5 @@
 <script lang="ts">
 	import PostsBlock from '$lib/components/ui/Posts/PostsBlock.svelte';
-	import SearchButton from '$lib/components/ui/modal/SearchButton.svelte';
 
 	export let data;
 	let { supabase } = data;

@@ -81,7 +81,7 @@
 
 <Noise />
 
-<AppBar class="px-4 py-4 lg:px-24" background="">
+<AppBar class="px-4 py-2 lg:px-24" background="">
 	<svelte:fragment slot="lead">
 		<div class="flex flex-row items-center">
 			<HamburgerIcon />
@@ -97,7 +97,6 @@
 	>
 </AppBar>
 <hr />
-
 <Breadcrumbs path={$page.url.pathname} />
 <hr />
 
