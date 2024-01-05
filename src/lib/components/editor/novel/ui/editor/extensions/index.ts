@@ -234,5 +234,7 @@ export const readExtentions = [
 	Highlight.configure({
 		multicolor: true
 	}),
-	TextStyle
+	TextStyle,
+	TiptapUnderline,
+	Color
 ];

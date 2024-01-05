@@ -96,11 +96,14 @@
 		<LightSwitch /></svelte:fragment
 	>
 </AppBar>
-<hr />
-<Breadcrumbs path={$page.url.pathname} />
+
 <hr />
 
-<div class="container mx-auto p-4 space-y-4">
+<Breadcrumbs path={$page.url.pathname} />
+
+<hr />
+
+<div class="container mx-auto px-4 space-y-4">
 	<slot />
 	<div class="text-sm text-right mb-1 mr-2 text-gray-500">
 		<div>
