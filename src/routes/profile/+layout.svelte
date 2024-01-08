@@ -7,8 +7,12 @@
 <!-- <Grid /> -->
 <Cloud />
 
-<main class="relative isolate max-w-7xl sm:px-6 mx-auto top-12 lg:flex">
-	<aside class="h-fit relative lg:sticky top-8 lg:top-20 lg:w-72">
+<main
+	class="row-auto max-w-7xl mx-auto relative top-20 lg:grid grid-cols-1 gap-x-8 lg:grid-cols-8 lg:items-start"
+>
+	<aside
+		class="rounded-lg pb-4 lg:sticky top-20 col-start-1 col-span-2 row-span-2 row-start-1 lg:overflow-hidden"
+	>
 		<div class="ml-4 my-4">
 			<p class="text-xs italic text-gray-500">Edit, manage, save your personal data! - Feavel</p>
 			<h1 class="h1">Profile</h1>
@@ -42,7 +46,10 @@
 				</a>
 			</li>
 			<li>
-				<a href="/profile" class="btn variant-filled-secondary gap-x-3 w-full justify-start">
+				<a
+					href="/profile/reports"
+					class="btn variant-filled-secondary gap-x-3 w-full justify-start"
+				>
 					<LucideReceipt />
 					Reports
 				</a>
@@ -50,5 +57,7 @@
 		</ul>
 	</aside>
 
-	<slot />
+	<div class="col-span-6">
+		<slot />
+	</div>
 </main>
