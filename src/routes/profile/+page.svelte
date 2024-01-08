@@ -268,6 +268,26 @@
 			class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
 		>
 			<div>
+				<h2 class="text-base font-semibold leading-7">Log Out</h2>
+				<p class="mt-1 text-sm leading-6 text-gray-400">
+					Want to log-in using another account? You can log out your account here. You can always
+					log back in. All information related to this account will be saved.
+				</p>
+			</div>
+
+			<form method="post" action="?/signout" class="flex items-start md:col-span-2">
+				<button
+					type="submit"
+					class="rounded-md bg-warning-400 text-black px-3 py-2 text-sm font-semibold shadow-sm hover:bg-warning-100"
+					>Log out your account</button
+				>
+			</form>
+		</div>
+
+		<div
+			class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
+		>
+			<div>
 				<h2 class="text-base font-semibold leading-7">Delete account</h2>
 				<p class="mt-1 text-sm leading-6 text-gray-400">
 					No longer want to use our service? You can delete your account here. This action is not

@@ -1,4 +1,4 @@
-import { error, fail } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
@@ -34,5 +34,12 @@ export const actions: Actions = {
 			sucsess: true,
 			userdata: data
 		};
+	},
+	signout: async ({ locals: { supabase, getSession } }) => {
+		const session = await getSession();
+		if (session) {
+			await supabase.auth.signOut();
+			throw redirect(303, '/');
+		}
 	}
 };
