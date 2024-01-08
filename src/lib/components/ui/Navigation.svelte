@@ -7,7 +7,7 @@
 		<A href="/posts">Posts</A>
 
 		<A href="/products">Products</A>
-		<A href="/subscription">Subscription</A>
+		<!-- <A href="/subscription">Subscription</A> -->
 
 		<A href="/profile">My Profile</A>
 		<A href="/about">About</A>

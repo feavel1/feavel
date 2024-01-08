@@ -36,6 +36,7 @@
 	import SearchModal from '$lib/components/ui/modal/SearchModal.svelte';
 	import HamburgerIcon from '$lib/components/ui/modal/HamburgerIcon.svelte';
 	import SearchButton from '$lib/components/ui/modal/SearchButton.svelte';
+	import Footer from '$lib/components/ui/layout/Footer.svelte';
 
 	const modalStore = getModalStore();
 
@@ -81,11 +82,11 @@
 
 <Noise />
 
-<AppBar class="px-4 py-2 lg:px-24" background="">
+<AppBar class="px-4 py-2 lg:px-32 fixed w-full z-50" background="">
 	<svelte:fragment slot="lead">
 		<div class="flex flex-row items-center">
 			<HamburgerIcon />
-			<a href="/" class="text-xl uppercase font-extrabold mr-10">Feavel's blog.</a>
+			<a href="/" class="sm:text-xl uppercase font-extrabold mr-10">Feavel</a>
 		</div>
 		<div class="hidden lg:inline">
 			<Navigation />
@@ -93,27 +94,13 @@
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
 		<SearchButton />
-		<LightSwitch /></svelte:fragment
-	>
+		<LightSwitch />
+	</svelte:fragment>
 </AppBar>
-
-<hr />
-
 <Breadcrumbs path={$page.url.pathname} />
 
-<hr />
-
-<div class="container mx-auto px-4 space-y-4">
+<div class="min-h-screen mx-auto">
 	<slot />
-	<div class="text-sm text-right mb-1 mr-2 text-gray-500">
-		<div>
-			view web page source code on github: <a
-				class=" underline decoration-blue-400 hover:decoration-blue-100 hover:text-white"
-				href="https://github.com/feavel1"
-			>
-				feavel1
-			</a>
-		</div>
-		All Rights Reserved 2023 © Baby Feavel 🇷🇺
-	</div>
 </div>
+
+<Footer />

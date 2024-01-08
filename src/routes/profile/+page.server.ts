@@ -9,7 +9,6 @@ export const actions: Actions = {
 		}
 
 		const formData = await request.formData();
-
 		const full_name = formData.get('full_name');
 		const username = formData.get('username');
 		const address = formData.get('address');

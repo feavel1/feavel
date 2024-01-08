@@ -61,7 +61,8 @@
 			} else {
 				const { data: post_data, error: post_data_err } = await supabase
 					.from('posts')
-					.select(`id, created_at, user_id, title, posts_tags_rel(post_tags(tag_name))`)
+					.select(`id, created_at, user_id, post_views, title, posts_tags_rel(post_tags(tag_name))`)
+					.order('id', { ascending: false })
 					.eq('public_visibility', 'true')
 					.range(startRange, endRange);
 
@@ -81,7 +82,7 @@
 	}
 </script>
 
-<div class="grid grid-cols-1 grid-rows-3 lg:grid-cols-2 gap-4 first:row-span-1">
+<ul role="list" class="py-4">
 	{#if isLoading || source.length == 0}
 		<PostPlaceHolder />
 	{:else}
@@ -89,7 +90,7 @@
 			<PostCard {post} />
 		{/each}
 	{/if}
-</div>
+</ul>
 
 <Paginator
 	class="mx-auto w-min"

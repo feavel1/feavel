@@ -4,6 +4,7 @@
 	export let post: {
 		id: any;
 		created_at: any;
+		post_views: any;
 		user_id: any;
 		users: {
 			id: any;
@@ -20,53 +21,45 @@
 	let tags = post.posts_tags_rel;
 </script>
 
-<div
-	class="card bg-gradient-to-br variant-gradient-primary-secondary w-full transition-opacity hover:opacity-50 p-3"
->
-	<a href="/posts/{post.id}">
-		<!-- <a href="/posts" class="group">
-			<div class="">
-				<img
-					class="object-cover shadow-lg rounded-lg group-hover:opacity-75"
-					src="https://stackdiary.com/140x100.png"
-					alt="Featured Photo"
-					
-				/>
+<li class="relative flex items-center space-x-4 px-4 py-4 sm:px-6 lg:px-8">
+	<div class="min-w-0 flex-auto">
+		<div class="flex items-center gap-x-3">
+			<div class="flex-none rounded-full p-1 text-tertiary-500 bg-tertiary-900">
+				<div class="h-2 w-2 rounded-full bg-current"></div>
 			</div>
-		</a> -->
-
-		<div class="sm:col-span-2">
-			<h4 class="h1 mb-3">
-				{post.title}
-			</h4>
-
-			<p class="">
-				<!-- {post.content} -->
+			<h2 class="min-w-0 text-sm font-semibold leading-6">
+				<a href="/posts/{post.id}" class="flex gap-x-2 h4">
+					<span class="truncate">{post.title}</span>
+					<span class="text-gray-400">/</span>
+					<span class="whitespace-nowrap"
+						>{post.post_views} {post.post_views == 1 ? 'view' : 'views'}</span
+					>
+					<span class="absolute inset-0"></span>
+				</a>
+			</h2>
+		</div>
+		<div class="mt-3 flex items-center gap-x-2.5 text-xs leading-5">
+			<p class="truncate text-tertiary-500-400-token">
+				<Time relative timestamp={post.created_at} />
 			</p>
-
-			<div class="flex items-center">
-				<!-- <div class="shrink-0">
-						<a href="/profile">
-							<span class="sr-only">Baby Feavel</span>
-
-							<img
-								class="h-10 w-10 rounded-full"
-								src="https://stackdiary.com/140x100.png"
-								alt="Ekim Kael"
-								
-							/>
-						</a>
-					</div> -->
-
-				<div class="flex space-x-1 text-sm text-skin-muted mb-4">
-					<Time relative timestamp={post.created_at} />
-					<span> · 3 min read time</span>
-				</div>
-			</div>
-
+			<svg viewBox="0 0 2 2" class="h-0.5 w-0.5 flex-none">
+				<circle cx="1" cy="1" r="1" />
+			</svg>
 			<div class="flex items-center space-x-3">
-				<Tags {tags} />
+				<p class="whitespace-nowrap">
+					<Tags {tags} />
+				</p>
 			</div>
 		</div>
-	</a>
-</div>
+	</div>
+	<div class="badge variant-ringed-secondary">Read</div>
+	<svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+		<path
+			fill-rule="evenodd"
+			d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+			clip-rule="evenodd"
+		/>
+	</svg>
+</li>
+
+<hr />

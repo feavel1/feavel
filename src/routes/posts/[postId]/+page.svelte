@@ -7,8 +7,8 @@
 	import '$lib/components/editor/novel/styles/index.css';
 
 	export let data;
-	let { supabase, session, post } = data;
-	$: ({ supabase, session } = data);
+	let { post } = data;
+	// $: ({ supabase, session } = data);
 
 	const comments: any = data.comments,
 		tags = post.posts_tags_rel;
@@ -17,12 +17,13 @@
 	const output = generateHTML(json, readExtentions);
 </script>
 
-<div class="max-w-6xl mx-auto">
+<div class="max-w-7xl px-2 mx-auto">
 	<div class="p-3 mb-3">
 		<Time relative timestamp={post.created_at} />
 
 		<h1 class="h1 font-bold mb-2">{post.title}</h1>
 		<Tags {tags} />
+		<div>Post views: {post.post_views}</div>
 	</div>
 	<hr />
 	<div

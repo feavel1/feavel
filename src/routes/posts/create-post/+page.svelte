@@ -159,7 +159,7 @@
 
 <div class="flex flex-col xl:flex-row gap-2">
 	<div
-		class="flex flex-col mx-auto max-h-min gap-4 max-w-2xl xl:max-w-xs xl:sticky top-2 z-10 w-full variant-glass-secondary p-2 shadow-lg"
+		class="flex flex-col mx-auto max-h-min gap-4 max-w-2xl xl:max-w-xs xl:sticky top-20 z-10 w-full variant-glass-secondary p-2 shadow-lg"
 	>
 		<h1 class="h1">Dashboard</h1>
 
@@ -192,7 +192,7 @@
 	</Editor>
 
 	<div
-		class="flex flex-col mx-auto max-h-min gap-4 max-w-2xl xl:max-w-xs xl:sticky top-2 z-10 w-full p-2 shadow-lg variant-glass-secondary"
+		class="flex flex-col mx-auto max-h-min gap-4 max-w-2xl xl:max-w-xs xl:sticky top-20 z-10 w-full p-2 shadow-lg variant-glass-secondary"
 	>
 		<h1 class="h1">Post details</h1>
 		{#if session}

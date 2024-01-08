@@ -22,7 +22,7 @@
 	}
 </script>
 
-<ol class="breadcrumb px-6 py-1 lg:px-24 opacity-90">
+<ol class="breadcrumb px-6 py-1 lg:px-32 opacity-90 fixed w-full h-8 top-12 z-40">
 	{#each crumbs as crumb, i}
 		{#if i == crumbs.length - 1}
 			<li class="crumb">
@@ -31,8 +31,8 @@
 		{:else}
 			<li class="crumb"><a class="anchor" href={crumb.href}>{crumb.label}</a></li>
 			<li class="crumb-separator" aria-hidden>
-				<!-- &rsaquo; -->
-				/
+				&rsaquo;
+				<!-- / -->
 			</li>
 		{/if}
 	{/each}

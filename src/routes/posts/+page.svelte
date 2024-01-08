@@ -10,7 +10,7 @@
 	<title>Posts - Blog</title>
 </svelte:head>
 
-<div class="flex justify-between flex-col-reverse md:flex-row">
+<div class="flex justify-between flex-col-reverse md:flex-row px-4 py-4 sm:px-6">
 	<div class="flex flex-col gap-4 h-1/2">
 		<a href="/posts/create-post" class="btn variant-filled">I also want to write ✍️!</a>
 		<a href="/posts/guide" class="btn variant-filled">Read community guide 📚!</a>
