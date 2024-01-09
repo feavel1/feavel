@@ -1,27 +1,7 @@
-import { json, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, locals: { supabase } }) => {
-	const date = new Date();
-
-	// Call our stored procedure with the page_slug set by the request params slug
-	const { data: update, error: update_err } = await supabase.rpc('update_views', {
-		page_id: params.postId
-	});
-
-	if (update_err) {
-		console.log(json({ error: update_err.message }));
-	} else {
-		console.log(
-			// json({
-			// 	success: true,
-			// 	message: `Successfully incremented page: ${params.postId}`
-			// })
-			`Successfully incremented page: ${params.postId}. Time:`,
-			date.toString()
-		);
-	}
-
 	const { data: post, error: postError } = await supabase
 		.from('posts')
 		.select(
@@ -34,8 +14,7 @@ export const load: PageServerLoad = async ({ params, locals: { supabase } }) => 
 	}
 
 	if (post == null) {
-		alert('No post found');
-		throw redirect(302, '/');
+		throw redirect(302, '/posts');
 	}
 
 	const { data: comments, error: commentsError } = await supabase

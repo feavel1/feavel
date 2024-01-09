@@ -1,248 +1,13 @@
-<!-- <div class="p-20">
-	<p class="very-big-font font-extrabold tracking-tighter capitalize text-center">FEAVEL'S BLOG</p>
-</div>
-
-<p>A Svelte, Supabase, Stripe, SkeletonUI, Markdown blog.</p>
-
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-	<section class="card w-full animate-pulse">
-		<div class="p-4 space-y-4">
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-		</div>
-	</section>
-
-	<div class="grid gap-4">
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-	</div>
-</div>
-
-<p>Register, login, create and post!</p>
-
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-	<div class="grid gap-4">
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-		<section class="card w-full animate-pulse">
-			<div class="p-4 space-y-4">
-				<div class="placeholder rounded-full" />
-				<div class="placeholder" />
-				<div class="grid grid-cols-3 gap-8">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-				<div class="grid grid-cols-4 gap-4">
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-					<div class="placeholder" />
-				</div>
-			</div>
-		</section>
-	</div>
-	<section class="card w-full animate-pulse">
-		<div class="p-4 space-y-4">
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-		</div>
-	</section>
-</div>
-
-<p>Subscribe, download content!</p>
-
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-	<section class="card w-full animate-pulse">
-		<div class="p-4 space-y-4">
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-		</div>
-	</section>
-	<section class="card w-full animate-pulse">
-		<div class="p-4 space-y-4">
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="placeholder rounded-full" />
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="grid grid-cols-4 gap-4">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-		</div>
-	</section>
-</div> -->
+<script>
+	import Feavel from '$lib/components/ui/logo/Feavel.svelte';
+	import {
+		LucideAudioLines,
+		LucideAudioWaveform,
+		LucideClipboardSignature,
+		LucidePackageOpen,
+		LucideWorkflow
+	} from 'lucide-svelte';
+</script>
 
 <main>
 	<!-- Hero section -->
@@ -288,21 +53,16 @@
 
 		<div class="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-40 lg:flex lg:px-8 lg:pt-40">
 			<div class="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
-				<img
-					class="h-11"
-					src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-					alt="Your Company"
-				/>
+				<Feavel />
+
 				<div class="mt-24 sm:mt-32 lg:mt-16">
-					<a href="#" class="inline-flex space-x-6">
-						<span
-							class="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20"
-							>Latest updates</span
-						>
-						<span
+					<a href="/posts" class="inline-flex space-x-6">
+						<span class="btn variant-glass-primary rounded-3xl">Read posts</span>
+						<a
+							href="/posts/create-post"
 							class="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-tertiary-600"
 						>
-							<span>Just shipped v1.0</span>
+							<span>Try 「feavel's editor 1.0」</span>
 							<svg
 								class="h-5 w-5 text-gray-500"
 								viewBox="0 0 20 20"
@@ -315,25 +75,27 @@
 									clip-rule="evenodd"
 								/>
 							</svg>
-						</span>
+						</a>
 					</a>
 				</div>
 				<h1 class="mt-10 text-4xl font-bold tracking-tight sm:text-6xl">
-					Deploy to the cloud with confidence
+					Read, write and create with confidence
 				</h1>
 				<p class="mt-6 text-lg leading-8 text-tertiary-600">
-					Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
-					Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+					This is a open source project to help musicians, programmers, thinkers to start making
+					music, web-sites, and philosophy posts all in one application. You can always join our
+					project and help create mixes, new web features and implement bug fixes and much more!
 				</p>
 				<div class="mt-10 flex items-center gap-x-6">
 					<a
-						href="#"
-						class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
-						>Get started</a
+						href="/auth"
+						class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+						>Sign up</a
 					>
-					<a href="#" class="text-sm font-semibold leading-6 text-white"
-						>Live demo <span aria-hidden="true">→</span></a
-					>
+					<a href="/auth" class="text-sm font-semibold leading-6">
+						Sign in
+						<span aria-hidden="true">→</span>
+					</a>
 				</div>
 			</div>
 			<div
@@ -354,7 +116,7 @@
 
 	<!-- Logo cloud -->
 	<div class="mx-auto mt-8 max-w-7xl px-6 sm:mt-16 lg:px-8">
-		<h2 class="text-center text-lg font-semibold leading-8 text-white">
+		<h2 class="text-center text-lg font-semibold leading-8">
 			The world’s most innovative companies use our app
 		</h2>
 		<div
@@ -401,9 +163,9 @@
 	<!-- Feature section -->
 	<div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
 		<div class="mx-auto max-w-2xl text-center">
-			<h2 class="text-base font-semibold leading-7 text-indigo-400">Deploy faster</h2>
-			<p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-				Everything you need to deploy your app
+			<h2 class="text-base font-semibold leading-7 text-secondary-600-300-token">C</h2>
+			<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+				Everything you need all in one place
 			</p>
 			<p class="mt-6 text-lg leading-8 text-tertiary-600">
 				Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate
@@ -413,24 +175,11 @@
 		<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
 			<dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
 				<div class="flex flex-col">
-					<dt class="text-base font-semibold leading-7 text-white">
+					<dt class="text-base font-semibold leading-7">
 						<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500">
-							<svg
-								class="h-6 w-6 text-white"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								aria-hidden="true"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
-								/>
-							</svg>
+							<LucideClipboardSignature />
 						</div>
-						Server monitoring
+						Create
 					</dt>
 					<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-tertiary-600">
 						<p class="flex-auto">
@@ -438,17 +187,18 @@
 							tempora quia. Sit nobis consequatur dolores incidunt.
 						</p>
 						<p class="mt-6">
-							<a href="#" class="text-sm font-semibold leading-6 text-indigo-400"
-								>Learn more <span aria-hidden="true">→</span></a
-							>
+							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token">
+								Learn more
+								<span aria-hidden="true">→</span>
+							</a>
 						</p>
 					</dd>
 				</div>
 				<div class="flex flex-col">
-					<dt class="text-base font-semibold leading-7 text-white">
+					<dt class="text-base font-semibold leading-7">
 						<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500">
 							<svg
-								class="h-6 w-6 text-white"
+								class="h-6 w-6"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
@@ -470,39 +220,26 @@
 							eos quasi cupiditate. A inventore et molestiae natus.
 						</p>
 						<p class="mt-6">
-							<a href="#" class="text-sm font-semibold leading-6 text-indigo-400"
+							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token"
 								>Learn more <span aria-hidden="true">→</span></a
 							>
 						</p>
 					</dd>
 				</div>
 				<div class="flex flex-col">
-					<dt class="text-base font-semibold leading-7 text-white">
+					<dt class="text-base font-semibold leading-7">
 						<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500">
-							<svg
-								class="h-6 w-6 text-white"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								aria-hidden="true"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
-								/>
-							</svg>
+							<LucidePackageOpen />
 						</div>
-						Task scheduling
+						Independent
 					</dt>
 					<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-tertiary-600">
 						<p class="flex-auto">
-							Et quod quaerat dolorem quaerat architecto aliquam accusantium. Ex adipisci et
-							doloremque autem quia quam. Quis eos molestiae at iure impedit.
+							We use open source to inovate our services. Never get locked in or discontinued again!
+							You can always join our community and start submiting features your self.
 						</p>
 						<p class="mt-6">
-							<a href="#" class="text-sm font-semibold leading-6 text-indigo-400"
+							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token"
 								>Learn more <span aria-hidden="true">→</span></a
 							>
 						</p>
@@ -516,13 +253,14 @@
 	<div class="mt-32 sm:mt-56">
 		<div class="mx-auto max-w-7xl px-6 lg:px-8">
 			<div class="mx-auto max-w-2xl sm:text-center">
-				<h2 class="text-base font-semibold leading-7 text-indigo-400">Everything you need</h2>
-				<p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-					No server? No problem.
-				</p>
+				<h2 class="text-base font-semibold leading-7 text-secondary-600-300-token">
+					Everything you need
+				</h2>
+				<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Beginner? No problem.</p>
 				<p class="mt-6 text-lg leading-8 text-tertiary-600">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis
-					suscipit eaque, iste dolor cupiditate blanditiis.
+					We provide many tutorials and resources to get started in music production, programming,
+					philosophy, advertising and more! Join our community to create posts and tutorials for
+					beginners.
 				</p>
 			</div>
 		</div>
@@ -545,66 +283,30 @@
 				class="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-tertiary-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16"
 			>
 				<div class="relative pl-9">
-					<dt class="inline font-semibold text-white">
-						<svg
-							class="absolute left-1 top-1 h-5 w-5 text-indigo-500"
-							viewBox="0 0 20 20"
-							fill="currentColor"
-							aria-hidden="true"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z"
-								clip-rule="evenodd"
-							/>
-						</svg>
-						Push to deploy.
+					<dt class="inline font-semibold">
+						<LucideAudioLines class="absolute left-1 top-1 h-5 w-5 text-indigo-500" />
+						Record audio.
+					</dt>
+					<dd class="inline">Join our audio engenearing team to book a recording session.</dd>
+				</div>
+				<div class="relative pl-9">
+					<dt class="inline font-semibold">
+						<LucideAudioWaveform class="absolute left-1 top-1 h-5 w-5 text-indigo-500" />
+						Mix audio
 					</dt>
 					<dd class="inline">
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.
+						Pick and choose an audio engeneer to mix and master your song professionaly.
 					</dd>
 				</div>
 				<div class="relative pl-9">
-					<dt class="inline font-semibold text-white">
-						<svg
-							class="absolute left-1 top-1 h-5 w-5 text-indigo-500"
-							viewBox="0 0 20 20"
-							fill="currentColor"
-							aria-hidden="true"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
-								clip-rule="evenodd"
-							/>
-						</svg>
-						SSL certificates.
+					<dt class="inline font-semibold">
+						<LucideWorkflow class="absolute left-1 top-1 h-5 w-5 text-indigo-500" />
+						Producing and beat making
 					</dt>
-					<dd class="inline">
-						Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
-						commodo.
-					</dd>
+					<dd class="inline">A list full of beat makers that are willing to create with you.</dd>
 				</div>
 				<div class="relative pl-9">
-					<dt class="inline font-semibold text-white">
-						<svg
-							class="absolute left-1 top-1 h-5 w-5 text-indigo-500"
-							viewBox="0 0 20 20"
-							fill="currentColor"
-							aria-hidden="true"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.433a.75.75 0 000-1.5H3.989a.75.75 0 00-.75.75v4.242a.75.75 0 001.5 0v-2.43l.31.31a7 7 0 0011.712-3.138.75.75 0 00-1.449-.39zm1.23-3.723a.75.75 0 00.219-.53V2.929a.75.75 0 00-1.5 0V5.36l-.31-.31A7 7 0 003.239 8.188a.75.75 0 101.448.389A5.5 5.5 0 0113.89 6.11l.311.31h-2.432a.75.75 0 000 1.5h4.243a.75.75 0 00.53-.219z"
-								clip-rule="evenodd"
-							/>
-						</svg>
-						Simple queues.
-					</dt>
-					<dd class="inline">Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.</dd>
-				</div>
-				<div class="relative pl-9">
-					<dt class="inline font-semibold text-white">
+					<dt class="inline font-semibold">
 						<svg
 							class="absolute left-1 top-1 h-5 w-5 text-indigo-500"
 							viewBox="0 0 20 20"
@@ -624,7 +326,7 @@
 					</dd>
 				</div>
 				<div class="relative pl-9">
-					<dt class="inline font-semibold text-white">
+					<dt class="inline font-semibold">
 						<svg
 							class="absolute left-1 top-1 h-5 w-5 text-indigo-500"
 							viewBox="0 0 20 20"
@@ -645,7 +347,7 @@
 					</dd>
 				</div>
 				<div class="relative pl-9">
-					<dt class="inline font-semibold text-white">
+					<dt class="inline font-semibold">
 						<svg
 							class="absolute left-1 top-1 h-5 w-5 text-indigo-500"
 							viewBox="0 0 20 20"
@@ -672,8 +374,10 @@
 	<!-- Stats -->
 	<div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
 		<div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-			<h2 class="text-base font-semibold leading-8 text-indigo-400">Our track record</h2>
-			<p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+			<h2 class="text-base font-semibold leading-8 text-secondary-600-300-token">
+				Our track record
+			</h2>
+			<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
 				Trusted by thousands of developers&nbsp;worldwide
 			</p>
 			<p class="mt-6 text-lg leading-8 text-tertiary-600">
@@ -682,7 +386,7 @@
 			</p>
 		</div>
 		<dl
-			class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 text-white sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4"
+			class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4"
 		>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">
 				<dt class="text-sm leading-6">Developers on the platform</dt>
@@ -706,7 +410,7 @@
 	<!-- CTA section -->
 	<div class="relative isolate mt-32 px-6 py-32 sm:mt-56 sm:py-40 lg:px-8">
 		<svg
-			class="absolute inset-0 -z-10 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+			class="absolute inset-0 -z-10 h-full w-full stroke-surface-400/50 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
 			aria-hidden="true"
 		>
 			<defs>
@@ -739,12 +443,12 @@
 			aria-hidden="true"
 		>
 			<div
-				class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-20"
+				class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-50"
 				style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"
 			></div>
 		</div>
 		<div class="mx-auto max-w-2xl text-center">
-			<h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
 				Boost your productivity.<br />Start using our app today.
 			</h2>
 			<p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-tertiary-600">
@@ -757,7 +461,7 @@
 					class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
 					>Get started</a
 				>
-				<a href="#" class="text-sm font-semibold leading-6 text-white"
+				<a href="#" class="text-sm font-semibold leading-6"
 					>Learn more <span aria-hidden="true">→</span></a
 				>
 			</div>
