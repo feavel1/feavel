@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { getStripe } from '$lib/stripe/stripe-client';
 	import { postData } from '$lib/utils/helpers';
@@ -86,4 +86,4 @@
 			</div>
 		</section>
 	{/each}
-</div>
+</div> -->

@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import Subscription from '$lib/components/ui/Subscription.svelte';
 
 	import type { PageData } from './$types';
@@ -8,4 +8,4 @@
 	$: ({ session } = data);
 </script>
 
-<Subscription {products} {subscription} {session} />
+<Subscription {products} {subscription} {session} /> -->
