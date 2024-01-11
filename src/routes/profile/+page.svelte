@@ -81,7 +81,7 @@
 					{supabase}
 					uploadable={true}
 					bind:url={user.avatar_url}
-					size={24}
+					size={14}
 					on:upload={() => {
 						profileForm.requestSubmit();
 					}}

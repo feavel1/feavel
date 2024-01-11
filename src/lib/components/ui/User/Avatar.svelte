@@ -63,7 +63,6 @@
 			src={avatarUrl}
 			alt={avatarUrl ? 'Avatar' : 'No image'}
 			class="avatar h-{size} image mb-2 flex-none rounded-lg bg-gray-800 object-cover"
-			width="w-{size}"
 			rounded="rounded-3xl"
 		/>
 	{:else}
