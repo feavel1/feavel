@@ -62,7 +62,7 @@
 		<Avatar
 			src={avatarUrl}
 			alt={avatarUrl ? 'Avatar' : 'No image'}
-			class="avatar image mb-2 flex-none rounded-lg bg-gray-800 object-cover"
+			class="avatar h-{size} image mb-2 flex-none rounded-lg bg-gray-800 object-cover"
 			width="w-{size}"
 			rounded="rounded-3xl"
 		/>

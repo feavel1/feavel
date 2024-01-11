@@ -8,10 +8,10 @@
 <Cloud />
 
 <main
-	class="row-auto max-w-7xl mx-auto relative top-20 lg:grid grid-cols-1 gap-x-8 lg:grid-cols-8 lg:items-start"
+	class="row-auto w-full mx-auto lg:px-28 relative top-20 lg:grid grid-cols-1 gap-x-8 lg:grid-cols-10 lg:items-start"
 >
 	<aside
-		class="rounded-lg pb-4 lg:sticky top-20 col-start-1 col-span-2 row-span-2 row-start-1 lg:overflow-hidden"
+		class="rounded-lg pb-4 lg:sticky top-20 col-start-1 col-span-3 row-span-2 row-start-1 lg:overflow-hidden"
 	>
 		<div class="ml-4 my-4">
 			<p class="text-xs italic text-gray-500">Edit, manage, save your personal data! - Feavel</p>
@@ -57,7 +57,7 @@
 		</ul>
 	</aside>
 
-	<div class="col-span-6">
+	<div class="col-span-7">
 		<slot />
 	</div>
 </main>

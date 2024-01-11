@@ -7,35 +7,39 @@
 	export let data;
 	let user = data.userdata;
 
-	let { supabase, session, subscription } = data;
+	let {
+		supabase,
+		session
+		// subscription
+	} = data;
 	$: ({ session, supabase } = data);
 
 	let loading = false;
 
-	const subscriptionPrice =
-		subscription &&
-		new Intl.NumberFormat('en-US', {
-			style: 'currency',
-			currency: subscription?.prices?.currency!,
-			minimumFractionDigits: 0
-		}).format((subscription?.prices?.unit_amount || 0) / 100);
-	const handleSignOut = async () => {
-		await supabase.auth.signOut();
-	};
+	// const subscriptionPrice =
+	// 	subscription &&
+	// 	new Intl.NumberFormat('en-US', {
+	// 		style: 'currency',
+	// 		currency: subscription?.prices?.currency!,
+	// 		minimumFractionDigits: 0
+	// 	}).format((subscription?.prices?.unit_amount || 0) / 100);
+	// const handleSignOut = async () => {
+	// 	await supabase.auth.signOut();
+	// };
 
-	const redirectToCustomerPortal = async () => {
-		loading = true;
-		try {
-			const { url } = await postData({
-				url: '/api/create-portal-link'
-			});
-			window.location = url;
-		} catch (error) {
-			if (error) return alert((error as Error).message);
-		} finally {
-			loading = false;
-		}
-	};
+	// const redirectToCustomerPortal = async () => {
+	// 	loading = true;
+	// 	try {
+	// 		const { url } = await postData({
+	// 			url: '/api/create-portal-link'
+	// 		});
+	// 		window.location = url;
+	// 	} catch (error) {
+	// 		if (error) return alert((error as Error).message);
+	// 	} finally {
+	// 		loading = false;
+	// 	}
+	// };
 
 	const handleSubmit: SubmitFunction = () => {
 		loading = true;
@@ -44,7 +48,7 @@
 		};
 	};
 
-	const interval = subscription?.prices?.interval;
+	// const interval = subscription?.prices?.interval;
 
 	let profileForm: HTMLFormElement;
 </script>
@@ -131,7 +135,7 @@
 						</div>
 					</div>
 
-					<div class="col-span-full">
+					<!-- <div class="col-span-full">
 						<label for="address" class="block text-sm font-medium leading-6">Address</label>
 						<p class="mt-2">
 							<input
@@ -143,7 +147,7 @@
 								required
 							/>
 						</p>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="mt-8 flex">

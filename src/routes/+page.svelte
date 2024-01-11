@@ -163,7 +163,9 @@
 	<!-- Feature section -->
 	<div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
 		<div class="mx-auto max-w-2xl text-center">
-			<h2 class="text-base font-semibold leading-7 text-secondary-600-300-token">C</h2>
+			<h2 class="text-base font-semibold leading-7 text-secondary-600-300-token">
+				start simple, finish complex
+			</h2>
 			<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
 				Everything you need all in one place
 			</p>
@@ -220,9 +222,10 @@
 							eos quasi cupiditate. A inventore et molestiae natus.
 						</p>
 						<p class="mt-6">
-							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token"
-								>Learn more <span aria-hidden="true">→</span></a
-							>
+							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token">
+								Learn more
+								<span aria-hidden="true">→</span>
+							</a>
 						</p>
 					</dd>
 				</div>
@@ -319,7 +322,7 @@
 								clip-rule="evenodd"
 							/>
 						</svg>
-						Advanced security.
+						Sound engenering
 					</dt>
 					<dd class="inline">
 						Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.
@@ -339,7 +342,7 @@
 								clip-rule="evenodd"
 							/>
 						</svg>
-						Powerful API.
+						Become a mixing engeneer
 					</dt>
 					<dd class="inline">
 						Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
@@ -363,7 +366,7 @@
 								clip-rule="evenodd"
 							/>
 						</svg>
-						Database backups.
+						Join community
 					</dt>
 					<dd class="inline">Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.</dd>
 				</div>
@@ -378,7 +381,7 @@
 				Our track record
 			</h2>
 			<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-				Trusted by thousands of developers&nbsp;worldwide
+				Trusted by thousands of musicians&nbsp;worldwide
 			</p>
 			<p class="mt-6 text-lg leading-8 text-tertiary-600">
 				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis
@@ -449,7 +452,7 @@
 		</div>
 		<div class="mx-auto max-w-2xl text-center">
 			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-				Boost your productivity.<br />Start using our app today.
+				Boost your music.<br />Start using our app today.
 			</h2>
 			<p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-tertiary-600">
 				Incididunt sint fugiat pariatur cupidatat consectetur sit cillum anim id veniam aliqua

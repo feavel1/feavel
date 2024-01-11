@@ -9,19 +9,19 @@ export const load = async ({ parent }: any) => {
 
 	const { data: userdata } = await supabase
 		.from('users')
-		.select(`id, username, full_name, avatar_url, billing_address`)
+		.select(`id, username, full_name, avatar_url`)
 		.eq('id', session.user.id)
 		.single();
 
-	const { data: subscription } = await supabase
-		.from('subscriptions')
-		.select('*, prices(*, products(*))')
-		.in('status', ['trialing', 'active'])
-		.maybeSingle()
-		.throwOnError();
+	// const { data: subscription } = await supabase
+	// 	.from('subscriptions')
+	// 	.select('*, prices(*, products(*))')
+	// 	.in('status', ['trialing', 'active'])
+	// 	.maybeSingle()
+	// 	.throwOnError();
 
 	return {
-		subscription,
+		// subscription,
 		userdata
 	};
 };

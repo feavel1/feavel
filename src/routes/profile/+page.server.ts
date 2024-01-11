@@ -11,7 +11,7 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const full_name = formData.get('full_name');
 		const username = formData.get('username');
-		const address = formData.get('address');
+		// const address = formData.get('address');
 		const avatarUrl = formData.get('avatarUrl') as string;
 
 		const { data, error: createPostError } = await supabase
@@ -19,8 +19,7 @@ export const actions: Actions = {
 			.update({
 				full_name: full_name,
 				username: username,
-				avatar_url: avatarUrl,
-				billing_address: address
+				avatar_url: avatarUrl
 			})
 			.eq('id', session.user.id)
 			.select();
