@@ -1,7 +1,15 @@
 <script>
 	import Cloud from '$lib/components/ui/layout/Cloud.svelte';
 	import Grid from '$lib/components/ui/layout/Grid.svelte';
-	import { LucideFolder, LucideHome, LucidePaperclip, LucideReceipt } from 'lucide-svelte';
+	import {
+		LucideFolder,
+		LucideHome,
+		LucidePaperclip,
+		LucideReceipt,
+		LucideServerCog,
+		LucideSettings,
+		LucideUserCog
+	} from 'lucide-svelte';
 </script>
 
 <!-- <Grid /> -->
@@ -31,11 +39,11 @@
 
 			<li>
 				<a
-					href="/profile/projects"
+					href="/profile/services"
 					class="btn variant-filled-secondary gap-x-3 w-full justify-start"
 				>
-					<LucideFolder />
-					Projects
+					<LucideServerCog />
+					Services
 				</a>
 			</li>
 
@@ -54,10 +62,28 @@
 					Reports
 				</a>
 			</li>
+
+			<li>
+				<a href="/profile/admin" class="btn variant-filled-secondary gap-x-3 w-full justify-start">
+					<LucideUserCog />
+					Admin
+				</a>
+			</li>
+
+			<li>
+				<a
+					href="/profile/settings"
+					class="btn variant-filled-secondary gap-x-3 w-full justify-start"
+				>
+					<LucideSettings />
+					Settings
+				</a>
+			</li>
 		</ul>
 	</aside>
 
 	<div class="col-span-7">
+		<div class="h-28" />
 		<slot />
 	</div>
 </main>
