@@ -37,7 +37,7 @@
 				</a>
 			</li>
 
-			<li>
+			<!-- <li>
 				<a
 					href="/profile/services"
 					class="btn variant-filled-secondary gap-x-3 w-full justify-start"
@@ -45,7 +45,7 @@
 					<LucideServerCog />
 					Services
 				</a>
-			</li>
+			</li> -->
 
 			<li>
 				<a href="/profile/posts" class="btn variant-filled-secondary gap-x-3 w-full justify-start">
@@ -63,12 +63,12 @@
 				</a>
 			</li>
 
-			<li>
+			<!-- <li>
 				<a href="/profile/admin" class="btn variant-filled-secondary gap-x-3 w-full justify-start">
 					<LucideUserCog />
 					Admin
 				</a>
-			</li>
+			</li> -->
 
 			<li>
 				<a

@@ -60,7 +60,7 @@
 						<span class="btn variant-glass-primary rounded-3xl">Read posts</span>
 						<a
 							href="/posts/create-post"
-							class="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-tertiary-600"
+							class="inline-flex items-center space-x-2 text-sm font-medium ml-10 text-tertiary-600"
 						>
 							<span>Try 「feavel's editor 1.0」</span>
 							<svg
@@ -185,11 +185,14 @@
 					</dt>
 					<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-tertiary-600">
 						<p class="flex-auto">
-							Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt. Ex
-							tempora quia. Sit nobis consequatur dolores incidunt.
+							Write technical posts and knowledege for everyone to see. We provide a simple to use
+							and beautiful text editor to share what you know.
 						</p>
 						<p class="mt-6">
-							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token">
+							<a
+								href="/posts/create-post"
+								class="text-sm font-semibold leading-6 text-secondary-600-300-token"
+							>
 								Learn more
 								<span aria-hidden="true">→</span>
 							</a>
@@ -218,8 +221,8 @@
 					</dt>
 					<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-tertiary-600">
 						<p class="flex-auto">
-							Vero eum voluptatem aliquid nostrum voluptatem. Vitae esse natus. Earum nihil deserunt
-							eos quasi cupiditate. A inventore et molestiae natus.
+							Become a mixing studio and create services for users. Currently we are looking for all
+							types of engineers. You can apply for admin in your profile page.
 						</p>
 						<p class="mt-6">
 							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token">
@@ -381,31 +384,31 @@
 				Our track record
 			</h2>
 			<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-				Trusted by thousands of musicians&nbsp;worldwide
+				Trusted by musicians&nbsp;worldwide
 			</p>
 			<p class="mt-6 text-lg leading-8 text-tertiary-600">
-				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis
-				suscipit eaque, iste dolor cupiditate blanditiis ratione.
+				We started small and moved step by step. This is a huge leap for us as a platform. We record
+				and track the progress that we make everyday.
 			</p>
 		</div>
 		<dl
 			class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4"
 		>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">
-				<dt class="text-sm leading-6">Developers on the platform</dt>
-				<dd class="order-first text-3xl font-semibold tracking-tight">8,000+</dd>
+				<dt class="text-sm leading-6">Working time</dt>
+				<dd class="order-first text-3xl font-semibold tracking-tight">6 years+</dd>
 			</div>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">
-				<dt class="text-sm leading-6">Daily requests</dt>
-				<dd class="order-first text-3xl font-semibold tracking-tight">900m+</dd>
+				<dt class="text-sm leading-6">Monthy activity</dt>
+				<dd class="order-first text-3xl font-semibold tracking-tight">100+</dd>
 			</div>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">
-				<dt class="text-sm leading-6">Uptime guarantee</dt>
+				<dt class="text-sm leading-6">On time guarantee</dt>
 				<dd class="order-first text-3xl font-semibold tracking-tight">99.9%</dd>
 			</div>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">
-				<dt class="text-sm leading-6">Projects deployed</dt>
-				<dd class="order-first text-3xl font-semibold tracking-tight">12m</dd>
+				<dt class="text-sm leading-6">Posts created</dt>
+				<dd class="order-first text-3xl font-semibold tracking-tight">100+</dd>
 			</div>
 		</dl>
 	</div>
@@ -452,20 +455,16 @@
 		</div>
 		<div class="mx-auto max-w-2xl text-center">
 			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-				Boost your music.<br />Start using our app today.
+				Boost your work.<br />Start using our app today.
 			</h2>
 			<p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-tertiary-600">
-				Incididunt sint fugiat pariatur cupidatat consectetur sit cillum anim id veniam aliqua
-				proident excepteur commodo do ea.
+				Create an account and start reading, liking, commenting. You can also apply for our admin to
+				create services.
 			</p>
 			<div class="mt-10 flex items-center justify-center gap-x-6">
-				<a
-					href="#"
-					class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-					>Get started</a
-				>
-				<a href="#" class="text-sm font-semibold leading-6"
-					>Learn more <span aria-hidden="true">→</span></a
+				<a href="/auth" class="btn variant-filled">Get started</a>
+				<a href="/profile" class="text-sm font-semibold leading-6">x1
+					your profile <span aria-hidden="true">→</span></a
 				>
 			</div>
 		</div>
