@@ -1,4 +1,4 @@
-<!-- <div class="flex my-6 items-center w-full space-y-4 md:space-x-4 md:space-y-0 flex-col md:flex-row">
+<div class="flex my-6 items-center w-full space-y-4 md:space-x-4 md:space-y-0 flex-col md:flex-row">
 	<div class="w-full md:w-6/12">
 		<div class="shadow-lg w-full bg-white relative overflow-hidden">
 			<a href="/" class="w-full h-full block">
@@ -614,4 +614,4 @@
 			</div>
 		</div>
 	</div>
-</div> -->
+</div>
