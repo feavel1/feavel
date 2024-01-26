@@ -1,6 +1,6 @@
 <script lang="ts">
-	import '../../styles/index.css';
-	import '../../styles/prosemirror.css';
+	import '$lib/components/editor/novel/styles/prosemirror.css';
+	import '$lib/components/editor/novel/styles/index.css';
 	import { getPrevText } from '../../editor.js';
 	import { createLocalStorageStore } from '../../stores/localStorage.js';
 	import { createDebouncedCallback, noop } from '../../utils.js';

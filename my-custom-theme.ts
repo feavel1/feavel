@@ -3,7 +3,6 @@ import type { CustomThemeConfig } from '@skeletonlabs/tw-plugin';
 export const myCustomTheme: CustomThemeConfig = {
 	name: 'my-custom-theme',
 	properties: {
-		// =~= Theme Properties =~=
 		'--theme-font-family-base': "'PatrickHand', sans-serif",
 		'--theme-font-family-heading': "'PatrickHand', sans-serif",
 		'--theme-font-color-base': '0 0 0',
