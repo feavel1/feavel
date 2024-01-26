@@ -13,7 +13,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@floating-ui/dom": "^1.5.4",
+		"@floating-ui/dom": "^1.6.0",
 		"@skeletonlabs/skeleton": "^2.7.1",
 		"@supabase/ssr": "^0.0.10",
 		"@supabase/supabase-js": "^2.39.3",
@@ -41,8 +41,8 @@
 		"clsx": "^2.1.0",
 		"gpt3-tokenizer": "^1.1.5",
 		"highlight.js": "^11.9.0",
-		"lucide-svelte": "0.314.0",
-		"openai": "^4.25.0",
+		"lucide-svelte": "0.316.0",
+		"openai": "^4.26.0",
 		"sse.js": "^2.2.0",
 		"svelte-moveable": "^0.45.0",
 		"svelte-sequential-preprocessor": "^2.0.1",
@@ -54,7 +54,7 @@
 		"@playwright/test": "^1.41.1",
 		"@skeletonlabs/tw-plugin": "^0.3.1",
 		"@sveltejs/adapter-auto": "^3.1.1",
-		"@sveltejs/kit": "^2.4.3",
+		"@sveltejs/kit": "^2.5.0",
 		"@sveltejs/package": "^2.2.6",
 		"@sveltejs/vite-plugin-svelte": "^3.0.1",
 		"@tailwindcss/forms": "^0.5.7",

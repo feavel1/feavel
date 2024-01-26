@@ -99,7 +99,7 @@
 </AppBar>
 <Breadcrumbs path={$page.url.pathname} />
 
-<div class="min-h-screen mx-auto">
+<div class="min-h-dvh mx-auto">
 	<slot />
 </div>
 

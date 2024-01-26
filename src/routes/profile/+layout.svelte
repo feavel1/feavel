@@ -1,6 +1,5 @@
 <script>
 	import Cloud from '$lib/components/ui/layout/Cloud.svelte';
-	import Grid from '$lib/components/ui/layout/Grid.svelte';
 	import {
 		LucideFolder,
 		LucideHome,
@@ -83,7 +82,7 @@
 	</aside>
 
 	<div class="col-span-7 mx-2">
-		<div class="h-28" />
+		<div class="lg:h-28" />
 		<slot />
 	</div>
 </main>

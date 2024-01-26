@@ -21,7 +21,7 @@
 </script>
 
 <li class="card w-full transition-opacity hover:opacity-50 p-2">
-	<a href="/posts">
+	<a href="/posts/{post.id}">
 		<div class="sm:col-span-2">
 			<h4 class="h4">
 				{post.title}
