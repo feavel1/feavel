@@ -1,10 +1,8 @@
-# Svelte Blog
+# Feavel-Hub
 
-Full stack application with login, verification, text editing subscription.
+Full stack application with login, verification, text editing payment management.
 
 ## tech stack:
-
-Bun - Low latency bundler
 
 SvelteKit - Fast and easy frontend framework
 

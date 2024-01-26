@@ -1,60 +1,23 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import Avatar from '$lib/components/ui/User/Avatar.svelte';
-	import { postData } from '$lib/utils/helpers';
 	import type { SubmitFunction } from '@sveltejs/kit';
 
 	export let data;
 	let user = data.userdata;
-
-	let {
-		supabase,
-		session
-		// subscription
-	} = data;
+	let { supabase, session } = data;
 	$: ({ session, supabase } = data);
-
 	let loading = false;
-
-	// const subscriptionPrice =
-	// 	subscription &&
-	// 	new Intl.NumberFormat('en-US', {
-	// 		style: 'currency',
-	// 		currency: subscription?.prices?.currency!,
-	// 		minimumFractionDigits: 0
-	// 	}).format((subscription?.prices?.unit_amount || 0) / 100);
-	// const handleSignOut = async () => {
-	// 	await supabase.auth.signOut();
-	// };
-
-	// const redirectToCustomerPortal = async () => {
-	// 	loading = true;
-	// 	try {
-	// 		const { url } = await postData({
-	// 			url: '/api/create-portal-link'
-	// 		});
-	// 		window.location = url;
-	// 	} catch (error) {
-	// 		if (error) return alert((error as Error).message);
-	// 	} finally {
-	// 		loading = false;
-	// 	}
-	// };
-
 	const handleSubmit: SubmitFunction = () => {
 		loading = true;
 		return async () => {
 			loading = false;
 		};
 	};
-
-	// const interval = subscription?.prices?.interval;
-
 	let profileForm: HTMLFormElement;
 </script>
 
-<!-- Settings forms -->
-<div class="divide-y divide-white/5">
+<div class="divide-y dark:divide-white divide-black">
 	{#if !session}
 		<div>Not logged in</div>
 		<a href="/auth" class="border-l-pink-200 btn variant-filled">Return to login</a>
@@ -134,20 +97,6 @@
 							</div>
 						</div>
 					</div>
-
-					<!-- <div class="col-span-full">
-						<label for="address" class="block text-sm font-medium leading-6">Address</label>
-						<p class="mt-2">
-							<input
-								id="address"
-								name="address"
-								class="input"
-								type="text"
-								value={user.billing_address}
-								required
-							/>
-						</p>
-					</div> -->
 				</div>
 
 				<div class="mt-8 flex">
@@ -233,39 +182,22 @@
 			class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
 		>
 			<div>
-				<h2 class="text-base font-semibold leading-7">Log out other sessions</h2>
+				<h2 class="text-base font-semibold leading-7">Apply for studio</h2>
 				<p class="mt-1 text-sm leading-6 text-gray-400">
-					Please enter your password to confirm you would like to log out of your other sessions
-					across all of your devices.
+					Please enter credentials to join us as a music studio. You can make money and create
+					services with our platform.
 				</p>
 			</div>
 
-			<form class="md:col-span-2">
-				<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
-					<div class="col-span-full">
-						<label for="logout-password" class="block text-sm font-medium leading-6"
-							>Your password</label
-						>
-						<div class="mt-2">
-							<input
-								id="logout-password"
-								name="password"
-								type="password"
-								autocomplete="current-password"
-								class="input"
-							/>
-						</div>
-					</div>
-				</div>
-
-				<div class="mt-8 flex">
-					<button
-						type="submit"
+			<div class="md:col-span-2">
+				<div class="flex">
+					<a
+						href="/profile/admin/join"
 						class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-						>Log out other sessions</button
+						>Join studio</a
 					>
 				</div>
-			</form>
+			</div>
 		</div>
 
 		<div

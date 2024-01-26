@@ -1,6 +1,6 @@
 <div class="flex my-6 items-center w-full space-y-4 md:space-x-4 md:space-y-0 flex-col md:flex-row">
 	<div class="w-full md:w-6/12">
-		<div class="shadow-lg w-full bg-white relative overflow-hidden">
+		<div class="shadow-lg w-full relative overflow-hidden">
 			<a href="/" class="w-full h-full block">
 				<div class="flex items-center justify-between px-4 py-6 space-x-4">
 					<div class="flex items-center">
@@ -33,13 +33,13 @@
 	</div>
 	<div class="flex items-center w-full md:w-1/2 space-x-4">
 		<div class="w-1/2">
-			<div class="shadow-lg px-4 py-6 w-full bg-white relative">
+			<div class="shadow-lg px-4 py-6 w-full relative">
 				<p class="text-2xl font-bold">0</p>
 				<p class="text-gray-400 text-sm">Active projects</p>
 			</div>
 		</div>
 		<div class="w-1/2">
-			<div class="shadow-lg px-4 py-6 w-full bg-white relative">
+			<div class="shadow-lg px-4 py-6 w-full relative">
 				<p class="text-2xl font-bold">¥0</p>
 				<p class="text-gray-400 text-sm">Commission in approval</p>
 				<span class="rounded-full absolute p-4 bg-purple-500 top-2 right-4">
@@ -63,7 +63,7 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
 	<div class="w-full">
-		<div class="shadow-lg px-4 py-6 w-full bg-white relative">
+		<div class="shadow-lg px-4 py-6 w-full relative">
 			<p class="text-sm w-max font-semibold border-b border-gray-200">Prod</p>
 			<div class="flex items-end space-x-2 my-6">
 				<p class="text-5xl font-bold">12</p>
@@ -155,7 +155,7 @@
 		</div>
 	</div>
 	<div class="w-full">
-		<div class="shadow-lg px-4 py-6 w-full bg-white relative">
+		<div class="shadow-lg px-4 py-6 w-full relative">
 			<p class="text-sm w-max font-semibold border-b border-gray-200">Project Paid</p>
 			<div class="flex items-end space-x-2 my-6">
 				<p class="text-5xl font-bold">23</p>
@@ -247,7 +247,7 @@
 		</div>
 	</div>
 	<div class="w-full">
-		<div class="shadow-lg px-4 py-6 w-full bg-white relative">
+		<div class="shadow-lg px-4 py-6 w-full relative">
 			<p class="text-sm w-max font-semibold border-b border-gray-200">New features</p>
 			<div class="flex items-end space-x-2 my-6">
 				<p class="text-5xl font-bold">12</p>
@@ -339,7 +339,7 @@
 		</div>
 	</div>
 	<div class="w-full">
-		<div class="shadow-lg px-4 py-6 w-full bg-white relative">
+		<div class="shadow-lg px-4 py-6 w-full relative">
 			<p class="text-sm w-max font-semibold border-b border-gray-200">Sign in</p>
 			<div class="flex items-end space-x-2 my-6">
 				<p class="text-5xl font-bold">16</p>
@@ -431,7 +431,7 @@
 		</div>
 	</div>
 	<div class="w-full">
-		<div class="shadow-lg px-4 py-6 w-full bg-white relative">
+		<div class="shadow-lg px-4 py-6 w-full relative">
 			<p class="text-sm w-max font-semibold border-b border-gray-200">Sales</p>
 			<div class="flex items-end space-x-2 my-6">
 				<p class="text-5xl font-bold">9</p>
@@ -523,7 +523,7 @@
 		</div>
 	</div>
 	<div class="w-full">
-		<div class="shadow-lg px-4 py-6 w-full bg-white relative">
+		<div class="shadow-lg px-4 py-6 w-full relative">
 			<p class="text-sm w-max font-semibold border-b border-gray-200">Maintenance</p>
 			<div class="flex items-end space-x-2 my-6">
 				<p class="text-5xl font-bold">15</p>

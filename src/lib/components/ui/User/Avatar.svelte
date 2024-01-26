@@ -66,9 +66,7 @@
 			rounded="rounded-3xl"
 		/>
 	{:else}
-		<div
-			class="avatar no-image w-{size} avatar image mb-2 flex-none rounded-lg bg-gray-900 object-cover h-{size}"
-		/>
+		<div class="placeholder rounded-xl w-full h-14 max-w-14 mb-2" />
 	{/if}
 	{#if uploadable}
 		<input type="hidden" name="avatarUrl" value={url} />

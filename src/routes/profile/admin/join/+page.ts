@@ -7,13 +7,13 @@ export const load = async ({ parent }: any) => {
 		throw redirect(302, '/auth');
 	}
 
-	const { data: userdata } = await supabase
-		.from('users')
-		.select(`id, username, full_name, avatar_url`)
-		.eq('id', session.user.id)
+	const { data: applicationStatus } = await supabase
+		.from('studios')
+		.select('status')
+		.eq('user_id', session.user.id)
 		.single();
 
 	return {
-		userdata
+		applicationStatus
 	};
 };

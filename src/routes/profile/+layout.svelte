@@ -82,7 +82,7 @@
 		</ul>
 	</aside>
 
-	<div class="col-span-7">
+	<div class="col-span-7 mx-2">
 		<div class="h-28" />
 		<slot />
 	</div>
