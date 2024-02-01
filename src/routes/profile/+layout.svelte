@@ -1,14 +1,18 @@
 <script>
 	import Cloud from '$lib/components/ui/layout/Cloud.svelte';
 	import {
-		LucideFolder,
 		LucideHome,
 		LucidePaperclip,
 		LucideReceipt,
 		LucideServerCog,
 		LucideSettings,
+		LucideShoppingCart,
 		LucideUserCog
 	} from 'lucide-svelte';
+
+	export let data;
+	let { applicationStatus } = data;
+	$: ({ applicationStatus } = data);
 </script>
 
 <!-- <Grid /> -->
@@ -32,19 +36,9 @@
 			<li>
 				<a href="/profile" class="btn variant-filled-secondary gap-x-3 w-full justify-start">
 					<LucideHome />
-					Dashboard
+					Home
 				</a>
 			</li>
-
-			<!-- <li>
-				<a
-					href="/profile/services"
-					class="btn variant-filled-secondary gap-x-3 w-full justify-start"
-				>
-					<LucideServerCog />
-					Services
-				</a>
-			</li> -->
 
 			<li>
 				<a href="/profile/posts" class="btn variant-filled-secondary gap-x-3 w-full justify-start">
@@ -62,13 +56,6 @@
 				</a>
 			</li>
 
-			<!-- <li>
-				<a href="/profile/admin" class="btn variant-filled-secondary gap-x-3 w-full justify-start">
-					<LucideUserCog />
-					Admin
-				</a>
-			</li> -->
-
 			<li>
 				<a
 					href="/profile/settings"
@@ -78,6 +65,38 @@
 					Settings
 				</a>
 			</li>
+			<li>
+				<hr />
+			</li>
+			{#if applicationStatus.status == 'approved'}
+				<li>
+					<a
+						href="/profile/admin"
+						class="btn variant-filled-secondary gap-x-3 w-full justify-start"
+					>
+						<LucideUserCog />
+						My studio
+					</a>
+				</li>
+				<li>
+					<a
+						href="/profile/admin/services"
+						class="btn variant-filled-secondary gap-x-3 w-full justify-start"
+					>
+						<LucideServerCog />
+						Services
+					</a>
+				</li>
+				<li>
+					<a
+						href="/profile/admin/orders"
+						class="btn variant-filled-secondary gap-x-3 w-full justify-start"
+					>
+						<LucideShoppingCart />
+						Orders
+					</a>
+				</li>
+			{/if}
 		</ul>
 	</aside>
 

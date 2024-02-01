@@ -3,7 +3,7 @@
 	import type { SupabaseClient } from '@supabase/supabase-js';
 	import { createEventDispatcher } from 'svelte';
 
-	export let size = 10;
+	export let size: number = 14;
 	export let url: string;
 	export let supabase: SupabaseClient | any;
 	export let uploadable: boolean = true;
@@ -62,11 +62,11 @@
 		<Avatar
 			src={avatarUrl}
 			alt={avatarUrl ? 'Avatar' : 'No image'}
-			class="avatar h-{size} image mb-2 flex-none rounded-lg bg-gray-800 object-cover"
+			class="avatar size-{size}  mb-2 flex-none rounded-lg bg-gray-800 object-cover"
 			rounded="rounded-3xl"
 		/>
 	{:else}
-		<div class="placeholder rounded-xl w-full h-14 max-w-14 mb-2" />
+		<div class="placeholder rounded-xl w-full size-{size} max-w-14 mb-2" />
 	{/if}
 	{#if uploadable}
 		<input type="hidden" name="avatarUrl" value={url} />

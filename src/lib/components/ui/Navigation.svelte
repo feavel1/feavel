@@ -6,7 +6,7 @@
 	<ul class="flex flex-col lg:flex-row gap-3">
 		<A href="/posts">Posts</A>
 
-		<A href="/products-v2">Products</A>
+		<A href="/services">Services</A>
 		<!-- <A href="/subscription">Subscription</A> -->
 
 		<A href="/profile">My Profile</A>

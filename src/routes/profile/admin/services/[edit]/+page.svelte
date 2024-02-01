@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import ServiceImgUpload from '$lib/components/ui/services/ServiceImgUpload.svelte';
 	import {
 		InputChip,
 		type AutocompleteOption,
@@ -9,18 +10,24 @@
 
 	export let data;
 
-	let { serCatSer, supabase, session } = data;
-	$: ({ serCatSer, supabase, session } = data);
+	let { serCatSer, service, supabase } = data;
+	$: ({ serCatSer, service, supabase } = data);
 
 	const toastStore = getToastStore();
 
-	let list: string[] = ['3 free edits', 'best customer service'];
+	const categoryNames = service.services_category_rel.map(
+		(item: { services_category: { category_name: any } }) => item.services_category.category_name
+	);
+
 	let inputChip: string;
-	let inputChipList: string[];
-	let name: string = '';
-	let price: number = 0;
-	let description: string = '';
-	let highlights: string[] = [];
+	let inputChipList: string[] = categoryNames;
+	let name: string = service.name;
+	let price: number = service.price;
+	let description: string = service.description;
+	let highlights: string[] = service.highlights;
+	let cover_url = service.cover_url;
+
+	console.log(inputChipList);
 
 	function onFlavorSelection(event: CustomEvent<AutocompleteOption<string>>): void {
 		inputChip = event.detail.value;
@@ -45,25 +52,31 @@
 
 		const { data: service_data_id, error: createStudioErr } = await supabase
 			.from('services')
-			.insert({
-				created_by: session?.user.id,
+			.update({
 				name: name,
 				price: price,
 				description: description,
 				highlights: highlights
 			})
+			.eq('id', service.id)
 			.select();
 
 		if (category_id && service_data_id) {
-			const { error: post_tag_err } = await supabase.from('services_category_rel').insert(
-				category_id.map((t: { id: number }) => {
-					return { service_id: service_data_id[0].id, category_id: t.id };
-				})
-			);
+			const { error: del } = await supabase
+				.from('services_category_rel')
+				.delete()
+				.eq('service_id', service.id);
+			if (del == null) {
+				const { error: post_tag_err } = await supabase.from('services_category_rel').insert(
+					category_id.map((t: { id: number }) => {
+						return { service_id: service_data_id[0].id, category_id: t.id };
+					})
+				);
+			}
 		}
 
 		toastStore.trigger({
-			message: '✅ Successfully Published 🌐',
+			message: '✅ Successfully Updated 🌐',
 			background: 'variant-filled-success'
 		});
 		setTimeout(() => {
@@ -74,15 +87,20 @@
 
 <div>
 	<div class="px-4 sm:px-0">
-		<h3 class="text-base font-semibold leading-7 text-gray-900">Create Service</h3>
+		<h3 class="text-base font-semibold leading-7">Edit Service</h3>
 		<p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Service details and information.</p>
 	</div>
 
-	<form class="mt-6 border-t border-gray-100">
-		<dl class="divide-y divide-gray-100">
+	<div class="mt-6 border-t border-gray-400">
+		<dl class="divide-y divide-gray-400">
 			<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 				<dt class="text-sm font-medium leading-6">Service name</dt>
 				<input type="text" bind:value={name} placeholder="Best ever service" class="input" />
+			</div>
+
+			<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+				<dt class="text-sm font-medium leading-6">Upload service img</dt>
+				<ServiceImgUpload serviceId={service.id} bind:cover_url {supabase} />
 			</div>
 
 			<!-- Add more fields based on your data model -->
@@ -104,7 +122,7 @@
 			<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 				<dt class="text-sm font-medium leading-6">Highlights</dt>
 				<input
-					value={list}
+					bind:value={highlights}
 					name="highlights"
 					id="highlights"
 					class="hidden"
@@ -112,7 +130,7 @@
 				/>
 
 				<InputChip
-					bind:value={list}
+					bind:value={highlights}
 					name="chips"
 					placeholder="Enter any value... and press 'enter'"
 				/>
@@ -153,5 +171,5 @@
 				{loading ? 'Loading...' : 'Create Service'}
 			</button>
 		</div>
-	</form>
+	</div>
 </div>

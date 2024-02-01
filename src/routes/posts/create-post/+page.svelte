@@ -73,7 +73,6 @@
 				background: 'variant-filled-error'
 			});
 		} else if (inputChipList.length == 0) {
-			console.log(inputChipList);
 			toastStore.trigger({
 				message: '✖️ You must have at least one TAG 🌐',
 				background: 'variant-filled-error'

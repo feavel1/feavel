@@ -18,7 +18,6 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				white: 'var(--novel-white)',
 				stone: {
 					50: 'var(--novel-stone-50)',
 					100: 'var(--novel-stone-100)',

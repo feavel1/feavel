@@ -9,140 +9,6 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      customers: {
-        Row: {
-          id: string
-          stripe_customer_id: string | null
-        }
-        Insert: {
-          id: string
-          stripe_customer_id?: string | null
-        }
-        Update: {
-          id?: string
-          stripe_customer_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "customers_id_fkey"
-            columns: ["id"]
-            isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      post_comment: {
-        Row: {
-          content: string | null
-          created_at: string
-          id: number
-          post_id: number | null
-          user_id: string | null
-        }
-        Insert: {
-          content?: string | null
-          created_at?: string
-          id?: number
-          post_id?: number | null
-          user_id?: string | null
-        }
-        Update: {
-          content?: string | null
-          created_at?: string
-          id?: number
-          post_id?: number | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "post_comment_post_id_fkey"
-            columns: ["post_id"]
-            isOneToOne: false
-            referencedRelation: "posts"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "post_comment_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      post_comment_like: {
-        Row: {
-          created_at: string
-          id: number
-          post_comment_id: number | null
-          user_id: string | null
-        }
-        Insert: {
-          created_at?: string
-          id?: number
-          post_comment_id?: number | null
-          user_id?: string | null
-        }
-        Update: {
-          created_at?: string
-          id?: number
-          post_comment_id?: number | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "post_comment_like_post_comment_id_fkey"
-            columns: ["post_comment_id"]
-            isOneToOne: false
-            referencedRelation: "post_comment"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "post_comment_like_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      post_likes: {
-        Row: {
-          created_at: string
-          id: number
-          post_id: number | null
-          user_id: string | null
-        }
-        Insert: {
-          created_at?: string
-          id?: number
-          post_id?: number | null
-          user_id?: string | null
-        }
-        Update: {
-          created_at?: string
-          id?: number
-          post_id?: number | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "post_likes_post_id_fkey"
-            columns: ["post_id"]
-            isOneToOne: false
-            referencedRelation: "posts"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "post_likes_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
       post_tags: {
         Row: {
           created_at: string
@@ -167,7 +33,8 @@ export interface Database {
           created_at: string
           id: number
           post_cover: string | null
-          publicVisablity: boolean | null
+          post_views: number
+          public_visibility: boolean | null
           title: string | null
           user_id: string | null
         }
@@ -176,7 +43,8 @@ export interface Database {
           created_at?: string
           id?: number
           post_cover?: string | null
-          publicVisablity?: boolean | null
+          post_views?: number
+          public_visibility?: boolean | null
           title?: string | null
           user_id?: string | null
         }
@@ -185,7 +53,8 @@ export interface Database {
           created_at?: string
           id?: number
           post_cover?: string | null
-          publicVisablity?: boolean | null
+          post_views?: number
+          public_visibility?: boolean | null
           title?: string | null
           user_id?: string | null
         }
@@ -232,147 +101,146 @@ export interface Database {
           }
         ]
       }
-      prices: {
+      services: {
         Row: {
-          active: boolean | null
-          currency: string | null
-          description: string | null
-          id: string
-          interval: Database["public"]["Enums"]["pricing_plan_interval"] | null
-          interval_count: number | null
-          metadata: Json | null
-          product_id: string | null
-          trial_period_days: number | null
-          type: Database["public"]["Enums"]["pricing_type"] | null
-          unit_amount: number | null
+          created_at: string
+          created_by: string | null
+          description: string
+          highlights: Json
+          id: number
+          name: string
+          price: number
+          status: Database["public"]["Enums"]["status"] | null
         }
         Insert: {
-          active?: boolean | null
-          currency?: string | null
-          description?: string | null
-          id: string
-          interval?: Database["public"]["Enums"]["pricing_plan_interval"] | null
-          interval_count?: number | null
-          metadata?: Json | null
-          product_id?: string | null
-          trial_period_days?: number | null
-          type?: Database["public"]["Enums"]["pricing_type"] | null
-          unit_amount?: number | null
+          created_at?: string
+          created_by?: string | null
+          description: string
+          highlights: Json
+          id?: number
+          name: string
+          price: number
+          status?: Database["public"]["Enums"]["status"] | null
         }
         Update: {
-          active?: boolean | null
-          currency?: string | null
-          description?: string | null
-          id?: string
-          interval?: Database["public"]["Enums"]["pricing_plan_interval"] | null
-          interval_count?: number | null
-          metadata?: Json | null
-          product_id?: string | null
-          trial_period_days?: number | null
-          type?: Database["public"]["Enums"]["pricing_type"] | null
-          unit_amount?: number | null
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          highlights?: Json
+          id?: number
+          name?: string
+          price?: number
+          status?: Database["public"]["Enums"]["status"] | null
         }
         Relationships: [
           {
-            foreignKeyName: "prices_product_id_fkey"
-            columns: ["product_id"]
+            foreignKeyName: "services_created_by_fkey"
+            columns: ["created_by"]
             isOneToOne: false
-            referencedRelation: "products"
+            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]
       }
-      products: {
+      services_category: {
         Row: {
-          active: boolean | null
-          description: string | null
-          id: string
-          image: string | null
-          metadata: Json | null
-          name: string | null
+          category_name: string | null
+          created_at: string
+          id: number
         }
         Insert: {
-          active?: boolean | null
-          description?: string | null
-          id: string
-          image?: string | null
-          metadata?: Json | null
-          name?: string | null
+          category_name?: string | null
+          created_at?: string
+          id?: number
         }
         Update: {
-          active?: boolean | null
-          description?: string | null
-          id?: string
-          image?: string | null
-          metadata?: Json | null
-          name?: string | null
+          category_name?: string | null
+          created_at?: string
+          id?: number
         }
         Relationships: []
       }
-      subscriptions: {
+      services_category_rel: {
         Row: {
-          cancel_at: string | null
-          cancel_at_period_end: boolean | null
-          canceled_at: string | null
-          created: string
-          current_period_end: string
-          current_period_start: string
-          ended_at: string | null
-          id: string
-          metadata: Json | null
-          price_id: string | null
-          quantity: number | null
-          status: Database["public"]["Enums"]["subscription_status"] | null
-          trial_end: string | null
-          trial_start: string | null
-          user_id: string
+          category_id: number | null
+          created_at: string
+          id: number
+          service_id: number | null
         }
         Insert: {
-          cancel_at?: string | null
-          cancel_at_period_end?: boolean | null
-          canceled_at?: string | null
-          created?: string
-          current_period_end?: string
-          current_period_start?: string
-          ended_at?: string | null
-          id: string
-          metadata?: Json | null
-          price_id?: string | null
-          quantity?: number | null
-          status?: Database["public"]["Enums"]["subscription_status"] | null
-          trial_end?: string | null
-          trial_start?: string | null
-          user_id: string
+          category_id?: number | null
+          created_at?: string
+          id?: number
+          service_id?: number | null
         }
         Update: {
-          cancel_at?: string | null
-          cancel_at_period_end?: boolean | null
-          canceled_at?: string | null
-          created?: string
-          current_period_end?: string
-          current_period_start?: string
-          ended_at?: string | null
-          id?: string
-          metadata?: Json | null
-          price_id?: string | null
-          quantity?: number | null
-          status?: Database["public"]["Enums"]["subscription_status"] | null
-          trial_end?: string | null
-          trial_start?: string | null
-          user_id?: string
+          category_id?: number | null
+          created_at?: string
+          id?: number
+          service_id?: number | null
         }
         Relationships: [
           {
-            foreignKeyName: "subscriptions_price_id_fkey"
-            columns: ["price_id"]
+            foreignKeyName: "services_category_rel_category_id_fkey"
+            columns: ["category_id"]
             isOneToOne: false
-            referencedRelation: "prices"
+            referencedRelation: "services_category"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "subscriptions_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: "services_category_rel_service_id_fkey"
+            columns: ["service_id"]
             isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      studios: {
+        Row: {
+          attachment: string | null
+          contact_phone: number
+          created_at: string
+          description: string
+          id: number
+          name: string
+          salary_expectation: string
+          status: Database["public"]["Enums"]["status"]
+          user_id: string
+          withdraw_method: string
+          withdraw_number: string
+        }
+        Insert: {
+          attachment?: string | null
+          contact_phone: number
+          created_at?: string
+          description: string
+          id?: number
+          name: string
+          salary_expectation: string
+          status?: Database["public"]["Enums"]["status"]
+          user_id: string
+          withdraw_method: string
+          withdraw_number: string
+        }
+        Update: {
+          attachment?: string | null
+          contact_phone?: number
+          created_at?: string
+          description?: string
+          id?: number
+          name?: string
+          salary_expectation?: string
+          status?: Database["public"]["Enums"]["status"]
+          user_id?: string
+          withdraw_method?: string
+          withdraw_number?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "studios_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
@@ -381,26 +249,26 @@ export interface Database {
       users: {
         Row: {
           avatar_url: string | null
-          billing_address: Json | null
+          birthday: string | null
+          description: string | null
           full_name: string | null
           id: string
-          payment_method: Json | null
           username: string | null
         }
         Insert: {
           avatar_url?: string | null
-          billing_address?: Json | null
+          birthday?: string | null
+          description?: string | null
           full_name?: string | null
           id: string
-          payment_method?: Json | null
           username?: string | null
         }
         Update: {
           avatar_url?: string | null
-          billing_address?: Json | null
+          birthday?: string | null
+          description?: string | null
           full_name?: string | null
           id?: string
-          payment_method?: Json | null
           username?: string | null
         }
         Relationships: []
@@ -410,22 +278,106 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      content_string: {
+        Args: {
+          searchparams: string
+        }
+        Returns: {
+          id: number
+          title: string
+          created_at: string
+        }[]
+      }
+      handle_new_user: {
+        Args: Record<PropertyKey, never>
+        Returns: Record<string, unknown>
+      }
     }
     Enums: {
-      pricing_plan_interval: "day" | "week" | "month" | "year"
-      pricing_type: "one_time" | "recurring"
-      subscription_status:
-        | "trialing"
-        | "active"
-        | "canceled"
-        | "incomplete"
-        | "incomplete_expired"
-        | "past_due"
-        | "unpaid"
+      status: "applied" | "approved" | "incomplete" | "disabled" | "blocked"
     }
     CompositeTypes: {
       [_ in never]: never
     }
   }
 }
+
+export type Tables<
+  PublicTableNameOrOptions extends
+    | keyof (Database["public"]["Tables"] & Database["public"]["Views"])
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
+        Database[PublicTableNameOrOptions["schema"]]["Views"])
+    : never = never
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
+      Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : PublicTableNameOrOptions extends keyof (Database["public"]["Tables"] &
+      Database["public"]["Views"])
+  ? (Database["public"]["Tables"] &
+      Database["public"]["Views"])[PublicTableNameOrOptions] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : never
+
+export type TablesInsert<
+  PublicTableNameOrOptions extends
+    | keyof Database["public"]["Tables"]
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+    : never = never
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
+  ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : never
+
+export type TablesUpdate<
+  PublicTableNameOrOptions extends
+    | keyof Database["public"]["Tables"]
+    | { schema: keyof Database },
+  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+    : never = never
+> = PublicTableNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
+  ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : never
+
+export type Enums<
+  PublicEnumNameOrOptions extends
+    | keyof Database["public"]["Enums"]
+    | { schema: keyof Database },
+  EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
+    ? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
+    : never = never
+> = PublicEnumNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
+  ? Database["public"]["Enums"][PublicEnumNameOrOptions]
+  : never
