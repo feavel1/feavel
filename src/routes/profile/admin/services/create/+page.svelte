@@ -66,6 +66,8 @@
 			message: '✅ Successfully Published 🌐',
 			background: 'variant-filled-success'
 		});
+		location.reload();
+
 		setTimeout(() => {
 			goto('/profile/admin/services');
 		}, 1000);

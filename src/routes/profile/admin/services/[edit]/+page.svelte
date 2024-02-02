@@ -56,7 +56,8 @@
 				name: name,
 				price: price,
 				description: description,
-				highlights: highlights
+				highlights: highlights,
+				status: 'applied'
 			})
 			.eq('id', service.id)
 			.select();
@@ -76,11 +77,14 @@
 		}
 
 		toastStore.trigger({
-			message: '✅ Successfully Updated 🌐',
+			message: '✅ Successfully Updated, Plese wait for review 🧑‍💻 🌐',
 			background: 'variant-filled-success'
 		});
+
+		location.reload();
+
 		setTimeout(() => {
-			goto('/profile/admin/services');
+			goto('/services');
 		}, 1000);
 	};
 </script>
@@ -168,7 +172,7 @@
 		</dl>
 		<div class="mt-8 flex">
 			<button on:click={handleSubmit} class="btn variant-filled">
-				{loading ? 'Loading...' : 'Create Service'}
+				{loading ? 'Loading...' : 'Save Edit'}
 			</button>
 		</div>
 	</div>
