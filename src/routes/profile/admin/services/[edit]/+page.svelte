@@ -147,7 +147,7 @@
 					name="category"
 					id="category"
 					class="hidden"
-					placeholder="Enter highlights"
+					placeholder="Enter category"
 				/>
 				<div>
 					<InputChip

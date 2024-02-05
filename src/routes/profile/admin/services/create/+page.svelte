@@ -9,8 +9,8 @@
 
 	export let data;
 
-	let { serCatSer, supabase, session } = data;
-	$: ({ serCatSer, supabase, session } = data);
+	let { serCatSer, supabase, studios } = data;
+	$: ({ serCatSer, supabase, studios } = data);
 
 	const toastStore = getToastStore();
 
@@ -46,7 +46,7 @@
 		const { data: service_data_id, error: createStudioErr } = await supabase
 			.from('services')
 			.insert({
-				created_by: session?.user.id,
+				created_by: studios.id,
 				name: name,
 				price: price,
 				description: description,
@@ -106,7 +106,7 @@
 			<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 				<dt class="text-sm font-medium leading-6">Highlights</dt>
 				<input
-					value={list}
+					value={highlights}
 					name="highlights"
 					id="highlights"
 					class="hidden"
@@ -114,7 +114,7 @@
 				/>
 
 				<InputChip
-					bind:value={list}
+					bind:value={highlights}
 					name="chips"
 					placeholder="Enter any value... and press 'enter'"
 				/>
@@ -127,7 +127,7 @@
 					name="category"
 					id="category"
 					class="hidden"
-					placeholder="Enter highlights"
+					placeholder="Enter category"
 				/>
 				<div>
 					<InputChip

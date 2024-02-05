@@ -1,5 +1,5 @@
 import type { Database } from '$lib/supabase/types_db';
-type Price = Database['public']['Tables']['prices']['Row'];
+// type Price = Database['public']['Tables']['prices']['Row'];
 import { PUBLIC_SITE_URL } from '$env/static/public';
 
 export const getURL = () => {
@@ -14,27 +14,50 @@ export const getURL = () => {
 	return url;
 };
 
-export const postData = async ({ url, data }: { url: string; data?: { price: Price } }) => {
-	console.log('posting,', url, data);
+// export const postData = async ({ url, data }: { url: string; data?: { price: Price } }) => {
+// 	console.log('posting,', url, data);
 
-	const res = await fetch(url, {
-		method: 'POST',
-		headers: new Headers({ 'Content-Type': 'application/json' }),
-		credentials: 'same-origin',
-		body: JSON.stringify(data)
-	});
+// 	const res = await fetch(url, {
+// 		method: 'POST',
+// 		headers: new Headers({ 'Content-Type': 'application/json' }),
+// 		credentials: 'same-origin',
+// 		body: JSON.stringify(data)
+// 	});
 
-	if (!res.ok) {
-		console.log('Error in postData', { url, data, res });
+// 	if (!res.ok) {
+// 		console.log('Error in postData', { url, data, res });
 
-		throw Error(res.statusText);
-	}
+// 		throw Error(res.statusText);
+// 	}
 
-	return res.json();
-};
+// 	return res.json();
+// };
 
 export const toDateTime = (secs: number) => {
 	var t = new Date('1970-01-01T00:30:00Z'); // Unix epoch start.
 	t.setSeconds(secs);
 	return t;
+};
+
+export const capitalizeFirstLetter = (str: string) => {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+export const generateUUID = (str: string) => {
+	// Public Domain/MIT
+	var d = new Date().getTime(); //Timestamp
+	var d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0; //Time in microseconds since page-load or 0 if unsupported
+	return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+		var r = Math.random() * 16; //random number between 0 and 16
+		if (d > 0) {
+			//Use timestamp until depleted
+			r = (d + r) % 16 | 0;
+			d = Math.floor(d / 16);
+		} else {
+			//Use microseconds since page-load if supported
+			r = (d2 + r) % 16 | 0;
+			d2 = Math.floor(d2 / 16);
+		}
+		return str + (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+	});
 };
