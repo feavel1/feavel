@@ -36,7 +36,7 @@
 </script>
 
 <main class="pt-14">
-	<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-10">
+	<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
 		<div class="py-24 text-center">
 			<h1 class="text-4xl font-bold tracking-tight">New Services</h1>
 			<p class="mx-auto mt-4 max-w-3xl text-base text-gray-500">

@@ -37,6 +37,7 @@
 	import HamburgerIcon from '$lib/components/ui/modal/HamburgerIcon.svelte';
 	import SearchButton from '$lib/components/ui/modal/SearchButton.svelte';
 	import Footer from '$lib/components/ui/layout/Footer.svelte';
+	import Feavel from '$lib/components/ui/logo/Feavel.svelte';
 
 	const modalStore = getModalStore();
 
@@ -86,7 +87,7 @@
 	<svelte:fragment slot="lead">
 		<div class="flex flex-row items-center">
 			<HamburgerIcon />
-			<a href="/" class="sm:text-xl uppercase font-extrabold mr-10">Feavel</a>
+			<a href="/" class="sm:mr-5"><Feavel /></a>
 		</div>
 		<div class="hidden lg:inline">
 			<Navigation />

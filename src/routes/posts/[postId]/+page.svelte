@@ -8,8 +8,9 @@
 	import { browser, dev } from '$app/environment';
 
 	export let data;
+
 	let { supabase, post } = data;
-	$: ({ supabase } = data);
+	$: ({ supabase, post } = data);
 
 	const date = new Date();
 

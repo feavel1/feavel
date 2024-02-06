@@ -1,4 +1,6 @@
 //@ts-nocheck
+import { redirect } from '@sveltejs/kit';
+
 export const load = async ({ locals: { supabase } }) => {
 	try {
 		const { data: services, error: service_error } = await supabase

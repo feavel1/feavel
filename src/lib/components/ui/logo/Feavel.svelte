@@ -1,8 +1,4 @@
-<svg
-	class="p-2 w-32 dark:fill-primary-50"
-	viewBox="0 0 3090 495"
-	xmlns="http://www.w3.org/2000/svg"
->
+<svg class="w-24 dark:fill-primary-50" viewBox="0 0 3090 495" xmlns="http://www.w3.org/2000/svg">
 	<path
 		id="Shape-copy"
 		fill-rule="evenodd"

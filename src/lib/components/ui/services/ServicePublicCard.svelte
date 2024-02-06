@@ -4,8 +4,6 @@
 	export let service: any;
 	export let supabase: SupabaseClient;
 
-	console.log(service);
-
 	let publicUrl: string;
 
 	const downloadImage = async (path: string) => {
@@ -28,14 +26,14 @@
 		iconColor = 'text-green-500';
 	}
 
-	downloadImage(service.cover_url);
+	$: if (service) downloadImage(service.cover_url);
 </script>
 
 <a href="/services/{service.id}" class="group">
 	<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2">
 		<img
 			src={publicUrl}
-			alt="Person using a pen to cross a task off a productivity paper card."
+			alt={service.name}
 			class="h-full w-full object-cover object-center group-hover:opacity-75"
 		/>
 	</div>

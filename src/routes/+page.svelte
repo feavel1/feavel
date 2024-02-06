@@ -53,11 +53,10 @@
 
 		<div class="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-40 lg:flex lg:px-8 lg:pt-40">
 			<div class="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
-				<Feavel />
-
 				<div class="mt-24 sm:mt-32 lg:mt-16">
-					<a href="/posts" class="inline-flex space-x-6">
-						<span class="btn variant-glass-primary rounded-3xl">Read posts</span>
+					<!-- <Feavel /> -->
+					<div class="inline-flex space-x-6">
+						<a href="/posts" class="btn variant-glass-primary rounded-3xl">Read posts</a>
 						<a
 							href="/posts/create-post"
 							class="inline-flex items-center space-x-2 text-sm font-medium ml-10 text-tertiary-600"
@@ -76,15 +75,16 @@
 								/>
 							</svg>
 						</a>
-					</a>
+					</div>
 				</div>
 				<h1 class="mt-10 text-4xl font-bold tracking-tight sm:text-6xl">
-					Read, write and create with confidence
+					Read, write and buy with confidence
 				</h1>
 				<p class="mt-6 text-lg leading-8 text-tertiary-600">
-					This is a open source project to help musicians, programmers, thinkers to start making
-					music, web-sites, and philosophy posts all in one application. You can always join our
-					project and help create mixes, new web features and implement bug fixes and much more!
+					This is a open source project to help musicians to make songs, programmers to get
+					inspired, thinkers to start writing posts, designers to make web-sites, and read posts all
+					in one application. You can always join our project and help create mixes, new web
+					features and implement bug fixes and much more!
 				</p>
 				<div class="mt-10 flex items-center gap-x-6">
 					<a
