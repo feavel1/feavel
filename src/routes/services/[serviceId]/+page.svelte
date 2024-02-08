@@ -1,6 +1,4 @@
 <script lang="ts">
-	// import { Ratings } from '@skeletonlabs/skeleton';
-	// import { LucideStar, LucideStarHalf } from 'lucide-svelte';
 	import Time from 'svelte-time';
 
 	export let data;
@@ -77,8 +75,9 @@
 					<button
 						type="button"
 						class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-						>Pay {transformedService.price} ¥</button
 					>
+						Order for {transformedService.price} ¥
+					</button>
 					<button
 						type="button"
 						class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
@@ -112,7 +111,7 @@
 								href="#"
 								class="flex h-6 w-6 items-center justify-center text-gray-400 hover:text-secondary-700-200-token"
 							>
-								<span class="sr-only">Share on Facebook</span>
+								<span class="sr-only">Share with friends</span>
 								<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
 									<path
 										fill-rule="evenodd"
@@ -158,14 +157,6 @@
 				<div>
 					<div class="border-b dark:border-gray-200 border-gray-700">
 						<div class="-mb-px flex space-x-8" aria-orientation="horizontal" role="tablist">
-							<!-- Selected: "border-indigo-600 text-indigo-600", Not Selected: "border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800" -->
-							<!-- <button
-								id="tab-reviews"
-								class="border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800 whitespace-nowrap border-b-2 py-6 text-sm font-medium"
-								aria-controls="tab-panel-reviews"
-								role="tab"
-								type="button">Customer Reviews</button
-							> -->
 							<button
 								id="tab-faq"
 								class="border-transparent hover:border-gray-300 hover:text-gray-400 whitespace-nowrap border-b-2 py-6 text-sm font-medium"
@@ -188,190 +179,6 @@
 							>
 						</div>
 					</div>
-
-					<!-- 'Customer Reviews' panel, show/hide based on tab state -->
-					<!-- <div
-						id="tab-panel-reviews"
-						class="-mb-10"
-						aria-labelledby="tab-reviews"
-						role="tabpanel"
-						tabindex="0"
-					>
-						<h3 class="sr-only">Customer Reviews</h3>
-
-						<div class="flex space-x-4 text-sm text-secondary-700-200-token">
-							<div class="flex-none py-10">
-								<img
-									src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-									alt=""
-									class="h-10 w-10 rounded-full bg-gray-100"
-								/>
-							</div>
-							<div class="py-10">
-								<h3 class="font-medium text-surface-900-50-token">Emily Selman</h3>
-								<p><time datetime="2021-07-16">July 16, 2021</time></p>
-
-								<div class="mt-4 flex items-center">
-							
-									<svg
-										class="text-yellow-400 h-5 w-5 flex-shrink-0"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-									<svg
-										class="text-yellow-400 h-5 w-5 flex-shrink-0"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-									<svg
-										class="text-yellow-400 h-5 w-5 flex-shrink-0"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-									<svg
-										class="text-yellow-400 h-5 w-5 flex-shrink-0"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-									<svg
-										class="text-yellow-400 h-5 w-5 flex-shrink-0"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-								</div>
-								<p class="sr-only">5 out of 5 stars</p>
-
-								<div class="prose prose-sm mt-4 max-w-none text-secondary-700-200-token">
-									<p>
-										This icon pack is just what I need for my latest project. There's an icon for
-										just about anything I could ever need. Love the playful look!
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="flex space-x-4 text-sm text-secondary-700-200-token">
-							<div class="flex-none py-10">
-								<img
-									src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-									alt=""
-									class="h-10 w-10 rounded-full bg-gray-100"
-								/>
-							</div>
-							<div class="py-10 border-t border-gray-200">
-								<h3 class="font-medium text-surface-900-50-token">Hector Gibbons</h3>
-								<p><time datetime="2021-07-12">July 12, 2021</time></p>
-
-								<div class="mt-4 flex items-center">
-									
-									<svg
-										class="text-yellow-400 h-5 w-5 flex-shrink-0"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-									<svg
-										class="text-yellow-400 h-5 w-5 flex-shrink-0"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-									<svg
-										class="text-yellow-400 h-5 w-5 flex-shrink-0"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-									<svg
-										class="text-yellow-400 h-5 w-5 flex-shrink-0"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-									<svg
-										class="text-yellow-400 h-5 w-5 flex-shrink-0"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-								</div>
-								<p class="sr-only">5 out of 5 stars</p>
-
-								<div class="prose prose-sm mt-4 max-w-none text-secondary-700-200-token">
-									<p>
-										Blown away by how polished this icon pack is. Everything looks so consistent and
-										each SVG is optimized out of the box so I can use it directly with confidence.
-										It would take me several hours to create a single icon this good, so it's a
-										steal at this price.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div> -->
 
 					<!-- 'FAQ' panel, show/hide based on tab state -->
 					{#if (tabState = 'FAQ')}

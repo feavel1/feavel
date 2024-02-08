@@ -1,9 +1,6 @@
 //@ts-nocheck
-import { redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
-
 // /services/[serviceId]/+page.server.ts
-export const load: PageServerLoad = async ({ params, locals: { supabase } }) => {
+export const load = async ({ params, locals: { supabase } }) => {
 	try {
 		const { data: service, error: service_error } = await supabase
 			.from('services')
