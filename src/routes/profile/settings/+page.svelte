@@ -5,15 +5,19 @@
 
 	export let data;
 	let user = data.userdata;
+
 	let { supabase, session } = data;
 	$: ({ session, supabase } = data);
+
 	let loading = false;
+
 	const handleSubmit: SubmitFunction = () => {
 		loading = true;
 		return async () => {
 			loading = false;
 		};
 	};
+
 	let profileForm: HTMLFormElement;
 </script>
 
@@ -172,8 +176,9 @@
 					<button
 						type="submit"
 						class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-						>Save</button
 					>
+						Save
+					</button>
 				</div>
 			</form>
 		</div>
@@ -235,8 +240,8 @@
 				<button
 					type="submit"
 					class="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-red-400"
-					>Yes, delete my account</button
-				>
+					>Yes, delete my account
+				</button>
 			</form>
 		</div>
 	{/if}

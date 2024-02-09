@@ -1,6 +1,6 @@
 import type { Load } from '@sveltejs/kit';
 
-export const load: Load = async ({ parent }: any) => {
+export const load: Load = async ({ parent }) => {
 	const { services, serviceCategory } = await parent();
 
 	return {

@@ -3,8 +3,7 @@ import md5 from 'crypto-js/md5';
 const config = {
 	pid: '1025',
 	key: 'Je7oF8n28uu0g8bRXuf02juR8g8uN6ui',
-	apiurl: 'https://api.jcckj.asia/',
-	sign_type: 'MD5'
+	apiurl: 'https://api.jcckj.asia/'
 };
 
 class EpayCore {
@@ -23,19 +22,19 @@ class EpayCore {
 		this.api_url = config.apiurl + 'api.php';
 	}
 
-	// // 发起支付（页面跳转）
-	// public pagePay(param_tmp: any, button: string = '正在跳转'): string {
-	// 	const param = this.buildRequestParam(param_tmp);
-	// 	let html = '<form id="dopay" action="' + this.submit_url + '" method="post">';
-	// 	for (const [k, v] of Object.entries(param)) {
-	// 		html += '<input type="hidden" name="' + k + '" value="' + v + '"/>';
-	// 	}
-	// 	html +=
-	// 		'<input type="submit" value="' +
-	// 		button +
-	// 		'"></form><script>document.getElementById("dopay").submit();</script>';
-	// 	return html;
-	// }
+	// 发起支付（页面跳转）
+	public pagePay(param_tmp: any, button: string = '正在跳转'): string {
+		const param = this.buildRequestParam(param_tmp);
+		let html = '<form id="dopay" action="' + this.submit_url + '" method="post">';
+		for (const [k, v] of Object.entries(param)) {
+			html += '<input type="hidden" name="' + k + '" value="' + v + '"/>';
+		}
+		html +=
+			'<input type="submit" value="' +
+			button +
+			'"></form><script>document.getElementById("dopay").submit();</script>';
+		return html;
+	}
 
 	// 发起支付（获取链接）
 	public getPayLink(param_tmp: any): string {
@@ -56,7 +55,7 @@ class EpayCore {
 	}
 
 	// 异步回调验证
-	public verifyNotify(param_tmp): boolean {
+	public verifyNotify(param_tmp: {}): boolean {
 		if (Object.keys(param_tmp).length === 0) return false;
 		const sign = this.getSign(param_tmp);
 		const signResult = sign === '' ? true : false;
@@ -96,15 +95,15 @@ class EpayCore {
 		return arr;
 	}
 
-	private buildRequestParam(param: any): any {
+	public buildRequestParam(param: any): any {
 		const mysign = this.getSign(param);
 		param.sign = mysign;
-		param.sign_type = this.sign_type;
+		param.sign_type = 'MD5';
 		return param;
 	}
 
 	// 计算签名
-	private getSign(param: any): any {
+	public getSign(param: any): any {
 		const keys = Object.keys(param).sort();
 		let signstr = '';
 		for (const k of keys) {
@@ -114,7 +113,7 @@ class EpayCore {
 			}
 		}
 		signstr = signstr.slice(0, -1) + this.key;
-		const sign = md5(signstr);
+		const sign = md5(signstr).toString();
 		return sign;
 	}
 
@@ -124,20 +123,22 @@ class EpayCore {
 		post: string | boolean = false,
 		timeout: number = 10
 	): Promise<string> {
-		const httpheader: string[] = [
-			'Accept: */*',
-			'Accept-Language: zh-CN,zh;q=0.8',
-			'Connection: close'
-		];
+		const httpheader: Record<string, string> = {
+			// Define headers as an object
+			Accept: '*/*',
+			'Accept-Language': 'zh-CN,zh;q=0.8',
+			Connection: 'close'
+		};
 		const options: any = {
 			method: 'GET',
-			headers: httpheader,
+			headers: httpheader, // Pass the object instead of an array
 			timeout: timeout * 1000
 		};
 		if (post) {
 			options.method = 'POST';
 			options.body = post;
 		}
+		console.log(url, options);
 		const response = await fetch(url, options);
 		const responseData = await response.text();
 		return responseData;
