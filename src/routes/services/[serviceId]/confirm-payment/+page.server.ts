@@ -1,6 +1,7 @@
 import { MERCHANT_PID } from '$env/static/private';
 import { epayClient } from '$lib/epay/epay-client';
-import { type Actions } from '@sveltejs/kit';
+import { getURL } from '$lib/utils/helpers';
+import { type Actions, type ServerLoad } from '@sveltejs/kit';
 
 export const actions: Actions = {
 	payOnline: async ({ request }) => {
@@ -9,11 +10,11 @@ export const actions: Actions = {
 		const pid = MERCHANT_PID;
 		const type = data.get('type');
 		const out_trade_no = data.get('out_trade_no');
-		const notify_url = data.get('notify_url');
-		const return_url = data.get('return_url');
+		const notify_url = getURL() + '/api/notify_url';
+		const return_url = getURL() + '/api/return_url';
 		const name = data.get('name');
 		const money = data.get('money');
-		const clientip = data.get('clientip');
+		const clientip = '192.168.1.100';
 		const device = data.get('device');
 		const param = data.get('param');
 
@@ -47,7 +48,7 @@ export const actions: Actions = {
 	}
 };
 
-export const load = async ({ parent }) => {
+export const load: ServerLoad = async ({ parent }) => {
 	let { transformedService, session } = await parent();
 	return {
 		transformedService,

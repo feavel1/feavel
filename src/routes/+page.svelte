@@ -1,6 +1,7 @@
 <script>
 	import Feavel from '$lib/components/ui/logo/Feavel.svelte';
 	import {
+		LucideArrowRight,
 		LucideAudioLines,
 		LucideAudioWaveform,
 		LucideClipboardSignature,
@@ -59,26 +60,21 @@
 						<a href="/posts" class="btn variant-glass-primary rounded-3xl">Read posts</a>
 						<a
 							href="/posts/create-post"
-							class="inline-flex items-center space-x-2 text-sm font-medium ml-10 text-tertiary-600"
+							class="inline-flex items-center space-x-2 text-sm font-medium ml-10 text-tertiary-600 hover:underline decoration-slice"
 						>
 							<span>Try 「feavel's editor 1.0」</span>
-							<svg
-								class="h-5 w-5 text-gray-500"
-								viewBox="0 0 20 20"
-								fill="currentColor"
-								aria-hidden="true"
-							>
-								<path
-									fill-rule="evenodd"
-									d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-									clip-rule="evenodd"
-								/>
-							</svg>
+							<LucideArrowRight class="h-5 w-5 text-gray-500" />
 						</a>
 					</div>
 				</div>
 				<h1 class="mt-10 text-4xl font-bold tracking-tight sm:text-6xl">
-					Read, write and buy with confidence
+					Make your
+					<span class="underline decoration-wavy underline-offset-4 decoration-success-400"
+						>art</span
+					>
+					<span class="decoration-dotted underline underline-offset-4 decoration-teal-400">
+						stand out
+					</span>
 				</h1>
 				<p class="mt-6 text-lg leading-8 text-tertiary-600">
 					This is a open source project to help musicians to make songs, programmers to get
@@ -87,11 +83,7 @@
 					features and implement bug fixes and much more!
 				</p>
 				<div class="mt-10 flex items-center gap-x-6">
-					<a
-						href="/auth"
-						class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
-						>Sign up</a
-					>
+					<a href="/auth" class="btn variant-filled-primary">Sign up</a>
 					<a href="/auth" class="text-sm font-semibold leading-6">
 						Sign in
 						<span aria-hidden="true">→</span>

@@ -1,14 +1,14 @@
 // import type { Database } from '$lib/supabase/types_db';
 // type Price = Database['public']['Tables']['prices']['Row'];
 import { PUBLIC_SITE_URL } from '$env/static/public';
-import { MERCHANT_SECRER } from '$env/static/private';
+import { MERCHANT_KEY } from '$env/static/private';
 import * as crypto from 'crypto';
 
 export const getURL = () => {
 	let url =
 		PUBLIC_SITE_URL ?? // Set this to your site URL in production env.
 		process?.env?.PUBLIC_VERCEL_URL ?? // Automatically set by Vercel.
-		'http://localhost:3000/';
+		'http://localhost:5173/';
 	// Make sure to include `https://` when not localhost.
 	url = url.includes('http') ? url : `https://${url}`;
 	// Make sure to including trailing `/`.

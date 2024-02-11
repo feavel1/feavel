@@ -82,8 +82,8 @@
 					<button
 						type="button"
 						class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-						>Preview</button
-					>
+						>Preview
+					</button>
 				</div>
 
 				<div class="mt-10 border-t border-gray-200 pt-10">
