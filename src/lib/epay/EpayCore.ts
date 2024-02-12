@@ -39,13 +39,14 @@ class EpayCore {
 	// 发起支付（获取链接）
 	public getPayLink(param_tmp: any): string {
 		const param = this.buildRequestParam(param_tmp);
-		const url = this.submit_url + '?' + new URLSearchParams(param).toString();
+		const url = `${this.submit_url}?${new URLSearchParams(param).toString()}`;
 		return url;
 	}
 
 	// 发起支付（API接口）
 	public async apiPay(param_tmp: any): Promise<any> {
 		const param = this.buildRequestParam(param_tmp);
+
 		const response = await this.getHttpResponse(
 			this.mapi_url,
 			new URLSearchParams(param).toString()
@@ -123,8 +124,8 @@ class EpayCore {
 		post: string | boolean = false,
 		timeout: number = 10
 	): Promise<string> {
+		const fullUrl = `${url}?${post}`;
 		const httpheader: Record<string, string> = {
-			// Define headers as an object
 			Accept: '*/*',
 			'Accept-Language': 'zh-CN,zh;q=0.8',
 			Connection: 'close'
@@ -136,10 +137,8 @@ class EpayCore {
 		};
 		if (post) {
 			options.method = 'POST';
-			options.body = post;
 		}
-		console.log(url, options);
-		const response = await fetch(url, options);
+		const response = await fetch(fullUrl, options);
 		const responseData = await response.text();
 		return responseData;
 	}

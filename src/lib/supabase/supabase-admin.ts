@@ -1,20 +1,20 @@
 // import { toDateTime } from './helpers';
 // import { stripe } from '$lib/stripe/stripe';
-// import { createClient } from '@supabase/supabase-js';
 // import type Stripe from 'stripe';
-// import type { Database } from '$lib/supabase/types_db';
-// import { PUBLIC_SUPABASE_URL } from '$env/static/public';
-// import { SUPABASE_SERVICE_ROLE_KEY } from '$env/static/private';
+import { createClient } from '@supabase/supabase-js';
+import type { Database } from '$lib/supabase/types_db';
+import { PUBLIC_SUPABASE_URL } from '$env/static/public';
+import { SUPABASE_SERVICE_ROLE_KEY } from '$env/static/private';
 
 // type Product = Database['public']['Tables']['products']['Row'];
 // type Price = Database['public']['Tables']['prices']['Row'];
 
 // // Note: supabaseAdmin uses the SERVICE_ROLE_KEY which you must only use in a secure server-side context
 // // as it has admin privileges and overwrites RLS policies!
-// const supabaseAdmin = createClient<Database>(
-// 	PUBLIC_SUPABASE_URL || '',
-// 	SUPABASE_SERVICE_ROLE_KEY || ''
-// );
+export const supabaseAdmin = createClient<Database>(
+	PUBLIC_SUPABASE_URL || '',
+	SUPABASE_SERVICE_ROLE_KEY || ''
+);
 
 // const upsertProductRecord = async (product: Stripe.Product) => {
 // 	const productData: Product = {
@@ -153,6 +153,22 @@
 // 			subscription.default_payment_method as Stripe.PaymentMethod
 // 		);
 // };
+
+const createDigitalPurchase = async (purchase: any) => {
+	const purchaseData = {
+		id: purchase.id,
+		trade_no: purchase.trade_no,
+		user_id: purchase.user_id,
+		service_id: purchase.service_id,
+		price: purchase.price,
+		payment_method: purchase.payment_method,
+		payment_status: 'created'
+	};
+
+	const { error } = await supabaseAdmin.from('digital_purchase').upsert([purchaseData]);
+	if (error) throw error;
+	console.log(`Product inserted/updated: ${purchase.id}`);
+};
 
 // export {
 // 	upsertProductRecord,

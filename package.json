@@ -13,7 +13,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@floating-ui/dom": "^1.6.1",
+		"@floating-ui/dom": "^1.6.3",
 		"@skeletonlabs/skeleton": "^2.8.0",
 		"@supabase/ssr": "^0.1.0",
 		"@supabase/supabase-js": "^2.39.3",
@@ -42,7 +42,7 @@
 		"crypto-js": "^4.2.0",
 		"gpt3-tokenizer": "^1.1.5",
 		"highlight.js": "^11.9.0",
-		"lucide-svelte": "0.323.0",
+		"lucide-svelte": "0.325.0",
 		"openai": "^4.27.0",
 		"sse.js": "^2.2.0",
 		"svelte-moveable": "^0.45.0",

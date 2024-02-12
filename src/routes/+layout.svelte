@@ -36,7 +36,7 @@
 	import SearchModal from '$lib/components/ui/modal/SearchModal.svelte';
 	import HamburgerIcon from '$lib/components/ui/modal/HamburgerIcon.svelte';
 	import SearchButton from '$lib/components/ui/modal/SearchButton.svelte';
-	import Footer from '$lib/components/ui/layout/Footer.svelte';
+	// import Footer from '$lib/components/ui/layout/Footer.svelte';
 	import Feavel from '$lib/components/ui/logo/Feavel.svelte';
 
 	const modalStore = getModalStore();
@@ -104,4 +104,4 @@
 	<slot />
 </div>
 
-<Footer />
+<!-- <Footer /> -->

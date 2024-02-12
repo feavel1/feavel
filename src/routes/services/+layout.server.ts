@@ -1,7 +1,6 @@
-//@ts-nocheck
-import { redirect } from '@sveltejs/kit';
+import { redirect, type ServerLoad } from '@sveltejs/kit';
 
-export const load = async ({ locals: { supabase } }) => {
+export const load: ServerLoad = async ({ locals: { supabase } }) => {
 	try {
 		const { data: services, error: service_error } = await supabase
 			.from('services')
@@ -12,7 +11,6 @@ export const load = async ({ locals: { supabase } }) => {
 			.eq('enabled', true);
 
 		if (service_error) {
-			console.error(service_error);
 			return { error: 'Failed to fetch services' };
 		}
 
