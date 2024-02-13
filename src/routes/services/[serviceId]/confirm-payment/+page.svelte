@@ -83,7 +83,7 @@
 			<form action="?/payOnline" bind:this={wechatForm} method="POST">
 				<input type="hidden" name="type" value="wxpay" />
 				<input type="hidden" name="out_trade_no" value={genOrdNumber} />
-				<input type="hidden" name="name" value={transformedService.name} />
+				<input type="hidden" name="service_id" value={transformedService.id} />
 				<input type="hidden" name="money" value={transformedService.price} />
 				<input type="hidden" name="device" value="pc" />
 				<button type="submit" class="btn w-full mt-10 bg-green-500">Pay with Wechat</button>
@@ -92,7 +92,7 @@
 			<form action="?/payOnline" bind:this={alipayForm} method="POST">
 				<input type="hidden" name="type" value="alipay" />
 				<input type="hidden" name="out_trade_no" value={genOrdNumber} />
-				<input type="hidden" name="name" value={transformedService.name} />
+				<input type="hidden" name="service_id" value={transformedService.id} />
 				<input type="hidden" name="money" value={transformedService.price} />
 				<input type="hidden" name="device" value="pc" />
 

@@ -160,19 +160,21 @@ const createDigitalPurchase = async (purchase: any) => {
 		trade_no: purchase.trade_no,
 		user_id: purchase.user_id,
 		service_id: purchase.service_id,
+		studio_id: purchase.studio_id,
 		price: purchase.price,
 		payment_method: purchase.payment_method,
-		payment_status: 'created'
+		payment_status: purchase.payment_status
 	};
 
-	const { error } = await supabaseAdmin.from('digital_purchase').upsert([purchaseData]);
+	const { error } = await supabaseAdmin.from('digital_purchase').insert([purchaseData]);
 	if (error) throw error;
 	console.log(`Product inserted/updated: ${purchase.id}`);
 };
 
-// export {
-// 	upsertProductRecord,
-// 	upsertPriceRecord,
-// 	createOrRetrieveCustomer,
-// 	manageSubscriptionStatusChange
-// };
+export {
+	// upsertProductRecord,
+	// upsertPriceRecord,
+	// createOrRetrieveCustomer,
+	// manageSubscriptionStatusChange,
+	createDigitalPurchase
+};
