@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Time from 'svelte-time';
-	import { generateUUID, getURL } from '$lib/utils/helpers';
+	import { generateUUID } from '$lib/utils/helpers';
 
 	export let data: any;
 
