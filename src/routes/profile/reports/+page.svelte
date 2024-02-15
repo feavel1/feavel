@@ -1,14 +1,14 @@
-<script>
+<script lang="ts">
 	import ServiceReportCard from '$lib/components/ui/services/ServiceReportCard.svelte';
 	import { LucidePlus, LucideReceipt } from 'lucide-svelte';
 
 	export let data;
 
-	let { digital_purchase, supabase } = data;
-	$: ({ digital_purchase, supabase } = data);
+	let { supabase, digital_purchase } = data;
+	$: ({ supabase, digital_purchase } = data);
 </script>
 
-{#if !digital_purchase}
+{#if digital_purchase.length == 0}
 	<div class="text-center">
 		<LucideReceipt class="mx-auto h-12 w-12 text-gray-400" />
 		<h3 class="mt-2 text-sm font-semibold text-gray-900">No reports are available</h3>

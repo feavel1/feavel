@@ -17,18 +17,18 @@ export const load: PageServerLoad = async ({ params, locals: { supabase } }) => 
 		throw redirect(302, '/posts');
 	}
 
-	const { data: comments, error: commentsError } = await supabase
-		.from('post_comment')
-		.select(`content, created_at, id, post_comment_like(user_id)`)
-		.order('created_at', { ascending: false })
-		.eq('post_id', params.postId);
-	if (commentsError) {
-		console.log(commentsError);
-	}
+	// const { data: comments, error: commentsError } = await supabase
+	// 	.from('post_comment')
+	// 	.select(`content, created_at, id, post_comment_like(user_id)`)
+	// 	.order('created_at', { ascending: false })
+	// 	.eq('post_id', params.postId);
+	// if (commentsError) {
+	// 	console.log(commentsError);
+	// }
 
 	// Return the data and errors
 	return {
-		post,
-		comments
+		post
+		// comments
 	};
 };

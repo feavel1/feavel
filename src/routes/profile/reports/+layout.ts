@@ -5,7 +5,9 @@ export const load: ServerLoad = async ({ parent }) => {
 
 	const { data: digital_purchase, error: service_error } = await supabase
 		.from('digital_purchase')
-		.select(`id, created_at, service_id(name, cover_url), price, payment_method, payment_status`)
+		.select(
+			`id, created_at, service_id(id, name, cover_url, highlights), price, payment_method, payment_status`
+		)
 		.eq('user_id', session.user.id);
 
 	if (service_error) {

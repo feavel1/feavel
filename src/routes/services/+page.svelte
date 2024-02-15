@@ -64,8 +64,15 @@
 					<div id="menu" class="relative inline-block text-left">
 						<button class="btn variant-filled" use:popup={popupFeatured}>Category</button>
 
-						<div class="card p-4 w-72 shadow-xl" data-popup="popupFeatured">
-							<ListBox multiple>
+						<div
+							class="p-4 w-72 shadow-2xl bg-secondary-50 dark:bg-secondary-800 dark:text-white rounded-lg z-50"
+							data-popup="popupFeatured"
+						>
+							<ListBox
+								multiple={true}
+								active="variant-filled-primary"
+								hover="hover:variant-soft-primary"
+							>
 								{#each all_tags as category}
 									<ListBoxItem bind:group={selectable} name="medium" value={category}>
 										{category}
