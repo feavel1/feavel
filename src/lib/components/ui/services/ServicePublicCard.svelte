@@ -1,4 +1,6 @@
 <script lang="ts">
+	// This card is used in /services
+
 	import type { SupabaseClient } from '@supabase/supabase-js';
 
 	export let service: any;
@@ -44,6 +46,7 @@
 	<p class="mt-1 text-sm italic text-gray-500">
 		<!-- {#each service.highlights as hl}
 			{hl}
-		{/each} -->{service.created_by.name}
+		{/each} -->
+		{service.created_by.name}
 	</p>
 </a>

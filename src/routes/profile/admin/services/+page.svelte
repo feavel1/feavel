@@ -45,9 +45,7 @@
 	<div class="mt-10">
 		<div class="mx-auto max-w-7xl sm:px-2 lg:px-8">
 			<div class="mx-auto max-w-2xl space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
-				<div
-					class="border-b border-t border-gray-200 dark:bg-surface-800 bg-white shadow-sm sm:rounded-lg sm:border"
-				>
+				<div class=" border-gray-200 dark:bg-surface-800 bg-white shadow-sm sm:rounded-lg border">
 					<div
 						class="flex items-center border-b border-gray-200 p-4 sm:grid sm:grid-cols-4 sm:gap-x-6 sm:p-6"
 					>

@@ -1,6 +1,7 @@
 <script lang="ts">
-	import type { SupabaseClient } from '@supabase/supabase-js';
+	// This card is used in /profile/admin/services
 
+	import type { SupabaseClient } from '@supabase/supabase-js';
 	export let service: any;
 	export let supabase: SupabaseClient;
 
@@ -65,10 +66,7 @@
 			class="mt-6 flex items-center space-x-4 divide-x divide-gray-200 border-t border-gray-200 pt-4 text-sm font-medium sm:ml-4 sm:mt-0 sm:border-none sm:pt-0"
 		>
 			<div class="flex flex-1 justify-center">
-				<a
-					href="/profile/admin/services/{service.id}"
-					class="whitespace-nowrap text-indigo-600 hover:text-indigo-500">Edit Service</a
-				>
+				<a href="/profile/admin/services/{service.id}" class="whitespace-nowrap">Edit Service</a>
 			</div>
 			<div class="flex flex-1 justify-center pl-4">
 				<div class="whitespace-nowrap text-indigo-600 hover:text-indigo-500">Share</div>

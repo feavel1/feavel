@@ -26,9 +26,9 @@
 
 	$: if (transformedService?.cover_url) downloadImage(transformedService.cover_url);
 
+	const genOrdNumber = generateUUID();
 	let wechatForm;
 	let alipayForm;
-	const genOrdNumber = generateUUID();
 </script>
 
 <div class="mx-auto px-4 py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -85,7 +85,6 @@
 				<input type="hidden" name="out_trade_no" value={genOrdNumber} />
 				<input type="hidden" name="service_id" value={transformedService.id} />
 				<input type="hidden" name="money" value={transformedService.price} />
-				<input type="hidden" name="device" value="pc" />
 				<button type="submit" class="btn w-full mt-10 bg-green-500">Pay with Wechat</button>
 			</form>
 
@@ -94,7 +93,6 @@
 				<input type="hidden" name="out_trade_no" value={genOrdNumber} />
 				<input type="hidden" name="service_id" value={transformedService.id} />
 				<input type="hidden" name="money" value={transformedService.price} />
-				<input type="hidden" name="device" value="pc" />
 
 				<button type="submit" class="btn bg-cyan-500 w-full mt-10">Pay with Alipay</button>
 			</form>

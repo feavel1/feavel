@@ -10,7 +10,6 @@ export const actions: Actions = {
 		const data = await request.formData();
 
 		if (!session) {
-			alert('You must be logged in to create purchase 🫨');
 			throw redirect(302, '/profile');
 		}
 
@@ -36,8 +35,6 @@ export const actions: Actions = {
 
 		const url = epayClient.getPayLink(specialParam);
 
-		// Bussiness logic goes here, insert everything you need to supabase, and redirect your user to payment page.
-
 		const purchaseData = {
 			id: specialParam.out_trade_no,
 			user_id: session.user.id,
@@ -49,7 +46,7 @@ export const actions: Actions = {
 
 		createDigitalPurchase(purchaseData);
 
-		redirect(300, url);
+		throw redirect(303, url);
 	}
 };
 
