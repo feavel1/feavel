@@ -11,7 +11,7 @@ export const load = async ({ parent }: any) => {
 		.from('studios')
 		.select('id, user_id, name, description, salary_expectation, status')
 		.eq('user_id', session.user.id)
-		.single();
+		.maybeSingle();
 
 	const { data: userdata } = await supabase
 		.from('users')
