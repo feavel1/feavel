@@ -1,13 +1,8 @@
 import { capitalizeFirstLetter } from '$lib/utils/helpers';
+import type { Load } from '@sveltejs/kit';
 
-export const load = async ({ parent }: any) => {
-	const { applicationStatus, supabase, session, userdata } = await parent();
-
-	const { data: studios, error: studioErr } = await supabase
-		.from('studios')
-		.select('id, user_id, name, description, salary_expectation, status')
-		.eq('user_id', session.user.id)
-		.single();
+export const load: Load = async ({ parent }) => {
+	const { supabase, session, userdata, studios } = await parent();
 
 	const { data: services, error: serviceErr } = await supabase
 		.from('services')
@@ -31,7 +26,6 @@ export const load = async ({ parent }: any) => {
 	}));
 
 	return {
-		applicationStatus,
 		services,
 		serCatSer,
 		studios,

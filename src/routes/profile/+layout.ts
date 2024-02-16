@@ -7,9 +7,9 @@ export const load = async ({ parent }: any) => {
 		throw redirect(302, '/auth');
 	}
 
-	const { data: applicationStatus } = await supabase
+	const { data: studio, error: studioErr } = await supabase
 		.from('studios')
-		.select('status')
+		.select('id, user_id, name, description, salary_expectation, status')
 		.eq('user_id', session.user.id)
 		.single();
 
@@ -20,7 +20,7 @@ export const load = async ({ parent }: any) => {
 		.single();
 
 	return {
-		applicationStatus,
+		studio,
 		userdata
 	};
 };

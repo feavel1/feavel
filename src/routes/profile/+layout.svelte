@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Cloud from '$lib/components/ui/layout/Cloud.svelte';
 	import {
 		LucideHome,
@@ -11,8 +11,8 @@
 	} from 'lucide-svelte';
 
 	export let data;
-	let { applicationStatus } = data;
-	$: ({ applicationStatus } = data);
+	let { studio } = data;
+	$: ({ studio } = data);
 </script>
 
 <!-- <Grid /> -->
@@ -68,7 +68,7 @@
 			<li>
 				<hr />
 			</li>
-			{#if applicationStatus.status == 'approved'}
+			{#if studio != null}
 				<li>
 					<a
 						href="/profile/admin"

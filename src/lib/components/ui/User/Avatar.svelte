@@ -57,7 +57,7 @@
 	$: if (url) downloadImage(url);
 </script>
 
-<div class="md:col-span-2 flex items-center gap-x-8">
+<div class="md:col-span-2 flex items-center gap-x-8 mb-10">
 	{#if avatarUrl}
 		<Avatar
 			src={avatarUrl}
@@ -66,7 +66,7 @@
 			rounded="rounded-3xl"
 		/>
 	{:else}
-		<div class="placeholder rounded-xl w-full size-{size} max-w-14 mb-2" />
+		<div class="placeholder rounded-lg h-14 w-14 animate-pulse" />
 	{/if}
 	{#if uploadable}
 		<input type="hidden" name="avatarUrl" value={url} />

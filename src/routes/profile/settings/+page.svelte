@@ -88,7 +88,7 @@
 						<div class="mt-2">
 							<div class="input flex">
 								<span class="flex select-none items-center pl-3 text-gray-400 sm:text-sm"
-									>feavel.com/</span
+									>feavel.com/user/</span
 								>
 								<input
 									id="username"

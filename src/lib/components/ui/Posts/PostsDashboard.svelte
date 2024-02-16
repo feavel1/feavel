@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import PostPlaceHolder from '../PostPlaceHolder.svelte';
 	import PostDashboardCard from './PostDashboardCard.svelte';
+	import { LucideFilePlus, LucidePlus } from 'lucide-svelte';
 
 	export let supabase: any, session: any;
 
@@ -36,7 +37,7 @@
 	}
 </script>
 
-<ul class="list space-y-4">
+<ul class="list space-y-4 my-16">
 	{#if isLoading}
 		<PostPlaceHolder />
 	{:else if source.length != 0}
@@ -44,6 +45,20 @@
 			<PostDashboardCard {post} />
 		{/each}
 	{:else}
-		<div>Create a post and see it here!</div>
+		<div class="text-center">
+			<LucideFilePlus class="mx-auto h-12 w-12 text-gray-400" />
+			<h3 class="mt-2 text-sm font-semibold text-gray-900">You have no posts available</h3>
+			<p class="mt-1 text-sm text-gray-500">Get started by creating a new post.</p>
+			<div class="mt-6">
+				<a
+					href="/posts/create-post"
+					type="button"
+					class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+				>
+					<LucidePlus class="-ml-0.5 mr-1.5 h-5 w-5" />
+					New Post
+				</a>
+			</div>
+		</div>
 	{/if}
 </ul>
