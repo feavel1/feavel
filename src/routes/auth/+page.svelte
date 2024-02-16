@@ -46,7 +46,7 @@
 				email,
 				password,
 				options: {
-					emailRedirectTo: `${location.origin}/auth/callback`
+					emailRedirectTo: `${window.location.origin}/auth/callback`
 				}
 			});
 			if (error) throw error;
