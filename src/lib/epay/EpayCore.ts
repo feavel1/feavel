@@ -1,18 +1,11 @@
 import md5 from 'crypto-js/md5';
 
-const config = {
-	pid: '1025',
-	key: 'Je7oF8n28uu0g8bRXuf02juR8g8uN6ui',
-	apiurl: 'https://api.jcckj.asia/'
-};
-
 class EpayCore {
 	private pid: string;
 	private key: string;
 	private submit_url: string;
 	private mapi_url: string;
 	private api_url: string;
-	private sign_type: string = 'MD5';
 
 	constructor(config: { pid: string; key: string; apiurl: string }) {
 		this.pid = config.pid;
@@ -56,18 +49,24 @@ class EpayCore {
 	}
 
 	// 异步回调验证
-	public verifyNotify(param_tmp: {}): boolean {
-		if (Object.keys(param_tmp).length === 0) return false;
-		const sign = this.getSign(param_tmp);
-		const signResult = sign === '' ? true : false;
+	public verifyNotify(param_tmp: URLSearchParams): boolean {
+		if (!param_tmp) return false;
+		const params = new URLSearchParams(param_tmp);
+		const paramObject = Object.fromEntries(params);
+		if (Object.keys(paramObject).length === 0) return false;
+		const sign = this.getSign(paramObject);
+		const signResult = sign === paramObject.sign ? true : false;
 		return signResult;
 	}
 
 	// 同步回调验证
-	public verifyReturn(): boolean {
-		if (Object.keys(<Record<string, string>>{}).length === 0) return false;
-		const sign = this.getSign(<Record<string, string>>{});
-		const signResult = sign === '' ? true : false;
+	public verifyReturn(param_tmp: URLSearchParams): boolean {
+		if (!param_tmp) return false;
+		const params = new URLSearchParams(param_tmp);
+		const paramObject = Object.fromEntries(params);
+		if (Object.keys(paramObject).length === 0) return false;
+		const sign = this.getSign(paramObject);
+		const signResult = sign === paramObject.sign ? true : false;
 		return signResult;
 	}
 
