@@ -2,12 +2,12 @@ import { capitalizeFirstLetter } from '$lib/utils/helpers';
 import type { Load } from '@sveltejs/kit';
 
 export const load: Load = async ({ parent }) => {
-	const { supabase, session, userdata, studios } = await parent();
+	const { supabase, userdata, studio } = await parent();
 
 	const { data: services, error: serviceErr } = await supabase
 		.from('services')
 		.select('id, name, description, highlights, price, status, enabled, cover_url')
-		.eq('created_by', studios.id);
+		.eq('created_by', studio.id);
 
 	const { data: serviceCategory, error: tagSugestionsError } = await supabase
 		.from('services_category')
@@ -18,7 +18,7 @@ export const load: Load = async ({ parent }) => {
 		.select(
 			`id, created_at, service_id(id, name, cover_url, highlights), price, payment_method, payment_status`
 		)
-		.eq('service_id.created_by', studios.id);
+		.eq('service_id.created_by', studio.id);
 
 	let serCatSer = serviceCategory.map((t: { category_name: string }) => ({
 		label: capitalizeFirstLetter(t.category_name),
@@ -28,7 +28,7 @@ export const load: Load = async ({ parent }) => {
 	return {
 		services,
 		serCatSer,
-		studios,
+		studio,
 		userdata,
 		ordered_services
 	};

@@ -5,10 +5,10 @@
 
 	export let data;
 
-	let { supabase, session, applicationStatus } = data;
-	$: ({ session, supabase, applicationStatus } = data);
+	let { supabase, session, studio } = data;
+	$: ({ session, supabase, studio } = data);
 
-	console.log(applicationStatus);
+	console.log(studio);
 	let loading = false;
 
 	const handleSubmit: SubmitFunction = () => {
@@ -21,7 +21,7 @@
 	let profileForm: HTMLFormElement;
 </script>
 
-{#if applicationStatus == null}
+{#if studio == null}
 	<div>
 		<div class="px-4 sm:px-0">
 			<h3 class="text-base font-semibold leading-7">Applicant Information</h3>
@@ -114,7 +114,7 @@
 			</div>
 		</form>
 	</div>
-{:else if applicationStatus.status == 'applied'}
+{:else if studio.status == 'applied'}
 	<div class="rounded-md bg-green-50 p-4">
 		<div class="flex">
 			<div class="flex-shrink-0">
@@ -125,9 +125,9 @@
 			</div>
 		</div>
 	</div>
-{:else if applicationStatus.status == 'blocked'}
+{:else if studio.status == 'blocked'}
 	Sorry, you are blocked. plese contact the manager
-{:else if applicationStatus.status == 'approved'}
+{:else if studio.status == 'approved'}
 	<div class="rounded-md bg-green-50 p-4">
 		<div class="flex">
 			<div class="flex-shrink-0">

@@ -1,7 +1,7 @@
 export const load = async ({ parent }: any) => {
-	const { applicationStatus } = await parent();
+	const { studio } = await parent();
 
 	return {
-		applicationStatus
+		studio
 	};
 };

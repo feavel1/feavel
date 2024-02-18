@@ -4,15 +4,15 @@
 
 	export let data;
 
-	let { supabase, session, applicationStatus, studios, userdata, services } = data;
-	$: ({ session, supabase, applicationStatus, studios, userdata, services } = data);
+	let { supabase, session, studio, userdata, services } = data;
+	$: ({ session, supabase, studio, userdata, services } = data);
 
 	function serLenCalc(arr: Array<typeof services>, condition: typeof services.status) {
 		return arr.filter((service) => service.status == condition).length;
 	}
 </script>
 
-{#if applicationStatus == null}
+{#if studio == null}
 	<div class="text-center">
 		<LucideUserX class="mx-auto h-12 w-12 text-secondary-400" />
 		<h3 class="mt-2 text-sm font-semibold text-gray-900">You don't have admin permission</h3>
@@ -37,7 +37,7 @@
 			</a>
 		</div>
 	</div>
-{:else if applicationStatus.status == 'applied'}
+{:else if studio.status == 'applied'}
 	<div class="rounded-md bg-green-50 p-4">
 		<div class="flex">
 			<div class="flex-shrink-0">
@@ -48,18 +48,18 @@
 			</div>
 		</div>
 	</div>
-{:else if applicationStatus.status == 'blocked'}
+{:else if studio.status == 'blocked'}
 	Sorry, you are blocked. plese contact the manager.
-{:else if applicationStatus.status == 'approved'}
+{:else if studio.status == 'approved'}
 	<div class="flex">
 		<Avatar {supabase} uploadable={false} bind:url={userdata.avatar_url} size={20} />
 		<div class="ml-4">
 			<div class="label">
-				<div class="h3">{studios.name}</div>
+				<div class="h3">{studio.name}</div>
 			</div>
 
 			<div class="label">
-				<div class="">{studios.description}</div>
+				<div class="">{studio.description}</div>
 			</div>
 		</div>
 	</div>

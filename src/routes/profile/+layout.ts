@@ -1,6 +1,6 @@
-import { redirect } from '@sveltejs/kit';
+import { redirect, type Load } from '@sveltejs/kit';
 
-export const load = async ({ parent }: any) => {
+export const load: Load = async ({ parent }) => {
 	const { supabase, session } = await parent();
 
 	if (!session) {
