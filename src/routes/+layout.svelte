@@ -42,6 +42,7 @@
 	import { ParaglideJS } from '@inlang/paraglide-js-adapter-sveltekit';
 	import { i18n } from '$lib/i18n/server';
 	import { setLanguageTag } from '$paraglide/runtime';
+	import LangSwitch from '$lib/i18n/LangSwitch.svelte';
 
 	const modalStore = getModalStore();
 
@@ -99,6 +100,7 @@
 			</div>
 		</svelte:fragment>
 		<svelte:fragment slot="trail">
+			<LangSwitch />
 			<SearchButton />
 			<LightSwitch />
 		</svelte:fragment>
