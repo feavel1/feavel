@@ -91,14 +91,14 @@
 			Search posts
 		</button>
 	</div>
-	<div
+	<!-- <div
 		class="card max-w-xl max-h-48 p-4 overflow-y-auto z-50 bg-surface-200"
 		data-popup="popupAutocomplete"
 	>
 		<div class="text-lg ml-4">Filter by tag:</div>
 		<hr class="my-2" />
 		<Autocomplete bind:input={inputDemo} options={flavorOptions} on:selection={onFlavorSelection} />
-	</div>
+	</div> -->
 
 	<ol class="list card m-2 p-4">
 		{#if isLoading || source.length == 0}

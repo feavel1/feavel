@@ -21,9 +21,9 @@
 	on:click={modalOpen}
 	aria-expanded="false"
 	aria-label={ariaLabel}
-	class="btn btn-sm variant-ringed-primary px-3 rounded-3xl"
+	class="btn btn-sm variant-filled-success px-3 rounded-md h-6"
 >
-	<SearchIcon class="relative w-4 h-4 mr-2" />
+	<SearchIcon class="relative w-4 h-4 " />
 
-	Search
+	<span class="hidden sm:block ml-2">Search</span>
 </button>

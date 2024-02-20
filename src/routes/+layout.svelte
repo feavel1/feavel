@@ -39,6 +39,10 @@
 	import Footer from '$lib/components/ui/layout/Footer.svelte';
 	import Feavel from '$lib/components/ui/logo/Feavel.svelte';
 
+	import { ParaglideJS } from '@inlang/paraglide-js-adapter-sveltekit';
+	import { i18n } from '$lib/i18n/server';
+	import { setLanguageTag } from '$paraglide/runtime';
+
 	const modalStore = getModalStore();
 
 	export let data;
@@ -71,37 +75,39 @@
 	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
 </svelte:head>
 
-<Toast />
+<ParaglideJS {i18n}>
+	<Toast />
 
-<Modal
-	components={modalRegistry}
-	transitionIn={fade}
-	transitionOut={fade}
-	transitionInParams={{ duration: 600 }}
-	transitionOutParams={{ duration: 500 }}
-/>
+	<Modal
+		components={modalRegistry}
+		transitionIn={fade}
+		transitionOut={fade}
+		transitionInParams={{ duration: 600 }}
+		transitionOutParams={{ duration: 500 }}
+	/>
 
-<Noise />
+	<Noise />
 
-<AppBar class="px-4 py-2 lg:px-32 fixed w-full z-50" background="">
-	<svelte:fragment slot="lead">
-		<div class="flex flex-row items-center">
-			<HamburgerIcon />
-			<a href="/" class="sm:mr-5"><Feavel /></a>
-		</div>
-		<div class="hidden lg:inline">
-			<Navigation />
-		</div>
-	</svelte:fragment>
-	<svelte:fragment slot="trail">
-		<SearchButton />
-		<LightSwitch />
-	</svelte:fragment>
-</AppBar>
-<Breadcrumbs path={$page.url.pathname} />
+	<AppBar class="px-4 py-2 lg:px-32 fixed w-full z-50" background="">
+		<svelte:fragment slot="lead">
+			<div class="flex flex-row items-center">
+				<HamburgerIcon />
+				<a href="/" class="sm:mr-5"><Feavel /></a>
+			</div>
+			<div class="hidden lg:inline">
+				<Navigation />
+			</div>
+		</svelte:fragment>
+		<svelte:fragment slot="trail">
+			<SearchButton />
+			<LightSwitch />
+		</svelte:fragment>
+	</AppBar>
+	<Breadcrumbs path={$page.url.pathname} />
 
-<div class="min-h-dvh mx-auto">
-	<slot />
-</div>
+	<div class="min-h-dvh mx-auto">
+		<slot />
+	</div>
 
-<Footer />
+	<Footer />
+</ParaglideJS>
