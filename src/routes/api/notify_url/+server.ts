@@ -4,7 +4,7 @@ import { json, type RequestHandler } from '@sveltejs/kit';
 export const POST: RequestHandler = async ({ url }) => {
 	const params = url.searchParams;
 
-	const verify_result = epayClient.verifyReturn(params);
+	const verify_result = epayClient.verifyNotify(params);
 
 	if (verify_result) {
 		// If verification succeeds
