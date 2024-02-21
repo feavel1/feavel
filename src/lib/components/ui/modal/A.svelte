@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { getModalStore } from '@skeletonlabs/skeleton';
 
 	const modalStore = getModalStore();
@@ -10,7 +10,7 @@
 </script>
 
 <li class="btn child-hover:line-through child-hover:opacity-50">
-	<a on:click={modalClose} {href} data-sveltekit-preload-code="viewport">
+	<a on:click={modalClose} {href}>
 		<slot />
 	</a>
-</li>
+</li> -->

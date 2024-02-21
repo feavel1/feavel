@@ -1,4 +1,4 @@
-// ./src/lib/i18n/server.ts
+// ./src/lib/i18n/server.js
 
 import { createI18n } from '@inlang/paraglide-js-adapter-sveltekit';
 import * as runtime from '$paraglide/runtime';
