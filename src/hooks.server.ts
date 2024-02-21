@@ -34,3 +34,5 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	});
 };
+
+export const reroute = i18n.handle();
