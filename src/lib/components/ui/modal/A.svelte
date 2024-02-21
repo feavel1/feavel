@@ -10,7 +10,7 @@
 </script>
 
 <li class="btn child-hover:line-through child-hover:opacity-50">
-	<a on:click={modalClose} {href} data-sveltekit-preload-code="eager">
+	<a on:click={modalClose} {href} data-sveltekit-preload-code="viewport">
 		<slot />
 	</a>
 </li>
