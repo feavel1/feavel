@@ -18,8 +18,8 @@
 	const drawerStore = getDrawerStore();
 
 	//Breadcrumbs
-	import { page } from '$app/stores';
-	import Breadcrumbs from '$lib/components/ui/Breadcrumbs.svelte';
+	// import { page } from '$app/stores';
+	// import Breadcrumbs from '$lib/components/ui/Breadcrumbs.svelte';
 
 	// Authentication on Client Side
 	import { invalidate } from '$app/navigation';
@@ -41,7 +41,6 @@
 
 	import { ParaglideJS } from '@inlang/paraglide-js-adapter-sveltekit';
 	import { i18n } from '$lib/i18n/server';
-	import { setLanguageTag } from '$paraglide/runtime';
 	import LangSwitch from '$lib/i18n/LangSwitch.svelte';
 
 	const modalStore = getModalStore();
@@ -105,7 +104,7 @@
 			<LightSwitch />
 		</svelte:fragment>
 	</AppBar>
-	<Breadcrumbs path={$page.url.pathname} />
+	<!-- <Breadcrumbs path={$page.url.pathname} /> -->
 
 	<div class="min-h-dvh mx-auto">
 		<slot />

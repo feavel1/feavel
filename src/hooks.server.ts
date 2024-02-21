@@ -1,8 +1,12 @@
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 import { createServerClient } from '@supabase/ssr';
 import type { Handle } from '@sveltejs/kit';
+import { i18n } from '$lib/i18n/server';
+
+export const i18handle = i18n.handle();
 
 export const handle: Handle = async ({ event, resolve }) => {
+	// Initialize Supabase client and attach it to event.locals
 	event.locals.supabase = createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
 		cookies: {
 			get: (key) => event.cookies.get(key),
@@ -15,11 +19,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	});
 
-	/**
-	 * a little helper that is written for convenience so that instead
-	 * of calling `const { data: { session } } = await supabase.auth.getSession()`
-	 * you just call this `await getSession()`
-	 */
+	// Define a helper function to get session
 	event.locals.getSession = async () => {
 		const {
 			data: { session }
@@ -27,6 +27,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		return session;
 	};
 
+	// Call the original resolve function and customize response headers
 	return resolve(event, {
 		filterSerializedResponseHeaders(name) {
 			return name === 'content-range';

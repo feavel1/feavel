@@ -5,16 +5,16 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [
+		paraglide({
+			project: './project.inlang',
+			outdir: './src/paraglide'
+		}),
 		sveltekit(),
 		purgeCss({
 			safelist: {
 				// any selectors that begin with "hljs-" will not be purged
 				greedy: [/^hljs-/]
 			}
-		}),
-		paraglide({
-			project: './project.inlang',
-			outdir: './src/paraglide'
 		})
 	]
 });
