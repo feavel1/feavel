@@ -3,8 +3,6 @@ import { createServerClient } from '@supabase/ssr';
 import type { Handle } from '@sveltejs/kit';
 import { i18n } from '$lib/i18n/server';
 
-export const i18handle = i18n.handle();
-
 export const handle: Handle = async ({ event, resolve }) => {
 	// Initialize Supabase client and attach it to event.locals
 	event.locals.supabase = createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
@@ -34,5 +32,3 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	});
 };
-
-export const reroute = i18n.handle();
