@@ -1,10 +1,8 @@
 <script lang="ts">
 	import '../app.postcss';
 	import 'highlight.js/styles/github-dark.css';
-	// import hljs from 'highlight.js';
 	import {
 		AppBar,
-		// storeHighlightJs,
 		getDrawerStore,
 		LightSwitch,
 		autoModeWatcher,
@@ -13,37 +11,37 @@
 		Modal,
 		type ModalComponent
 	} from '@skeletonlabs/skeleton';
-	// storeHighlightJs.set(hljs);
-	initializeStores();
-	const drawerStore = getDrawerStore();
-
-	//Breadcrumbs
-	// import { page } from '$app/stores';
-	// import Breadcrumbs from '$lib/components/ui/Breadcrumbs.svelte';
-
-	// Authentication on Client Side
+	import { page } from '$app/stores';
+	import Breadcrumbs from '$lib/components/ui/Breadcrumbs.svelte';
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import Navigation from '$lib/components/ui/Navigation.svelte';
 	import Noise from '$lib/components/ui/Noise.svelte';
-
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	import { fade } from 'svelte/transition';
-
 	import { getModalStore } from '@skeletonlabs/skeleton';
 	import NavModal from '$lib/components/ui/modal/NavModal.svelte';
 	import SearchModal from '$lib/components/ui/modal/SearchModal.svelte';
 	import HamburgerIcon from '$lib/components/ui/modal/HamburgerIcon.svelte';
 	import SearchButton from '$lib/components/ui/modal/SearchButton.svelte';
-	import Footer from '$lib/components/ui/layout/Footer.svelte';
 	import Feavel from '$lib/components/ui/logo/Feavel.svelte';
-
+	// import Footer from '$lib/components/ui/layout/Footer.svelte';
+	import LangSwitch from '$lib/i18n/LangSwitch.svelte';
+	import {
+		availableLanguageTags,
+		setLanguageTag,
+		sourceLanguageTag,
+		type AvailableLanguageTag
+	} from '$paraglide/runtime';
+	import { getTextDirection, translatePath } from '$lib/i18n/server';
+	import { browser } from '$app/environment';
 	import { ParaglideJS } from '@inlang/paraglide-js-adapter-sveltekit';
 	import { i18n } from '$lib/i18n/server';
-	import LangSwitch from '$lib/i18n/LangSwitch.svelte';
 
+	initializeStores();
 	const modalStore = getModalStore();
+	const drawerStore = getDrawerStore();
 
 	export let data;
 
@@ -68,11 +66,26 @@
 		modalComponentOne: { ref: NavModal },
 		searchModal: { ref: SearchModal, props: { supabase: supabase } }
 	};
+
+	$: lang = ($page.params.lang as AvailableLanguageTag) ?? sourceLanguageTag;
+	$: setLanguageTag(lang);
+
+	//Determine the text direction of the current language
+	$: textDirection = getTextDirection(lang);
+
+	//Keep the <html> lang and dir attributes in sync with the current language
+	$: if (browser) {
+		document.documentElement.dir = textDirection;
+		document.documentElement.lang = lang;
+	}
 </script>
 
 <svelte:head>
 	<title>Feavel's Blog</title>
 	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
+	{#each availableLanguageTags as lang}
+		<link rel="alternate" hreflang={lang} href={translatePath($page.url.pathname, lang)} />
+	{/each}
 </svelte:head>
 
 <ParaglideJS {i18n}>
@@ -92,7 +105,7 @@
 		<svelte:fragment slot="lead">
 			<div class="flex flex-row items-center">
 				<HamburgerIcon />
-				<a href="/" class="sm:mr-5"><Feavel /></a>
+				<Feavel />
 			</div>
 			<div class="hidden lg:inline">
 				<Navigation />
@@ -104,11 +117,11 @@
 			<LightSwitch />
 		</svelte:fragment>
 	</AppBar>
-	<!-- <Breadcrumbs path={$page.url.pathname} /> -->
+	<Breadcrumbs path={$page.url.pathname} />
 
 	<div class="min-h-dvh mx-auto">
 		<slot />
 	</div>
-
-	<Footer />
 </ParaglideJS>
+
+<!-- <Footer /> -->

@@ -1,3 +1,4 @@
+import { throwRedirect } from '$lib/utils/helpers';
 import { error, fail, redirect, type Actions } from '@sveltejs/kit';
 
 export const actions: Actions = {
@@ -37,7 +38,7 @@ export const actions: Actions = {
 		const session = await getSession();
 		if (session) {
 			await supabase.auth.signOut();
-			throw redirect(303, '/');
+			throwRedirect(303, '/');
 		}
 	}
 };

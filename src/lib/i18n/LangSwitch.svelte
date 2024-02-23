@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { availableLanguageTags } from '$paraglide/runtime';
 
-	import { page } from '$app/stores';
-
-	import { i18n } from '$lib/i18n/server';
 	import { LucideLanguages } from 'lucide-svelte';
 	import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
+	import { translatePath } from '$lib/i18n/server';
+	import { page } from '$app/stores';
 
 	const popupFeatured: PopupSettings = {
 		event: 'click',
@@ -24,7 +23,7 @@
 		{#each availableLanguageTags as lang}
 			<a
 				class="capitalize btn variant-filled-primary"
-				href={i18n.route($page.url.pathname)}
+				href={translatePath($page.url.pathname, lang)}
 				hreflang={lang}
 			>
 				{lang}

@@ -1,10 +1,11 @@
+import { throwRedirect } from '$lib/utils/helpers';
 import { redirect, type Load } from '@sveltejs/kit';
 
 export const load: Load = async ({ parent }) => {
 	const { supabase, session } = await parent();
 
 	if (!session) {
-		throw redirect(302, '/auth');
+		throwRedirect(302, '/auth');
 	}
 
 	const { data: studio, error: studioErr } = await supabase

@@ -1,5 +1,5 @@
 import { epayClient } from '$lib/epay/epay-client';
-import { getURL } from '$lib/utils/helpers';
+import { getURL, throwRedirect } from '$lib/utils/helpers';
 import { redirect, type Actions, type ServerLoad } from '@sveltejs/kit';
 import { createDigitalPurchase } from '$lib/supabase/supabase-admin';
 
@@ -10,7 +10,7 @@ export const actions: Actions = {
 		const data = await request.formData();
 
 		if (!session) {
-			throw redirect(302, '/profile');
+			throwRedirect(302, '/profile');
 		}
 
 		const pid = 1025;

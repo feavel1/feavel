@@ -3,6 +3,9 @@
 // import { MERCHANT_KEY } from '$env/static/private';
 // import * as crypto from 'crypto';
 import { PUBLIC_SITE_URL } from '$env/static/public';
+import { translatePath } from '$lib/i18n/server';
+import { languageTag } from '$paraglide/runtime';
+import { redirect } from '@sveltejs/kit';
 
 export const getURL = () => {
 	let url =
@@ -65,4 +68,8 @@ export const generateUUID = () => {
 
 export function isMobileOrTablet() {
 	return /(android|iphone|ipad|mobile)/i.test(navigator.userAgent);
+}
+
+export function throwRedirect(status: any, route: string) {
+	throw redirect(status, translatePath(route, languageTag())); // equivalent of this function
 }

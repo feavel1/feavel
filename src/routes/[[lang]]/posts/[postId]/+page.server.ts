@@ -1,7 +1,7 @@
-import { redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import { throwRedirect } from '$lib/utils/helpers';
+import { redirect, type ServerLoad } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async ({ params, locals: { supabase } }) => {
+export const load: ServerLoad = async ({ params, locals: { supabase } }) => {
 	const { data: post, error: postError } = await supabase
 		.from('posts')
 		.select(
@@ -14,7 +14,7 @@ export const load: PageServerLoad = async ({ params, locals: { supabase } }) => 
 	}
 
 	if (post == null) {
-		throw redirect(302, '/posts');
+		throwRedirect(302, '/posts');
 	}
 
 	// const { data: comments, error: commentsError } = await supabase

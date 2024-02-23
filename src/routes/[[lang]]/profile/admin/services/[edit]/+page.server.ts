@@ -1,5 +1,5 @@
-import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+import { throwRedirect } from '$lib/utils/helpers';
 
 export const load: PageServerLoad = async ({ params, locals: { supabase } }) => {
 	const { data: service, error: postError } = await supabase
@@ -14,7 +14,7 @@ export const load: PageServerLoad = async ({ params, locals: { supabase } }) => 
 	if (service == null) {
 		alert('No service found');
 
-		throw redirect(302, '/profile');
+		throwRedirect(302, '/profile');
 	}
 
 	return {
