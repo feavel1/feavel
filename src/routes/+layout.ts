@@ -2,7 +2,7 @@ import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/publi
 import { createBrowserClient, isBrowser, parse } from '@supabase/ssr';
 import type { Load } from '@sveltejs/kit';
 
-export const prerender = true;
+// export const prerender = true;
 
 export const load: Load = async ({ fetch, data, depends }) => {
 	depends('supabase:auth');
