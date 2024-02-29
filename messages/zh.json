@@ -9,5 +9,12 @@
 	"posts": "帖子",
 	"services": "服务",
 	"my_profile": "账户",
-	"about": "关于我们"
+	"about": "关于我们",
+	"read_posts": "阅读帖子",
+	"try_feavel_editor_1": "试试「feavel 的编辑器 1.0」",
+	"your_account": "你的帐户",
+	"create_account_and_enjoy": "创建帐户以享受我们的服务！",
+	"email": "邮箱",
+	"password": "密码",
+	"description_1": "这是一个帮助音乐家找到混音师，程序员获得\n启发，作家家开始撰写帖子，设计师制作网站，并预览所有帖子的开源项目\n。您可以随时加入我们的项目并帮助创建混音、新网络\n功能并提交错误修复等等！"
 }
