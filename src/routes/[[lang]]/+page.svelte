@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Feavel from '$lib/components/ui/logo/Feavel.svelte';
+	// import Feavel from '$lib/components/ui/logo/Feavel.svelte';
 	import {
 		LucideArrowRight,
 		LucideAudioLines,
@@ -59,12 +59,12 @@
 				<div class="mt-24 sm:mt-32 lg:mt-16">
 					<!-- <Feavel /> -->
 					<div class="inline-flex space-x-6">
-						<a href="/posts" class="btn variant-glass-primary rounded-3xl">Read posts</a>
+						<a href="/posts" class="btn variant-glass-primary rounded-3xl">{m.read_posts()}</a>
 						<a
 							href="/posts/create-post"
 							class="inline-flex items-center space-x-2 text-sm font-medium ml-10 text-tertiary-600 hover:underline decoration-slice"
 						>
-							<span>Try 「feavel's editor 1.0」</span>
+							<span>{m.try_feavel_editor_1()}</span>
 							<LucideArrowRight class="h-5 w-5 text-gray-500" />
 						</a>
 					</div>
@@ -79,10 +79,7 @@
 					</span>
 				</h1>
 				<p class="mt-6 text-lg leading-8 text-tertiary-600">
-					This is a open source project to help musicians to make songs, programmers to get
-					inspired, thinkers to start writing posts, designers to make web-sites, and read posts all
-					in one application. You can always join our project and help create mixes, new web
-					features and implement bug fixes and much more!
+					{m.description_1()}
 				</p>
 				<div class="mt-10 flex items-center gap-x-6">
 					<a href="/auth" class="btn variant-filled-primary">{m.sign_up()}</a>
@@ -111,46 +108,40 @@
 	<!-- Logo cloud -->
 	<div class="mx-auto mt-8 max-w-7xl px-6 sm:mt-16 lg:px-8">
 		<h2 class="text-center text-lg font-semibold leading-8">
-			The world’s most innovative companies use our app
+			Open source platform, made from open source tech.
 		</h2>
+
 		<div
-			class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5"
+			class="logo-cloud [&>.logo-item]:rounded-xl [&>.logo-item]:variant-filled-primary mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5"
 		>
-			<img
-				class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-				src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg"
-				alt="Transistor"
-				width="158"
-				height="48"
-			/>
-			<img
-				class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-				src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg"
-				alt="Reform"
-				width="158"
-				height="48"
-			/>
-			<img
-				class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-				src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg"
-				alt="Tuple"
-				width="158"
-				height="48"
-			/>
-			<img
-				class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-				src="https://tailwindui.com/img/logos/158x48/savvycal-logo-white.svg"
-				alt="SavvyCal"
-				width="158"
-				height="48"
-			/>
-			<img
-				class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-				src="https://tailwindui.com/img/logos/158x48/statamic-logo-white.svg"
-				alt="Statamic"
-				width="158"
-				height="48"
-			/>
+			<a class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1" href="/">
+				<span>
+					<img class="" src="logos/svelte-kit.png" alt="Transistor" width="158" height="48" />
+				</span>
+			</a>
+			<a class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1" href="/">
+				<span>
+					<img class="" src="logos/supabase_big.svg" alt="Transistor" width="158" height="48" />
+				</span>
+			</a>
+			<a class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1" href="/">
+				<span>
+					<img class="pb-1" src="logos/skeleton.svg" alt="Transistor" width="158" height="48" />
+				</span>
+			</a>
+			<a class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1" href="/">
+				<span>
+					<img class="" src="logos/tiptap.svg" alt="Transistor" width="158" height="48" />
+				</span>
+			</a>
+			<a
+				class="logo-item col-span-2 col-start-2 sm:col-start-auto max-h-12 w-full object-contain lg:col-span-1"
+				href="/"
+			>
+				<span>
+					<img class="" src="logos/unionpay.png" alt="Transistor" width="158" height="48" />
+				</span>
+			</a>
 		</div>
 	</div>
 
@@ -231,17 +222,18 @@
 						<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500">
 							<LucidePackageOpen />
 						</div>
-						Independent
+						Inspire
 					</dt>
 					<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-tertiary-600">
 						<p class="flex-auto">
-							We use open source to inovate our services. Never get locked in or discontinued again!
-							You can always join our community and start submiting features your self.
+							We use open source to innovate our services. Never get locked in or discontinued
+							again! You can always join our community and start submitting features your self.
 						</p>
 						<p class="mt-6">
-							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token"
-								>Learn more <span aria-hidden="true">→</span></a
-							>
+							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token">
+								Learn more
+								<span aria-hidden="true">→</span>
+							</a>
 						</p>
 					</dd>
 				</div>
@@ -393,7 +385,7 @@
 				<dd class="order-first text-3xl font-semibold tracking-tight">6 years+</dd>
 			</div>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">
-				<dt class="text-sm leading-6">Monthy activity</dt>
+				<dt class="text-sm leading-6">Monthly activity</dt>
 				<dd class="order-first text-3xl font-semibold tracking-tight">100+</dd>
 			</div>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">

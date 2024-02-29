@@ -16,5 +16,5 @@ Vercel - easy-to-use server for hosting web app
 
 Git - version management
 
-Jc聚合支付 (integrated payments) - Open source SDK used to receive payments with WeChat and Alipay to a merchant account.
+银联 (integrated payments) - Open source SDK used to receive payments with WeChat and Alipay to a merchant account. （TODO）
 

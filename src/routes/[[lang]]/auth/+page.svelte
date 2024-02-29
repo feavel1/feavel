@@ -1,5 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
+	import * as m from '$paraglide/messages';
 
 	export let data;
 	let { supabase, session } = data;
@@ -65,16 +66,16 @@
 	class="max-w-md mx-auto bg-gradient-to-br variant-gradient-primary-secondary px-8 py-16 rounded-2xl"
 >
 	<div class="flex flex-col align-middle text-center gap-6 items-center w-full">
-		<h1 class="h2 font-extrabold">Create / Sign-in your account</h1>
-		<div>Create an account to enjoy all the services without any ads for free!</div>
+		<h1 class="h2 font-extrabold">{m.sign_up()} / {m.sign_in()} {m.your_account()}</h1>
+		<div>{m.create_account_and_enjoy()}</div>
 		<form class="text-left">
 			<label>
-				<span>Email</span>
+				<span>{m.email()}</span>
 				<input placeholder="abc@abc.com" class="input" name="email" bind:value={email} />
 			</label>
 
 			<label>
-				<span>Password</span>
+				<span>{m.password()}</span>
 				<input
 					placeholder="MySafestPassword"
 					class="input"
@@ -86,8 +87,8 @@
 		</form>
 
 		<div class="btn-group variant-filled mt-2 mx-auto">
-			<button on:click|preventDefault={handleSignUp} disabled={loading}>Sign Up</button>
-			<button on:click|preventDefault={handleSignIn} disabled={loading}>Sign In</button>
+			<button on:click|preventDefault={handleSignUp} disabled={loading}>{m.sign_up()}</button>
+			<button on:click|preventDefault={handleSignIn} disabled={loading}>{m.sign_in()}</button>
 		</div>
 	</div>
 </div>

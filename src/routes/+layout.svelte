@@ -34,14 +34,14 @@
 		sourceLanguageTag,
 		type AvailableLanguageTag
 	} from '$paraglide/runtime';
-	import { getTextDirection, translatePath } from '$lib/i18n/server';
-	import { browser } from '$app/environment';
+	import { translatePath } from '$lib/i18n/server';
+	// import { browser } from '$app/environment';
 	import { ParaglideJS } from '@inlang/paraglide-js-adapter-sveltekit';
 	import { i18n } from '$lib/i18n/server';
 
 	initializeStores();
-	const modalStore = getModalStore();
-	const drawerStore = getDrawerStore();
+	// const modalStore = getModalStore();
+	// const drawerStore = getDrawerStore();
 
 	export let data;
 
@@ -69,23 +69,14 @@
 
 	$: lang = ($page.params.lang as AvailableLanguageTag) ?? sourceLanguageTag;
 	$: setLanguageTag(lang);
-
-	//Determine the text direction of the current language
-	$: textDirection = getTextDirection(lang);
-
-	//Keep the <html> lang and dir attributes in sync with the current language
-	$: if (browser) {
-		document.documentElement.dir = textDirection;
-		document.documentElement.lang = lang;
-	}
 </script>
 
 <svelte:head>
 	<title>Feavel's Blog</title>
-	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
 	{#each availableLanguageTags as lang}
 		<link rel="alternate" hreflang={lang} href={translatePath($page.url.pathname, lang)} />
 	{/each}
+	{@html `<script>${autoModeWatcher.toString()} autoModeWatcher();</script>`}
 </svelte:head>
 
 <ParaglideJS {i18n}>
