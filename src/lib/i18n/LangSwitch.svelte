@@ -13,7 +13,7 @@
 	};
 </script>
 
-<button class="" use:popup={popupFeatured}> <LucideLanguages /></button>
+<button class="" use:popup={popupFeatured}> <LucideLanguages class="stroke-success-500" /></button>
 
 <div
 	class="p-4 w-32 shadow-2xl bg-secondary-50 dark:bg-secondary-800 dark:text-white rounded-lg z-50"

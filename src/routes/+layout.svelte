@@ -4,11 +4,13 @@
 	import {
 		AppBar,
 		getDrawerStore,
+		getModalStore,
 		LightSwitch,
 		autoModeWatcher,
 		initializeStores,
 		Toast,
 		Modal,
+		storePopup,
 		type ModalComponent
 	} from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
@@ -18,15 +20,13 @@
 	import Navigation from '$lib/components/ui/Navigation.svelte';
 	import Noise from '$lib/components/ui/Noise.svelte';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-	import { storePopup } from '@skeletonlabs/skeleton';
 	import { fade } from 'svelte/transition';
-	import { getModalStore } from '@skeletonlabs/skeleton';
 	import NavModal from '$lib/components/ui/modal/NavModal.svelte';
 	import SearchModal from '$lib/components/ui/modal/SearchModal.svelte';
 	import HamburgerIcon from '$lib/components/ui/modal/HamburgerIcon.svelte';
 	import SearchButton from '$lib/components/ui/modal/SearchButton.svelte';
 	import Feavel from '$lib/components/ui/logo/Feavel.svelte';
-	// import Footer from '$lib/components/ui/layout/Footer.svelte';
+	import Footer from '$lib/components/ui/layout/Footer.svelte';
 	import LangSwitch from '$lib/i18n/LangSwitch.svelte';
 	import {
 		availableLanguageTags,
@@ -108,11 +108,11 @@
 			<LightSwitch />
 		</svelte:fragment>
 	</AppBar>
-	<Breadcrumbs path={$page.url.pathname} />
+	<!-- <Breadcrumbs path={$page.url.pathname} /> -->
 
 	<div class="min-h-dvh mx-auto">
 		<slot />
 	</div>
 </ParaglideJS>
 
-<!-- <Footer /> -->
+<Footer />

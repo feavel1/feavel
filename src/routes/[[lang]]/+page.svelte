@@ -5,7 +5,9 @@
 		LucideAudioLines,
 		LucideAudioWaveform,
 		LucideClipboardSignature,
+		LucideContact,
 		LucidePackageOpen,
+		LucideUsers,
 		LucideWorkflow
 	} from 'lucide-svelte';
 
@@ -107,39 +109,54 @@
 
 	<!-- Logo cloud -->
 	<div class="mx-auto mt-8 max-w-7xl px-6 sm:mt-16 lg:px-8">
-		<h2 class="text-center text-lg font-semibold leading-8">
-			Open source platform, made from open source tech.
-		</h2>
+		<h2 class="text-center text-lg font-semibold leading-8">{m.open_source_desc()}</h2>
 
 		<div
-			class="logo-cloud [&>.logo-item]:rounded-xl [&>.logo-item]:variant-filled-primary mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5"
+			class="logo-cloud [&>.logo-item]:rounded-xl [&>.logo-item]:bg-zinc-300 mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5"
 		>
-			<a class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1" href="/">
+			<a
+				target="_blank"
+				class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+				href="https://kit.svelte.dev"
+			>
 				<span>
-					<img class="" src="logos/svelte-kit.png" alt="Transistor" width="158" height="48" />
-				</span>
-			</a>
-			<a class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1" href="/">
-				<span>
-					<img class="" src="logos/supabase_big.svg" alt="Transistor" width="158" height="48" />
-				</span>
-			</a>
-			<a class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1" href="/">
-				<span>
-					<img class="pb-1" src="logos/skeleton.svg" alt="Transistor" width="158" height="48" />
-				</span>
-			</a>
-			<a class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1" href="/">
-				<span>
-					<img class="" src="logos/tiptap.svg" alt="Transistor" width="158" height="48" />
+					<img class="p-2" src="logos/svelte-kit.png" alt="Transistor" width="158" height="48" />
 				</span>
 			</a>
 			<a
-				class="logo-item col-span-2 col-start-2 sm:col-start-auto max-h-12 w-full object-contain lg:col-span-1"
-				href="/"
+				target="_blank"
+				class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+				href="https://supabase.com"
 			>
 				<span>
-					<img class="" src="logos/unionpay.png" alt="Transistor" width="158" height="48" />
+					<img class="p-2" src="logos/supabase_big.svg" alt="Transistor" width="158" height="48" />
+				</span>
+			</a>
+			<a
+				target="_blank"
+				class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+				href="https://www.skeleton.dev"
+			>
+				<span>
+					<img class="p-2 pb-3" src="logos/skeleton.svg" alt="Transistor" width="158" height="48" />
+				</span>
+			</a>
+			<a
+				target="_blank"
+				class="logo-item col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+				href="https://tiptap.dev"
+			>
+				<span>
+					<img class="p-2" src="logos/tiptap.svg" alt="Transistor" width="158" height="48" />
+				</span>
+			</a>
+			<a
+				target="_blank"
+				class="logo-item col-span-2 col-start-2 sm:col-start-auto max-h-12 w-full object-contain lg:col-span-1"
+				href="https://open.unionpay.com/tjweb/index"
+			>
+				<span>
+					<img class="p-2" src="logos/unionpay.png" alt="Transistor" width="158" height="48" />
 				</span>
 			</a>
 		</div>
@@ -149,14 +166,13 @@
 	<div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
 		<div class="mx-auto max-w-2xl text-center">
 			<h2 class="text-base font-semibold leading-7 text-secondary-600-300-token">
-				start simple, finish complex
+				{m.start_simple_desc()}
 			</h2>
 			<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-				Everything you need all in one place
+				{m.everything_in_one_place()}
 			</p>
 			<p class="mt-6 text-lg leading-8 text-tertiary-600">
-				Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate
-				veritatis in accusamus quisquam.
+				{m.find_people()}
 			</p>
 		</div>
 		<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -166,19 +182,18 @@
 						<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500">
 							<LucideClipboardSignature />
 						</div>
-						Create
+						{m.create()}
 					</dt>
 					<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-tertiary-600">
 						<p class="flex-auto">
-							Write technical posts and knowledege for everyone to see. We provide a simple to use
-							and beautiful text editor to share what you know.
+							{m.weite_tech_posts()}
 						</p>
 						<p class="mt-6">
 							<a
 								href="/posts/create-post"
 								class="text-sm font-semibold leading-6 text-secondary-600-300-token"
 							>
-								Learn more
+								{m.learn_more()}
 								<span aria-hidden="true">→</span>
 							</a>
 						</p>
@@ -187,31 +202,20 @@
 				<div class="flex flex-col">
 					<dt class="text-base font-semibold leading-7">
 						<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500">
-							<svg
-								class="h-6 w-6"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								aria-hidden="true"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
-								/>
-							</svg>
+							<LucideUsers class="h-6 w-6" />
 						</div>
-						Collaborate
+						{m.collaborate()}
 					</dt>
 					<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-tertiary-600">
 						<p class="flex-auto">
-							Become a mixing studio and create services for users. Currently we are looking for all
-							types of engineers. You can apply for admin in your profile page.
+							{m.become_a_studio_description()}
 						</p>
 						<p class="mt-6">
-							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token">
-								Learn more
+							<a
+								href="/profile/admin"
+								class="text-sm font-semibold leading-6 text-secondary-600-300-token"
+							>
+								{m.learn_more()}
 								<span aria-hidden="true">→</span>
 							</a>
 						</p>
@@ -222,16 +226,18 @@
 						<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500">
 							<LucidePackageOpen />
 						</div>
-						Inspire
+						{m.inspire()}
 					</dt>
 					<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-tertiary-600">
 						<p class="flex-auto">
-							We use open source to innovate our services. Never get locked in or discontinued
-							again! You can always join our community and start submitting features your self.
+							{m.open_source_desc_2()}
 						</p>
 						<p class="mt-6">
-							<a href="#" class="text-sm font-semibold leading-6 text-secondary-600-300-token">
-								Learn more
+							<a
+								href="https://github.com/feavel1/feavel"
+								class="text-sm font-semibold leading-6 text-secondary-600-300-token"
+							>
+								{m.learn_more()}
 								<span aria-hidden="true">→</span>
 							</a>
 						</p>
@@ -246,13 +252,11 @@
 		<div class="mx-auto max-w-7xl px-6 lg:px-8">
 			<div class="mx-auto max-w-2xl sm:text-center">
 				<h2 class="text-base font-semibold leading-7 text-secondary-600-300-token">
-					Everything you need
+					{m.made_by_musicians()}
 				</h2>
-				<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Beginner? No problem.</p>
+				<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{m.beginner()}</p>
 				<p class="mt-6 text-lg leading-8 text-tertiary-600">
-					We provide many tutorials and resources to get started in music production, programming,
-					philosophy, advertising and more! Join our community to create posts and tutorials for
-					beginners.
+					{m.beginner_desc()}
 				</p>
 			</div>
 		</div>
@@ -276,47 +280,37 @@
 			>
 				<div class="relative pl-9">
 					<dt class="inline font-semibold">
-						<LucideAudioLines class="absolute left-1 top-1 h-5 w-5 text-indigo-500" />
-						Record audio.
+						<LucideContact class="absolute left-1 top-1 h-5 w-5 text-indigo-500" />
+						{m.contact_us()}
 					</dt>
-					<dd class="inline">Join our audio engenearing team to book a recording session.</dd>
+					<dd class="inline">
+						{m.contact_us_desc()}
+					</dd>
+				</div>
+				<div class="relative pl-9">
+					<dt class="inline font-semibold">
+						<LucideAudioLines class="absolute left-1 top-1 h-5 w-5 text-indigo-500" />
+						{m.record_audio()}
+					</dt>
+					<dd class="inline">{m.record_audio_desc()}</dd>
 				</div>
 				<div class="relative pl-9">
 					<dt class="inline font-semibold">
 						<LucideAudioWaveform class="absolute left-1 top-1 h-5 w-5 text-indigo-500" />
-						Mix audio
+						{m.mix_audio()}
 					</dt>
 					<dd class="inline">
-						Pick and choose an audio engeneer to mix and master your song professionaly.
+						{m.mix_audio_desc()}
 					</dd>
 				</div>
 				<div class="relative pl-9">
 					<dt class="inline font-semibold">
 						<LucideWorkflow class="absolute left-1 top-1 h-5 w-5 text-indigo-500" />
-						Producing and beat making
+						{m.producing()}
 					</dt>
-					<dd class="inline">A list full of beat makers that are willing to create with you.</dd>
+					<dd class="inline">{m.producing_desc()}</dd>
 				</div>
-				<div class="relative pl-9">
-					<dt class="inline font-semibold">
-						<svg
-							class="absolute left-1 top-1 h-5 w-5 text-indigo-500"
-							viewBox="0 0 20 20"
-							fill="currentColor"
-							aria-hidden="true"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M10 2.5c-1.31 0-2.526.386-3.546 1.051a.75.75 0 01-.82-1.256A8 8 0 0118 9a22.47 22.47 0 01-1.228 7.351.75.75 0 11-1.417-.49A20.97 20.97 0 0016.5 9 6.5 6.5 0 0010 2.5zM4.333 4.416a.75.75 0 01.218 1.038A6.466 6.466 0 003.5 9a7.966 7.966 0 01-1.293 4.362.75.75 0 01-1.257-.819A6.466 6.466 0 002 9c0-1.61.476-3.11 1.295-4.365a.75.75 0 011.038-.219zM10 6.12a3 3 0 00-3.001 3.041 11.455 11.455 0 01-2.697 7.24.75.75 0 01-1.148-.965A9.957 9.957 0 005.5 9c0-.028.002-.055.004-.082a4.5 4.5 0 018.996.084V9.15l-.005.297a.75.75 0 11-1.5-.034c.003-.11.004-.219.005-.328a3 3 0 00-3-2.965zm0 2.13a.75.75 0 01.75.75c0 3.51-1.187 6.745-3.181 9.323a.75.75 0 11-1.186-.918A13.687 13.687 0 009.25 9a.75.75 0 01.75-.75zm3.529 3.698a.75.75 0 01.584.885 18.883 18.883 0 01-2.257 5.84.75.75 0 11-1.29-.764 17.386 17.386 0 002.078-5.377.75.75 0 01.885-.584z"
-								clip-rule="evenodd"
-							/>
-						</svg>
-						Sound engenering
-					</dt>
-					<dd class="inline">
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.
-					</dd>
-				</div>
+
 				<div class="relative pl-9">
 					<dt class="inline font-semibold">
 						<svg
@@ -331,11 +325,10 @@
 								clip-rule="evenodd"
 							/>
 						</svg>
-						Become a mixing engeneer
+						{m.become_mixing_engineer()}
 					</dt>
 					<dd class="inline">
-						Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
-						commodo.
+						{m.become_mixing_engineer_desc()}
 					</dd>
 				</div>
 				<div class="relative pl-9">
@@ -355,9 +348,11 @@
 								clip-rule="evenodd"
 							/>
 						</svg>
-						Join community
+						{m.join_community()}
 					</dt>
-					<dd class="inline">Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.</dd>
+					<dd class="inline">
+						{m.join_comm_desc()}
+					</dd>
 				</div>
 			</dl>
 		</div>
@@ -367,14 +362,11 @@
 	<div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
 		<div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
 			<h2 class="text-base font-semibold leading-8 text-secondary-600-300-token">
-				Our track record
+				{m.track_record()}
 			</h2>
-			<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-				Trusted by musicians&nbsp;worldwide
-			</p>
+			<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{m.trusted()}</p>
 			<p class="mt-6 text-lg leading-8 text-tertiary-600">
-				We started small and moved step by step. This is a huge leap for us as a platform. We record
-				and track the progress that we make everyday.
+				We record and track the progress that we make everyday.
 			</p>
 		</div>
 		<dl
@@ -437,7 +429,7 @@
 			<div
 				class="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-50"
 				style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)"
-			></div>
+			/>
 		</div>
 		<div class="mx-auto max-w-2xl text-center">
 			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">

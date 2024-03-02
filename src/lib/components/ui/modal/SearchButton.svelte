@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { type ModalSettings, getModalStore } from '@skeletonlabs/skeleton';
 	import { SearchIcon } from 'lucide-svelte';
+	import * as m from '$paraglide/messages';
 
 	const modal: ModalSettings = {
 		type: 'component',
@@ -25,5 +26,5 @@
 >
 	<SearchIcon class="relative w-4 h-4 " />
 
-	<span class="hidden sm:block ml-2">Search</span>
+	<span class="hidden sm:block ml-2">{m.search()}</span>
 </button>
