@@ -11,9 +11,9 @@
 
 	let publicUrl: string;
 
-	const popupFeatured: PopupSettings = {
+	const orderDetails: PopupSettings = {
 		event: 'click',
-		target: 'popupFeatured',
+		target: 'orderDetails',
 		placement: 'bottom'
 	};
 
@@ -67,12 +67,12 @@
 			<div id="menu" class="relative inline-block text-left">
 				<button
 					class="-m-2 flex items-center p-2 text-gray-400 hover:text-gray-500"
-					use:popup={popupFeatured}
+					use:popup={orderDetails}
 				>
 					<LucideShoppingCart class="h-6 w-6" />
 				</button>
 
-				<div class="p-4 w-72 shadow-2xl bg-surface-200 rounded-lg z-50" data-popup="popupFeatured">
+				<div class="p-4 w-72 shadow-2xl bg-surface-200 rounded-lg z-50" data-popup="orderDetails">
 					<a
 						href="/services/{service.service_id}"
 						class="text-gray-700 block px-4 py-2 text-sm"

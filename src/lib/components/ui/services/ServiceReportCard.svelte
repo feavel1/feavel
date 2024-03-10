@@ -12,11 +12,11 @@
 
 	console.log(service);
 
-	const popupFeatured: PopupSettings = {
+	const popupOrderDetails: PopupSettings = {
 		// Represents the type of event that opens/closed the popup
 		event: 'click',
 		// Matches the data-popup value on your popup element
-		target: 'popupFeatured',
+		target: 'popupOrderDetails',
 		// Defines which side of your trigger the popup will appear
 		placement: 'bottom'
 	};
@@ -119,12 +119,15 @@
 			<div id="menu" class="relative inline-block text-left">
 				<button
 					class="-m-2 flex items-center p-2 text-gray-400 hover:text-gray-500"
-					use:popup={popupFeatured}
+					use:popup={popupOrderDetails}
 				>
 					<LucideShoppingCart class="h-6 w-6" />
 				</button>
 
-				<div class="p-4 w-72 shadow-2xl bg-surface-200 rounded-lg z-50" data-popup="popupFeatured">
+				<div
+					class="p-4 w-72 shadow-2xl bg-surface-200 rounded-lg z-50"
+					data-popup="popupOrderDetails"
+				>
 					<a
 						href="/services/{service.service_id}"
 						class="text-gray-700 block px-4 py-2 text-sm"
