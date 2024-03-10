@@ -3,8 +3,8 @@
 	import 'highlight.js/styles/github-dark.css';
 	import {
 		AppBar,
-		getDrawerStore,
-		getModalStore,
+		// getDrawerStore,
+		// getModalStore,
 		LightSwitch,
 		autoModeWatcher,
 		initializeStores,

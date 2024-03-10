@@ -1,8 +1,8 @@
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
-import { sourceLanguageTag, type AvailableLanguageTag } from '$paraglide/runtime';
-import { createServerClient } from '@supabase/ssr';
 import type { Handle } from '@sveltejs/kit';
+import { createServerClient } from '@supabase/ssr';
 import { getTextDirection } from '$lib/i18n/server';
+import { sourceLanguageTag, type AvailableLanguageTag } from '$paraglide/runtime';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	// Initialize Supabase client and attach it to event.locals
