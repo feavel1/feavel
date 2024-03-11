@@ -56,8 +56,7 @@
 				name: name,
 				price: price,
 				description: description,
-				highlights: highlights,
-				status: 'applied'
+				highlights: highlights
 			})
 			.eq('id', service.id)
 			.select();

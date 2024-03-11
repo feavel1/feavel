@@ -1,3 +1,7 @@
+<script lang="ts">
+	import * as m from '$paraglide/messages';
+</script>
+
 <footer class="mt-32 sm:mt-40" aria-labelledby="footer-heading">
 	<h2 id="footer-heading" class="sr-only">Footer</h2>
 	<div class="mx-auto max-w-7xl px-6 pb-8 lg:px-8">
@@ -5,51 +9,53 @@
 			<div class="grid grid-cols-2 gap-8 xl:col-span-2">
 				<div class="md:grid md:grid-cols-2 md:gap-8">
 					<div>
-						<h3 class="text-sm font-semibold leading-6">Solutions</h3>
+						<h3 class="text-sm font-semibold leading-6">{m.solutions()}</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
 								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Marketing</a
+									>{m.marketing()}</a
 								>
 							</li>
 							<li>
 								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Analytics</a
+									>{m.analytics()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Commerce</a
+								<a
+									href="/services"
+									class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.commerce()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Insights</a
+								<a href="/posts" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.insights()}</a
 								>
 							</li>
 						</ul>
 					</div>
 					<div class="mt-10 md:mt-0">
-						<h3 class="text-sm font-semibold leading-6">Support</h3>
+						<h3 class="text-sm font-semibold leading-6">{m.support()}</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Pricing</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.pricing()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Documentation</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.documentation()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Guides</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.guides()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>API Status</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.api_status()}</a
 								>
 							</li>
 						</ul>
@@ -57,51 +63,51 @@
 				</div>
 				<div class="md:grid md:grid-cols-2 md:gap-8">
 					<div>
-						<h3 class="text-sm font-semibold leading-6">Company</h3>
+						<h3 class="text-sm font-semibold leading-6">{m.company()}</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>About</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.about()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Blog</a
+								<a href="/posts" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.posts()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Jobs</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.jobs()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Press</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.press()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Partners</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.partners()}</a
 								>
 							</li>
 						</ul>
 					</div>
 					<div class="mt-10 md:mt-0">
-						<h3 class="text-sm font-semibold leading-6">Legal</h3>
+						<h3 class="text-sm font-semibold leading-6">{m.legals()}</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Claim</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.claim()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Privacy</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.privacy()}</a
 								>
 							</li>
 							<li>
-								<a href="#" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
-									>Terms</a
+								<a href="/about" class="text-sm leading-6 text-primary-600 hover:text-primary-900"
+									>{m.terms()}</a
 								>
 							</li>
 						</ul>
@@ -109,9 +115,9 @@
 				</div>
 			</div>
 			<div class="mt-10 xl:mt-0">
-				<h3 class="text-sm font-semibold leading-6">Subscribe to our newsletter</h3>
+				<h3 class="text-sm font-semibold leading-6">{m.subscribe_to_our_news()}</h3>
 				<p class="mt-2 text-sm leading-6 text-primary-600">
-					The latest news, articles, and resources, sent to your inbox weekly.
+					{m.the_latest_news()}
 				</p>
 				<form class="mt-6 sm:flex sm:max-w-md">
 					<label for="email-address" class="sr-only">Email address</label>
@@ -128,8 +134,9 @@
 						<button
 							type="submit"
 							class="flex w-full items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-							>Subscribe</button
 						>
+							{m.subscribe()}
+						</button>
 					</div>
 				</form>
 			</div>
@@ -188,7 +195,7 @@
 				</a>
 			</div>
 			<p class="mt-8 text-xs leading-5 text-primary-500 md:order-1 md:mt-0">
-				&copy; 2024 Baby Feavel, Inc. All rights reserved.
+				&copy; 2024 Baby Feavel, Inc. {m.all_rights_reserved()}
 			</p>
 		</div>
 	</div>

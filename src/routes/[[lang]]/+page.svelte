@@ -366,26 +366,26 @@
 			</h2>
 			<p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{m.trusted()}</p>
 			<p class="mt-6 text-lg leading-8 text-tertiary-600">
-				We record and track the progress that we make everyday.
+				{m.we_record_and_track()}
 			</p>
 		</div>
 		<dl
 			class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4"
 		>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">
-				<dt class="text-sm leading-6">Working time</dt>
+				<dt class="text-sm leading-6">{m.working_time()}</dt>
 				<dd class="order-first text-3xl font-semibold tracking-tight">6 years+</dd>
 			</div>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">
-				<dt class="text-sm leading-6">Monthly activity</dt>
+				<dt class="text-sm leading-6">{m.monthly_activity()}</dt>
 				<dd class="order-first text-3xl font-semibold tracking-tight">100+</dd>
 			</div>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">
-				<dt class="text-sm leading-6">On time guarantee</dt>
+				<dt class="text-sm leading-6">{m.on_time_guarantee()}</dt>
 				<dd class="order-first text-3xl font-semibold tracking-tight">99.9%</dd>
 			</div>
 			<div class="flex flex-col gap-y-3 border-l border-white/10 pl-6">
-				<dt class="text-sm leading-6">Posts created</dt>
+				<dt class="text-sm leading-6">{m.posts_created()}</dt>
 				<dd class="order-first text-3xl font-semibold tracking-tight">100+</dd>
 			</div>
 		</dl>
@@ -433,16 +433,15 @@
 		</div>
 		<div class="mx-auto max-w-2xl text-center">
 			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-				Boost your work.<br />Start using our app today.
+				{m.boost_your_work()}.<br />{m.start_using_our_app()}
 			</h2>
 			<p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-tertiary-600">
-				Create an account and start reading, liking, commenting. You can also apply for our admin to
-				create services.
+				{m.create_account_and_start()}
 			</p>
 			<div class="mt-10 flex items-center justify-center gap-x-6">
-				<a href="/auth" class="btn variant-filled">Get started</a>
+				<a href="/auth" class="btn variant-filled">{m.get_started()}</a>
 				<a href="/profile" class="text-sm font-semibold leading-6"
-					>x1 your profile <span aria-hidden="true">→</span></a
+					>x1 {m.your_profile()} <span aria-hidden="true">→</span></a
 				>
 			</div>
 		</div>

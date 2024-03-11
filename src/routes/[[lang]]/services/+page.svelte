@@ -33,14 +33,16 @@
 		target: 'categoryPopup',
 		placement: 'bottom'
 	};
+
+	import * as m from '$paraglide/messages';
 </script>
 
 <main class="pt-14">
 	<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
 		<div class="py-24 text-center">
-			<h1 class="text-4xl font-bold tracking-tight">New Services</h1>
+			<h1 class="text-4xl font-bold tracking-tight">{m.new_services()}</h1>
 			<p class="mx-auto mt-4 max-w-3xl text-base text-gray-500">
-				Thoughtfully designed for the musicians, business, and artists.
+				{m.thoughtfully_designed_for()}
 			</p>
 		</div>
 
@@ -53,7 +55,7 @@
 			<div class="flex items-center justify-between">
 				<label class="label relative inline-block text-left">
 					<select class="select rounded-md">
-						<option value="1">Newest</option>
+						<option value="1">{m.newest()}</option>
 						<option value="2">Most Viewed</option>
 						<option value="3">Price: High to Low</option>
 						<option value="4">Prise: Low to High</option>
@@ -62,7 +64,7 @@
 
 				<div class="flex sm:items-baseline sm:space-x-8">
 					<div id="menu" class="relative inline-block text-left">
-						<button class="btn variant-filled" use:popup={categoryPopup}>Category</button>
+						<button class="btn variant-filled" use:popup={categoryPopup}>{m.category()}</button>
 
 						<div
 							class="p-4 w-72 shadow-2xl bg-secondary-50 dark:bg-secondary-800 dark:text-white rounded-lg z-50"

@@ -4,8 +4,8 @@
 
 	export let data;
 
-	let { supabase, session, studio, userdata, services } = data;
-	$: ({ session, supabase, studio, userdata, services } = data);
+	let { supabase, studio, userdata, services } = data;
+	$: ({ supabase, studio, userdata, services } = data);
 
 	function serLenCalc(arr: Array<typeof services>, condition: typeof services.status) {
 		return arr.filter((service) => service.status == condition).length;

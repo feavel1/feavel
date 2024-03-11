@@ -9,8 +9,8 @@
 
 	export let data;
 
-	let { serCatSer, supabase, studios } = data;
-	$: ({ serCatSer, supabase, studios } = data);
+	let { serCatSer, supabase, studio } = data;
+	$: ({ serCatSer, supabase, studio } = data);
 
 	const toastStore = getToastStore();
 
@@ -46,7 +46,7 @@
 		const { data: service_data_id, error: createStudioErr } = await supabase
 			.from('services')
 			.insert({
-				created_by: studios.id,
+				created_by: studio.id,
 				name: name,
 				price: price,
 				description: description,

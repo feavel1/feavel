@@ -37,7 +37,7 @@ export const actions: Actions = {
 
 		const purchaseData = {
 			id: specialParam.out_trade_no,
-			user_id: session.user.id,
+			user_id: session?.user.id,
 			service_id: specialParam.name,
 			price: specialParam.money,
 			payment_method: specialParam.type,
