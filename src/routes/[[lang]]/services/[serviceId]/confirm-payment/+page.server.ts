@@ -44,7 +44,7 @@ export const actions: Actions = {
 			payment_status: 'created'
 		};
 
-		// createDigitalPurchase(purchaseData);
+		createDigitalPurchase(purchaseData);
 
 		throw redirect(303, url);
 	}
