@@ -8,11 +8,13 @@
 	$: ({ session, supabase, userdata } = data);
 
 	let date = new Date();
+
+	import * as m from '$paraglide/messages';
 </script>
 
 <div class="mx-auto max-w-7xl sm:px-2 lg:px-8">
 	<div class="mx-auto max-w-2xl px-4 lg:max-w-4xl lg:px-0">
-		<h1 class="text-2xl font-bold tracking-tight sm:text-3xl">User Profile</h1>
+		<h1 class="text-2xl font-bold tracking-tight sm:text-3xl">up</h1>
 		<p class="mt-2 text-sm text-gray-500">
 			Your profile will be visible to the studios, put some data in there ❤️
 		</p>

@@ -14,7 +14,7 @@
 		type ModalComponent
 	} from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
-	import Breadcrumbs from '$lib/components/ui/Breadcrumbs.svelte';
+	// import Breadcrumbs from '$lib/components/ui/Breadcrumbs.svelte';
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import Navigation from '$lib/components/ui/Navigation.svelte';

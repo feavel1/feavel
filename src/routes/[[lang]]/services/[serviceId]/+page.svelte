@@ -75,7 +75,7 @@
 
 				<div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
 					<a
-						href="/services/{transformedService.id}/confirm-payment"
+						href="/services/{transformedService.id}/check-out"
 						type="button"
 						class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
 					>
@@ -85,7 +85,8 @@
 					<button
 						type="button"
 						class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-						>Preview
+					>
+						Preview
 					</button>
 				</div>
 
