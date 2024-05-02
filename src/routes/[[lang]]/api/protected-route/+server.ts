@@ -7,8 +7,8 @@
 // 	apiVersion: '2023-10-16'
 // });
 
-// export const GET = async ({ locals: { supabase, getSession } }: any) => {
-// 	const session = await getSession();
+// export const GET = async ({ locals: { supabase, safeGetSession } }: any) => {
+// 	const session = await safeGetSession();
 
 // 	if (!session) {
 // 		// the user is not signed in

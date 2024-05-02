@@ -14,25 +14,25 @@
 
 <div class="mx-auto max-w-7xl sm:px-2 lg:px-8">
 	<div class="mx-auto max-w-2xl px-4 lg:max-w-4xl lg:px-0">
-		<h1 class="text-2xl font-bold tracking-tight sm:text-3xl">up</h1>
+		<h1 class="text-2xl font-bold tracking-tight sm:text-3xl">{m.user_profile()}</h1>
 		<p class="mt-2 text-sm text-gray-500">
-			Your profile will be visible to the studios, put some data in there ❤️
+			{m.user_profile_description()}
 		</p>
 		<div class="flex flex-row w-full mt-16">
 			<Avatar {supabase} uploadable={false} bind:url={userdata.avatar_url} size={14} />
 
 			<div class="flex flex-col ml-4">
-				<div class="text-lg">Full name: {userdata.full_name}</div>
-				<div>userId: @{userdata.username}</div>
+				<div class="text-lg">{m.full_name()}: {userdata.full_name}</div>
+				<div>{m.user_id()}: @{userdata.username}</div>
 			</div>
 		</div>
-		<div>My description: {userdata.description}</div>
-		<div>Local time: {date.toString()}</div>
+		<div>{m.my_description()}: {userdata.description}</div>
+		<div>{m.local_time()}: {date.toString()}</div>
 		<hr class="my-4" />
 
-		<h1 class="text-2xl font-bold tracking-tight sm:text-3xl mt-16">User Posts</h1>
+		<h1 class="text-2xl font-bold tracking-tight sm:text-3xl mt-16">{m.user_posts()}</h1>
 		<p class="mt-2 text-sm text-gray-500">
-			Your posts will be visible to everyone. Share your thoughts and get feedback 📑
+			{m.user_posts_description()} 📑
 		</p>
 		{#if session}
 			<PostsDashboard {session} {supabase} />

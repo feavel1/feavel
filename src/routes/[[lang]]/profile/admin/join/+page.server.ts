@@ -1,8 +1,8 @@
 import { error, fail, redirect, type Actions } from '@sveltejs/kit';
 
 export const actions: Actions = {
-	createStudio: async ({ request, locals: { supabase, getSession } }) => {
-		const session = await getSession();
+	createStudio: async ({ request, locals: { supabase, safeGetSession } }) => {
+		const session = await safeGetSession();
 		if (!session) {
 			error(401, { message: 'Unauthorized' });
 		}

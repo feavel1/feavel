@@ -10,20 +10,32 @@ export const handle: Handle = async ({ event, resolve }) => {
 		cookies: {
 			get: (key) => event.cookies.get(key),
 			set: (key, value, options) => {
-				event.cookies.set(key, value, options);
+				event.cookies.set(key, value, { ...options, path: '/' });
 			},
 			remove: (key, options) => {
-				event.cookies.delete(key, options);
+				event.cookies.delete(key, { ...options, path: '/' });
 			}
 		}
 	});
 
-	// Define a helper function to get session
-	event.locals.getSession = async () => {
+	event.locals.safeGetSession = async () => {
 		const {
 			data: { session }
 		} = await event.locals.supabase.auth.getSession();
-		return session;
+		if (!session) {
+			return { session: null, user: null };
+		}
+
+		const {
+			data: { user },
+			error
+		} = await event.locals.supabase.auth.getUser();
+		if (error) {
+			// JWT validation has failed
+			return { session: null, user: null };
+		}
+
+		return { session, user };
 	};
 
 	const lang: AvailableLanguageTag =

@@ -1,7 +1,10 @@
-import type { ServerLoad } from '@sveltejs/kit';
+import type { LayoutServerLoad } from './$types';
 
-export const load: ServerLoad = async ({ locals: { getSession } }) => {
+export const load: LayoutServerLoad = async ({ locals: { safeGetSession } }) => {
+	const { session, user } = await safeGetSession();
+
 	return {
-		session: await getSession()
+		session,
+		user
 	};
 };

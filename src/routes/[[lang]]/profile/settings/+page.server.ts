@@ -2,8 +2,8 @@ import { throwRedirect } from '$lib/utils/helpers';
 import { error, fail, redirect, type Actions } from '@sveltejs/kit';
 
 export const actions: Actions = {
-	updateUser: async ({ request, locals: { supabase, getSession } }) => {
-		const session = await getSession();
+	updateUser: async ({ request, locals: { supabase, safeGetSession } }) => {
+		const session = await safeGetSession();
 		if (!session) {
 			error(401, { message: 'Unauthorized' });
 		}
@@ -34,8 +34,8 @@ export const actions: Actions = {
 			userdata: data
 		};
 	},
-	signout: async ({ locals: { supabase, getSession } }) => {
-		const session = await getSession();
+	signout: async ({ locals: { supabase, safeGetSession } }) => {
+		const session = await safeGetSession();
 		if (session) {
 			await supabase.auth.signOut();
 			throwRedirect(303, '/');

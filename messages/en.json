@@ -83,5 +83,18 @@
 	"i_also_want_to_write": "I also want to write",
 	"read_community_guide": "Read community guide",
 	"category": "Category",
-	"newest": "Newest"
+	"newest": "Newest",
+	"user_profile": "User Profile",
+	"user_profile_description": "Your profile will be visible to the studios, put some data in there ❤️",
+	"home": "Home",
+	"reports": "Reports",
+	"settings": "Settings",
+	"my_studio": "My studio",
+	"studio_orders": "Studio Orders",
+	"full_name": "Full name",
+	"user_id": "userId",
+	"my_description": "My description",
+	"local_time": "Local time",
+	"user_posts": "User Posts",
+	"user_posts_description": "Your posts will be visible to everyone. Share your thoughts and get feedback"
 }

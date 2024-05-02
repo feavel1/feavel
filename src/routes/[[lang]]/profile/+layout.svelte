@@ -9,13 +9,15 @@
 		LucideShoppingCart,
 		LucideUserCog
 	} from 'lucide-svelte';
+	import * as m from '$paraglide/messages';
+	import Grid from '$lib/components/ui/layout/Grid.svelte';
 
 	export let data;
 	let { studio } = data;
 	$: ({ studio } = data);
 </script>
 
-<!-- <Grid /> -->
+<Grid />
 <Cloud />
 
 <main
@@ -36,14 +38,14 @@
 			<li>
 				<a href="/profile" class="btn variant-filled-secondary gap-x-3 w-full justify-start">
 					<LucideHome />
-					Home
+					{m.home()}
 				</a>
 			</li>
 
 			<li>
 				<a href="/profile/posts" class="btn variant-filled-secondary gap-x-3 w-full justify-start">
 					<LucidePaperclip />
-					Posts
+					{m.posts()}
 				</a>
 			</li>
 			<li>
@@ -52,7 +54,7 @@
 					class="btn variant-filled-secondary gap-x-3 w-full justify-start"
 				>
 					<LucideReceipt />
-					Reports
+					{m.reports()}
 				</a>
 			</li>
 
@@ -62,7 +64,7 @@
 					class="btn variant-filled-secondary gap-x-3 w-full justify-start"
 				>
 					<LucideSettings />
-					Settings
+					{m.settings()}
 				</a>
 			</li>
 			<li>
@@ -75,7 +77,7 @@
 						class="btn variant-filled-secondary gap-x-3 w-full justify-start"
 					>
 						<LucideUserCog />
-						My studio
+						{m.my_studio()}
 					</a>
 				</li>
 				<li>
@@ -84,7 +86,7 @@
 						class="btn variant-filled-secondary gap-x-3 w-full justify-start"
 					>
 						<LucideServerCog />
-						Services
+						{m.services()}
 					</a>
 				</li>
 				<li>
@@ -93,7 +95,7 @@
 						class="btn variant-filled-secondary gap-x-3 w-full justify-start"
 					>
 						<LucideShoppingCart />
-						Orders
+						{m.studio_orders()}
 					</a>
 				</li>
 			{/if}

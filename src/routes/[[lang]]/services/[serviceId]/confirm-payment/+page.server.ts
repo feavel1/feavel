@@ -5,7 +5,7 @@ import { createDigitalPurchase } from '$lib/supabase/supabase-admin';
 
 export const actions: Actions = {
 	payOnline: async ({ request, locals }) => {
-		const session = await locals.getSession();
+		const session = await locals.safeGetSession();
 
 		const data = await request.formData();
 
