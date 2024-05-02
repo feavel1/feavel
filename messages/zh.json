@@ -107,5 +107,6 @@
 	"approved": "审核通过",
 	"blocked": "审核未通过",
 	"orders": "订单",
-	"refund_history": "退款记录"
+	"refund_history": "退款记录",
+	"create_new_order": "创建新订单"
 }

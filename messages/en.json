@@ -107,5 +107,6 @@
 	"approved": "Approved",
 	"blocked": "Blocked",
 	"orders": "Orders",
-	"refund_history": "Refund History"
+	"refund_history": "Refund History",
+	"create_new_order": "Create New Order"
 }
