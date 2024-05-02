@@ -43,7 +43,10 @@
 			</li>
 
 			<li>
-				<a href="/profile/posts" class="btn variant-filled-secondary gap-x-3 w-full justify-start">
+				<a
+					href="/profile/user-posts"
+					class="btn variant-filled-secondary gap-x-3 w-full justify-start"
+				>
 					<LucidePaperclip />
 					{m.posts()}
 				</a>
