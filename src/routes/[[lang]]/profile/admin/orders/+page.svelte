@@ -1,5 +1,6 @@
 <script>
 	import ServiceAdminOrder from '$lib/components/ui/services/ServiceAdminOrder.svelte';
+	import * as m from '$paraglide/messages';
 
 	export let data;
 
@@ -11,7 +12,7 @@
 	<div class="">
 		<div class="mx-auto max-w-7xl sm:px-2 lg:px-8">
 			<div class="mx-auto max-w-2xl px-4 lg:max-w-4xl lg:px-0">
-				<h1 class="text-2xl font-bold tracking-tight sm:text-3xl">Orders</h1>
+				<h1 class="text-2xl font-bold tracking-tight sm:text-3xl">{m.studio_orders()}</h1>
 				<p class="mt-2 text-sm text-gray-500">
 					Your studio's orders are located right here. You can manage your clients from here.
 				</p>

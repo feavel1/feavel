@@ -96,5 +96,16 @@
 	"my_description": "My description",
 	"local_time": "Local time",
 	"user_posts": "User Posts",
-	"user_posts_description": "Your posts will be visible to everyone. Share your thoughts and get feedback"
+	"user_posts_description": "Your posts will be visible to everyone. Share your thoughts and get feedback",
+	"no_reports": "No reports are available",
+	"no_reports_description": "Get started by using our service!",
+	"earnings_goal": "Earnings goal",
+	"active_orders": "Active orders",
+	"commision_in_approval": "Commission in approval",
+	"my_services": "My services",
+	"applied": "Applied",
+	"approved": "Approved",
+	"blocked": "Blocked",
+	"orders": "Orders",
+	"refund_history": "Refund History"
 }

@@ -1,11 +1,12 @@
 <script lang="ts">
 	import Avatar from '$lib/components/ui/User/Avatar.svelte';
 	import { LucideArrowUp, LucideUserX, LucideCheckCheck, LucideDollarSign } from 'lucide-svelte';
+	import * as m from '$paraglide/messages';
 
 	export let data;
 
-	let { supabase, studio, userdata, services } = data;
-	$: ({ supabase, studio, userdata, services } = data);
+	let { supabase, studio, userdata, services, ordered_services } = data;
+	$: ({ supabase, studio, userdata, services, ordered_services } = data);
 
 	function serLenCalc(arr: Array<typeof services>, condition: typeof services.status) {
 		return arr.filter((service) => service.status == condition).length;
@@ -14,7 +15,7 @@
 
 {#if studio == null}
 	<div class="text-center">
-		<LucideUserX class="mx-auto h-12 w-12 text-secondary-400" />
+		<LucideUserX class="mx-auto h-12 w-12 text-tertiary-400" />
 		<h3 class="mt-2 text-sm font-semibold text-gray-900">You don't have admin permission</h3>
 		<p class="mt-1 text-sm text-gray-500">Get started by joining as admin.</p>
 		<div class="mt-6">
@@ -70,8 +71,8 @@
 		class="flex mb-6 items-center w-full space-y-4 md:space-x-4 md:space-y-0 flex-col md:flex-row"
 	>
 		<div class="w-full md:w-6/12">
-			<div class="shadow-lg w-full bg-secondary-50-900-token relative overflow-hidden">
-				<a href="/" class="w-full h-full block">
+			<div class="shadow-lg w-full bg-tertiary-50-900-token rounded-lg relative overflow-hidden">
+				<a href="/profile/admin/orders" class="w-full h-full block">
 					<div class="flex items-center justify-between px-4 py-6 space-x-4">
 						<div class="flex items-center">
 							<span class="rounded-full relative p-5 bg-yellow-100">
@@ -79,11 +80,11 @@
 									class="text-yellow-500 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
 								/>
 							</span>
-							<p class="text-sm ml-2 font-semibold border-b border-gray-200">Max earnings</p>
+							<p class="text-sm ml-2 font-semibold border-b border-gray-200">{m.earnings_goal()}</p>
 						</div>
 						<div class="border-b border-gray-200 mt-6 md:mt-0 font-bold text-xl">
 							0
-							<span class="text-xs text-secondary-400">/¥10000</span>
+							<span class="text-xs text-tertiary-400">/¥10000</span>
 						</div>
 					</div>
 					<div class="w-full h-1 bg-gray-100">
@@ -95,16 +96,16 @@
 
 		<div class="flex items-center w-full md:w-1/2 space-x-4">
 			<div class="w-1/2">
-				<div class="shadow-lg px-4 py-6 w-full bg-secondary-50-900-token relative">
+				<div class="shadow-lg px-4 py-6 w-full bg-tertiary-50-900-token rounded-lg relative">
 					<p class="text-2xl font-bold">0</p>
-					<p class="text-secondary-400 text-sm">Active projects</p>
+					<p class="text-tertiary-400 text-sm">{m.active_orders()}</p>
 				</div>
 			</div>
 			<div class="w-1/2">
-				<div class="shadow-lg px-4 py-6 w-full bg-secondary-50-900-token relative">
+				<div class="shadow-lg px-4 py-6 w-full bg-tertiary-50-900-token rounded-lg relative">
 					<p class="text-2xl font-bold">¥0</p>
-					<p class="text-secondary-400 text-sm">Commission in approval</p>
-					<span class="rounded-full absolute p-4 bg-purple-500 top-2 right-4">
+					<p class="text-tertiary-400 text-sm">{m.commision_in_approval()}</p>
+					<span class="rounded-full absolute p-4 bg-purple-500 top-4 right-4">
 						<LucideDollarSign
 							class="text-white h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
 						/>
@@ -116,8 +117,8 @@
 
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
 		<a href="/profile/admin/services" class="w-full">
-			<div class="shadow-lg px-4 py-6 w-full bg-secondary-50-900-token relative">
-				<p class="text-sm w-max font-semibold border-b border-gray-200">My services</p>
+			<div class="shadow-lg px-4 py-6 w-full bg-tertiary-50-900-token rounded-lg relative">
+				<p class="text-sm w-max font-semibold border-b border-gray-200">{m.my_services()}</p>
 				<div class="flex items-end space-x-2 my-6">
 					<p class="text-5xl font-bold">{services.length}</p>
 					<span class="text-green-500 text-xl font-bold flex items-center">
@@ -129,17 +130,17 @@
 					<div
 						class="flex items-center pb-2 mb-2 text-sm sm:space-x-12 justify-between border-b border-gray-200"
 					>
-						<p>Applied</p>
+						<p>{m.applied()}</p>
 						<div class="flex items-end text-xs">{serLenCalc(services, 'applied')}</div>
 					</div>
 					<div
 						class="flex items-center mb-2 pb-2 text-sm space-x-12 md:space-x-24 justify-between border-b border-gray-200"
 					>
-						<p>Approved</p>
+						<p>{m.approved()}</p>
 						<div class="flex items-end text-xs">{serLenCalc(services, 'approved')}</div>
 					</div>
 					<div class="flex items-center text-sm space-x-12 md:space-x-24 justify-between">
-						<p>Blocked</p>
+						<p>{m.blocked()}</p>
 						<div class="flex items-end text-xs">{serLenCalc(services, 'blocked')}</div>
 					</div>
 				</div>
@@ -147,10 +148,10 @@
 		</a>
 
 		<a href="/profile/admin/orders" class="w-full">
-			<div class="shadow-lg px-4 py-6 w-full bg-secondary-50-900-token relative">
-				<p class="text-sm w-max font-semibold border-b border-gray-200">Orders</p>
+			<div class="shadow-lg px-4 py-6 w-full bg-tertiary-50-900-token rounded-lg relative">
+				<p class="text-sm w-max font-semibold border-b border-gray-200">{m.studio_orders()}</p>
 				<div class="flex items-end space-x-2 my-6">
-					<p class="text-5xl font-bold">23</p>
+					<p class="text-5xl font-bold">{ordered_services.length}</p>
 				</div>
 				<div>
 					<div
@@ -174,8 +175,8 @@
 		</a>
 
 		<a href="/profile/admin/orders" class="w-full">
-			<div class="shadow-lg px-4 py-6 w-full bg-secondary-50-900-token relative">
-				<p class="text-sm w-max font-semibold border-b border-gray-200">Refund History</p>
+			<div class="shadow-lg px-4 py-6 w-full bg-tertiary-50-900-token rounded-lg relative">
+				<p class="text-sm w-max font-semibold border-b border-gray-200">{m.refund_history()}</p>
 				<div class="flex items-end space-x-2 my-6">
 					<p class="text-5xl font-bold">12</p>
 				</div>

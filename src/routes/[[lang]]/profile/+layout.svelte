@@ -106,7 +106,7 @@
 	</aside>
 
 	<div class="col-span-7 mx-2">
-		<div class="lg:h-28" />
+		<div class="lg:h-20" />
 		<slot />
 	</div>
 </main>

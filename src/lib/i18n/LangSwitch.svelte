@@ -13,14 +13,14 @@
 	};
 </script>
 
-<button class="" use:popup={langSwitch}> <LucideLanguages class="stroke-pink-500" /></button>
+<button class="" use:popup={langSwitch}><LucideLanguages class="" /></button>
 
 <div
 	class="p-4 w-32 shadow-2xl bg-secondary-50 dark:bg-secondary-800 dark:text-white rounded-lg z-50"
 	data-popup="langSwitch"
 >
 	<div class="flex flex-col gap-2">
-		{#each availableLanguageTags as lang}
+		<!-- {#each availableLanguageTags as lang}
 			<a
 				class="capitalize btn variant-filled-primary"
 				href={translatePath($page.url.pathname, lang)}
@@ -28,6 +28,20 @@
 			>
 				{lang}
 			</a>
-		{/each}
+		{/each} -->
+		<a
+			class="capitalize btn variant-filled-primary"
+			href={translatePath($page.url.pathname, 'en')}
+			hreflang="en"
+		>
+			English
+		</a>
+		<a
+			class="capitalize btn variant-filled-primary"
+			href={translatePath($page.url.pathname, 'zh')}
+			hreflang="zh"
+		>
+			中文
+		</a>
 	</div>
 </div>
