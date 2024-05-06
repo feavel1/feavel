@@ -108,5 +108,7 @@
 	"blocked": "Blocked",
 	"orders": "Orders",
 	"refund_history": "Refund History",
-	"create_new_order": "Create New Order"
+	"create_new_order": "Create New Order",
+	"description": "Description",
+	"create_order": "Create order and start working"
 }

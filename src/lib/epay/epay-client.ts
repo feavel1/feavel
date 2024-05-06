@@ -4,7 +4,7 @@ import EpayCore from './EpayCore';
 const config = {
 	pid: MERCHANT_PID,
 	key: MERCHANT_KEY,
-	apiurl: 'abc'
+	apiurl: 'api.api.com/api.json?'
 };
 
 export const epayClient = new EpayCore(config);

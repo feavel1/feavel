@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Time from 'svelte-time';
+	import * as m from '$paraglide/messages';
 
 	export let data;
 
@@ -28,8 +29,6 @@
 	};
 
 	$: if (transformedService?.cover_url) downloadImage(transformedService.cover_url);
-
-	import * as m from '$paraglide/messages';
 </script>
 
 <div class="">
@@ -75,12 +74,12 @@
 
 				<div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
 					<a
-						href="/services/{transformedService.id}/check-out"
+						href="/services/{transformedService.id}/digital-order"
 						type="button"
-						class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+						class="btn bg-purple-500"
 					>
 						{m.order_for()}
-						{transformedService.price} ¥
+						<!-- {transformedService.price} ¥ -->
 					</a>
 					<button
 						type="button"

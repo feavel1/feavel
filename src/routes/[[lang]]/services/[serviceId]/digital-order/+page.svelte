@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Time from 'svelte-time';
 	import { generateUUID } from '$lib/utils/helpers';
-	import { Stepper, Step } from '@skeletonlabs/skeleton';
+
+	import * as m from '$paraglide/messages';
 
 	export let data: any;
 
@@ -25,13 +26,20 @@
 		}
 	};
 
-	let lockedState: boolean = true;
-
 	$: if (transformedService?.cover_url) downloadImage(transformedService.cover_url);
 
+	const createOrder = async () => {
+		// create order
+		const { error } = await supabase.from('digital_order').insert();
+		if (error) throw error;
+		console.log(`Order inserted:`);
+	};
+
 	const genOrdNumber = generateUUID();
-	let wechatForm;
-	let alipayForm;
+
+	let phone: String = '',
+		email: String = '',
+		description: String = '';
 </script>
 
 <div class="mx-auto px-4 py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -91,24 +99,18 @@
 		</div>
 
 		<div class="mx-auto w-full max-w-lg">
-			<Stepper>
-				<Step>
-					<svelte:fragment slot="header">Contact info</svelte:fragment>
-					<label class="label">
-						<span>Phone</span>
-						<input class="input" type="text" placeholder="Input" />
-					</label>
-					<label class="label">
-						<span>Email</span>
-						<input class="input" type="email" placeholder="Input" />
-					</label>
-				</Step>
-				<Step locked={lockedState}>
-					<svelte:fragment slot="header">Order requirements</svelte:fragment>
-					If not needed just select none
-				</Step>
-				<!-- ... -->
-			</Stepper>
+			<label class="label">
+				<span>{m.description()}</span>
+				<input
+					class="input"
+					type="text"
+					placeholder="Input your order requirements"
+					bind:value={description}
+				/>
+			</label>
+			<button type="submit" class="btn bg-purple-500 w-full mt-10">
+				{m.create_order()}
+			</button>
 		</div>
 	</div>
 </div>
