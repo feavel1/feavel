@@ -62,10 +62,10 @@ export type Database = {
 			};
 			digital_order: {
 				Row: {
+					id: number;
 					conversation_id: number | null;
 					created_at: string;
 					description: string | null;
-					id: number;
 					purchase_id: string | null;
 					service_id: number | null;
 					user_id: string | null;

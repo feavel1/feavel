@@ -5,11 +5,11 @@
 
 	export let data;
 
-	let { supabase, digital_purchase } = data;
-	$: ({ supabase, digital_purchase } = data);
+	let { supabase, digital_order } = data;
+	$: ({ supabase, digital_order } = data);
 </script>
 
-{#if digital_purchase.length == 0}
+{#if digital_order.length == 0}
 	<div class="text-center">
 		<LucideReceipt class="mx-auto h-12 w-12 text-gray-400" />
 		<h3 class="mt-2 text-sm font-semibold text-gray-900">{m.no_reports()}</h3>
@@ -41,7 +41,7 @@
 				<h2 class="sr-only">Recent orders</h2>
 				<div class="mx-auto max-w-7xl sm:px-2 lg:px-8">
 					<div class="mx-auto max-w-2xl space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
-						{#each digital_purchase as service}
+						{#each digital_order as service}
 							<ServiceReportCard {supabase} {service} />
 						{/each}
 					</div>

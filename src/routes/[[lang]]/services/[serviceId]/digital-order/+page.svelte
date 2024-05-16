@@ -6,8 +6,8 @@
 
 	export let data: any;
 
-	let { transformedService, supabase } = data;
-	$: ({ transformedService, supabase } = data);
+	let { transformedService, supabase, userdata } = data;
+	$: ({ transformedService, supabase, userdata } = data);
 
 	let publicUrl: string;
 
@@ -30,9 +30,13 @@
 
 	const createOrder = async () => {
 		// create order
-		const { error } = await supabase.from('digital_order').insert();
+		const { error } = await supabase.from('digital_order').insert({
+			description: description,
+			service_id: transformedService.id,
+			user_id: userdata.id
+		});
 		if (error) throw error;
-		console.log(`Order inserted:`);
+		console.log(`Order inserted:` + transformedService.id + userdata.id);
 	};
 
 	const genOrdNumber = generateUUID();
@@ -108,7 +112,7 @@
 					bind:value={description}
 				/>
 			</label>
-			<button type="submit" class="btn bg-purple-500 w-full mt-10">
+			<button type="submit" class="btn bg-purple-500 w-full mt-10" on:click={createOrder}>
 				{m.create_order()}
 			</button>
 		</div>
