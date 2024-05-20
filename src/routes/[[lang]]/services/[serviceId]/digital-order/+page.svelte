@@ -3,10 +3,12 @@
 	import { generateUUID } from '$lib/utils/helpers';
 
 	import * as m from '$paraglide/messages';
+	import { redirect } from '@sveltejs/kit';
+	import { goto } from '$app/navigation';
 
 	export let data: any;
 
-	let { transformedService, supabase, userdata } = data;
+	let { transformedService, supabase, userdata, service } = data;
 	$: ({ transformedService, supabase, userdata } = data);
 
 	let publicUrl: string;
@@ -31,12 +33,13 @@
 	const createOrder = async () => {
 		// create order
 		const { error } = await supabase.from('digital_order').insert({
+			id: genOrdNumber,
 			description: description,
 			service_id: transformedService.id,
 			user_id: userdata.id
 		});
 		if (error) throw error;
-		console.log(`Order inserted:` + transformedService.id + userdata.id);
+		goto('/profile/reports');
 	};
 
 	const genOrdNumber = generateUUID();
