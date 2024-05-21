@@ -12,6 +12,8 @@
 	console.log(digital_order);
 </script>
 
+// TODO: chat functionality
+
 <div class="">
 	<div class="">
 		<div class="mx-auto max-w-7xl sm:px-2 lg:px-8">
